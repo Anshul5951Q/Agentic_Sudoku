@@ -1,0 +1,29 @@
+[CHUNK 1: RULES]
+A 4x4 Sudoku uses digits 1, 2, 3, and 4. Every row, every column, and every 2x2 box must contain each digit exactly once. A placement is valid only if it does not duplicate a digit in its row, column, or box.
+
+[CHUNK 2: CANDIDATES]
+The candidate set for an empty cell is the digits 1 through 4 that are absent from its row, column, and 2x2 box. If the candidate set is empty, the current branch is a dead end and must be rejected.
+
+[CHUNK 3: DEAD-END PATTERN A]
+A branch that assigns (1,1)=2 in the sample puzzle leaves cell (1,2) with no candidates. This branch must be pruned. Restore the previous board state and try another candidate.
+
+[CHUNK 4: DEAD-END PATTERN B]
+In the sample puzzle, after (1,1)=1 and (1,2)=2, trying (2,3)=2 leaves (2,4) with no valid candidate. Reject this branch and backtrack to (2,3).
+
+[CHUNK 5: BACKTRACKING]
+Backtracking is depth-first search with state restoration. Choose an empty cell, try a valid candidate, recurse, and restore the cell to empty if the branch fails. Never keep a failed candidate in the board.
+
+[CHUNK 6: CHECKPOINTING]
+A checkpoint saves graph state under a thread identifier. Reusing the same thread identifier allows a workflow to resume from its saved state when the graph and checkpoint database are available. Use a different thread identifier for an independent puzzle run.
+
+[CHUNK 7: AGENT ROLES]
+The Proposer suggests candidate placements. The Rule Checker independently validates row, column, and box constraints. The Backtracker restores the board after a contradiction. A supervisor coordinates the stages and imposes a maximum number of graph hops.
+
+[CHUNK 8: VOTING]
+Three independent solver attempts can be compared by their completed grids. A vote is meaningful only after each proposed grid is checked against all Sudoku rules and the original clues. If valid solutions differ, report the disagreement rather than blindly accepting a majority.
+
+[CHUNK 9: EVALUATION]
+Compare the baseline and extension on the same puzzle cases. Record correctness, number of solver calls, elapsed time, and whether a dead end was detected. Measurements must come from actual repeatable runs, not estimates.
+
+[CHUNK 10: LIMITATIONS]
+A small local language model may propose invalid placements or produce inconsistent explanations. The deterministic rule checker is the authority for Sudoku validity. Retrieval supplies reference knowledge but does not replace constraint checking.

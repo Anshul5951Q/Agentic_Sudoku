@@ -151,8 +151,10 @@ def load_state(app, thread_id: str) -> dict:
     return dict(snap.values)
 
 
-def resume_search(app, thread_id: str, max_steps: int | None = None, silent: bool = False) -> dict:
-    """Continue from the last checkpoint of `thread_id` (never from the root)."""
+def resume_search(app, thread_id: str, max_steps: int | None = None, silent: bool = False, announce: bool = False) -> dict:
+    """Continue from the last checkpoint of `thread_id` (never from the root).
+
+    announce=True records a `search_resumed` event even if the run was not explicitly paused (e.g. after a crash)."""
     cfg = _cfg(thread_id)
     snap = app.get_state(cfg)
     if not snap.values:
@@ -160,12 +162,16 @@ def resume_search(app, thread_id: str, max_steps: int | None = None, silent: boo
     validate_state(snap.values)
     if snap.values["status"] != "running":
         return dict(snap.values)  # already finished; nothing to resume
+    extra = {"paused": True} if announce else {}
     if snap.next:  # interrupted mid-run (e.g. crash): replay from the last good checkpoint
+        upd = dict(extra)
         if max_steps is not None:
-            app.update_state(cfg, {"pause_at_step": snap.values["counters"]["steps"] + max_steps, "silent_pause": silent})
+            upd.update(pause_at_step=snap.values["counters"]["steps"] + max_steps, silent_pause=silent)
+        if upd:
+            app.update_state(cfg, upd)
         return app.invoke(None, cfg)
     limit = None if max_steps is None else snap.values["counters"]["steps"] + max_steps
-    return app.invoke({"pause_at_step": limit, "silent_pause": silent}, cfg)
+    return app.invoke({"pause_at_step": limit, "silent_pause": silent, **extra}, cfg)
 
 
 def checkpoint_summaries(saver, thread_id: str) -> list[dict]:

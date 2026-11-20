@@ -305,11 +305,16 @@ def test_orphaned_running_run_is_marked_interrupted_and_is_resumable(make_client
         start_search(build_graph(saver), SAMPLE, row["thread_id"] + "-x", "first_empty", "desc", max_steps=6, silent=True)
     db = c1.app.state.ctx.db
     db.update_run(rid, status="running", thread_id=row["thread_id"] + "-x", finished_at=None, result=None)
+    with db.conn() as con:                                            # keep the stored trace consistent with the swapped-in thread
+        con.execute("DELETE FROM events WHERE run_id=?", (rid,))
+        con.execute("DELETE FROM nodes WHERE run_id=?", (rid,))
     c2 = TestClient(create_app(make_settings(tmp_path), rag_answer=lambda q, k: {}), raise_server_exceptions=False)
     r = c2.get(f"/api/solve/{rid}").json()
     assert r["status"] == "interrupted" and r["resumable"] is True and r["live"] is False
     assert c2.post(f"/api/solve/{rid}/resume").status_code == 200
     assert wait_for(c2, rid)["status"] == "completed"
+    names = [e["event"] for e in c2.get(f"/api/solve/{rid}/trace").json()["events"]]
+    assert names.count("search_resumed") == 1          # spec 10.2: the resume after a restart is recorded
 
 
 def test_missing_checkpoint_resume_is_a_recoverable_error(client):

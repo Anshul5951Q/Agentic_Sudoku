@@ -26,7 +26,7 @@ describe('Agent Activity', () => {
     expect(t('agent-status-Verifier / Backtracker')).toHaveTextContent(/idle/);
     expect(t('agent-msg-Supervisor')).toHaveTextContent(rx('#20 search_completed [SOLVED]: verified winner selected'));
     expect(t('agent-msg-Verifier / Backtracker')).toHaveTextContent(rx('no activity in this run'));
-    expect(t('agent-Supervisor')).toHaveTextContent(/0\.012 s active \(4 events\)/);
+    expect(t('agent-Supervisor')).toHaveTextContent(/0\.012 s from first to last event \(4 events; includes any pause or downtime\)/);
     expect(t('agent-error-Supervisor')).toHaveTextContent(rx('none'));
     expect(t('agents-note')).toHaveTextContent(/not independent LLM agents/);
   });
@@ -225,6 +225,8 @@ describe('Run controls, checkpoint and resume', () => {
     await waitFor(() => expect(t('run-status')).toHaveTextContent(rx('interrupted')));
     expect(t('resume').props.accessibilityState.disabled).toBe(false);
     expect(t('cancel').props.accessibilityState.disabled).toBe(false);
+    expect(t('stopped-label')).toHaveTextContent(rx('Not running (interrupted): resume to continue from the checkpoint'));
+    expect(screen.queryByTestId('recorded-label')).toBeNull();     // an unfinished run is never shown as a recorded replay
   });
 
   it('pause calls the backend; its error is shown as the backend explained it', async () => {

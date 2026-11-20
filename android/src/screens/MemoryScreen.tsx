@@ -287,7 +287,7 @@ function RagCard({ r, testID }: { r: RAGResponse; testID: string }) {
         {r.abstained && <Notice kind="warning" testID={`${testID}-abstain`}>The evidence did not support an answer, so the system says it does not know instead of guessing.</Notice>}
       </Card>
       <Card testID={`${testID}-used`}>
-        <Text style={styles.h3}>Evidence used</Text>
+        <Text style={styles.h3} testID={`${testID}-used-title`}>{r.abstained ? 'Retrieved, but NOT used (not enough support to answer)' : 'Evidence used'}</Text>
         {r.retrieved_chunk_ids.length ? <Text style={styles.note}>{r.retrieved_chunk_ids.join(', ')}</Text> : <Text style={styles.note}>No chunks were retrieved.</Text>}
       </Card>
       {r.evidence.length === 0 && <EmptyState testID={`${testID}-none`} title="No chunks retrieved" body="The knowledge store returned nothing for this query." />}

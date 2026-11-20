@@ -37,13 +37,17 @@ automatically for a physical phone) → 4. if that host is unreachable on Androi
 * Observed: with the backend on `0.0.0.0` the emulator app reached it through the derived host address and loaded real data.
   With the backend on loopback only, requests from the **app** to `10.0.2.2:8000` timed out even though the same address
   answered from the `adb shell`; I did not find the cause. Treat the `10.0.2.2` fallback as best-effort.
-* Not verified on a device: `adb reverse tcp:8000 tcp:8000` plus Settings address `http://localhost:8000` should work without
-  opening the firewall, but I did not get to confirm it from the app.
+* **Verified working on the emulator:** `adb reverse tcp:8000 tcp:8000` + `adb reverse tcp:8081 tcp:8081`, Metro started with
+  `EXPO_PUBLIC_API_BASE_URL=http://localhost:8000`, and Expo Go opened with `exp://localhost:8081`. No firewall change, and the
+  backend stays on loopback. Deep links work: `exp://localhost:8081/--/run/<run_id>`, `.../--/memory`.
 * Metro started with `CI=1` does **not** watch files; after editing code restart Metro and relaunch Expo Go.
 * Dev builds log connection decisions as `[connection] …` (host class and error kind only, no payloads).
 
 ## Known gaps
-* AI Lab, Memory and Analytics tabs are honest placeholders (later phases); "Solve with AI" is disabled.
+* The Analytics tab is still a placeholder; the search-tree visualisation and WebSocket live view are not built yet;
+  "Solve with AI" on Play is disabled (runs start from the AI Lab).
+* Multi-agent and CoT traces are written when the run ends, so their per-agent time spans are near zero; ToT spans include
+  any pause or downtime (the UI labels them as spans, not active time).
 * Plain `http://` works in Expo Go. A standalone APK needs cleartext traffic enabled via the build-properties plugin (Phase 7).
 * Tab icons are emoji glyphs (no icon package added). Save stores the puzzle's clues, not in-progress entries.
 * Physical-phone test not yet done (needs a phone).

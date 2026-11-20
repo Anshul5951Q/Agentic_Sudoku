@@ -31,7 +31,7 @@ function AgentCard({ contract, status }: { contract: AgentContract; status: Agen
         v={s?.latest_message ? `#${s.latest_message.sequence} ${s.latest_message.event}${s.latest_message.reason_code ? ` [${s.latest_message.reason_code}]` : ''}${s.latest_message.reason ? `: ${s.latest_message.reason}` : ''}` : 'no activity in this run'} />
       <KV k="Tool calls" v={String(s?.tool_calls ?? 0)} />
       <KV k="Retries" testID={`agent-retry-${contract.name}`} v={`${s?.retries ?? 0} retried · ${s?.recovered ?? 0} recovered`} />
-      <KV k="Time" v={s?.active_seconds != null ? `${s.active_seconds.toFixed(3)} s active (${s.event_count} events)` : '—'} />
+      <KV k="Time span" v={s?.active_seconds != null ? `${s.active_seconds.toFixed(3)} s from first to last event (${s.event_count} events; includes any pause or downtime)` : '—'} />
       <KV k="Error" testID={`agent-error-${contract.name}`} v={s?.error ?? 'none'} />
       <Pressable testID={`spec-toggle-${contract.name}`} accessibilityRole="button" onPress={() => setOpen(!open)} style={styles.toggle}>
         <Text style={styles.toggleText}>{open ? 'Hide' : 'Show'} role specification</Text>
@@ -107,7 +107,9 @@ export default function RunDetailScreen() {
         {res?.failure && <KV k="Failure" testID="run-failure" v={`${res.failure.code}: ${res.failure.reason}`} />}
         <KV k="Deterministic" testID="run-det" v={run.deterministic_components.join(', ')} />
         <KV k="LLM" testID="run-llm" v={run.llm_components.length ? run.llm_components.join(', ') : 'none: this run uses no language model'} />
-        {run.live ? <Text style={styles.live} testID="live-label">LIVE: updating from the backend</Text> : <Text style={styles.muted} testID="recorded-label">Recorded run (replay of the stored trace)</Text>}
+        {run.live ? <Text style={styles.live} testID="live-label">LIVE: updating from the backend</Text>
+          : ['completed', 'failed', 'cancelled'].includes(run.status) ? <Text style={styles.muted} testID="recorded-label">Recorded run (replay of the stored trace)</Text>
+          : <Text style={styles.live} testID="stopped-label">Not running ({run.status}){run.resumable ? ': resume to continue from the checkpoint' : ''}</Text>}
         {demo.length > 0 && <Notice kind="warning" testID="demo-banner">CONTROLLED DEMO: {demo.join(' · ')}. This is not a normal run.</Notice>}
         {msg && <Notice kind={msg.kind} testID="run-msg">{msg.text}</Notice>}
         {run.mode === 'tot' && (

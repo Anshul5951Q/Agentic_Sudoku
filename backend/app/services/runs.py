@@ -289,6 +289,7 @@ class RunManager:
         cfg, ctl, tid = run["config"], self.controls[run_id], run["thread_id"]
         self.db.update_run(run_id, status="running", **({} if run["started_at"] else {"started_at": utc_now()}))
         started = resume
+        announce = resume
         seg_start = perf_counter()
         elapsed_before = (run.get("progress") or {}).get("active_seconds", 0.0)
         try:
@@ -303,7 +304,9 @@ class RunManager:
                                                  run_id=run_id)
                             started = True
                         else:
-                            state = resume_search(app, tid, max_steps=self.s.chunk_steps, silent=True)
+                            # the first chunk after a pause OR a restart records search_resumed in the trace
+                            state = resume_search(app, tid, max_steps=self.s.chunk_steps, silent=True, announce=announce)
+                            announce = False
                     except CheckpointError as e:
                         self._add_active(run_id, perf_counter() - seg_start)
                         self._fail(run_id, e.code, "The saved checkpoint is missing or invalid; start a new run.")

@@ -251,6 +251,7 @@ describe('RAG Knowledge (U3-3)', () => {
     expect(t('rag-chunk-sudoku-chunk-5')).toHaveTextContent(rx('similarity 0.84'));
     expect(t('rag-answer')).toHaveTextContent(rx('GROUNDED · best similarity 0.84 (threshold 0.53) · 1 model call(s)'));
     expect(screen.queryByTestId('rag-abstain')).toBeNull();
+    expect(t('rag-used-title')).toHaveTextContent('Evidence used');
   });
 
   it('k=1 retrieves one chunk', async () => {
@@ -281,6 +282,7 @@ describe('RAG Knowledge (U3-3)', () => {
     expect(t('rag-abstain')).toHaveTextContent(rx('says it does not know instead of guessing'));
     expect(t('rag-answer')).toHaveTextContent(rx('LOW_RELEVANCE · best similarity 0.41 (threshold 0.53) · 0 model call(s)'));
     expect(t('rag-used')).toHaveTextContent(rx('sudoku-chunk-8'));
+    expect(t('rag-used-title')).toHaveTextContent(rx('Retrieved, but NOT used'));
   });
 
   it('no-RAG-result state when nothing was retrieved', async () => {

@@ -18,7 +18,19 @@
       },
       "predictiveBackGestureEnabled": false
     },
-    "plugins": ["expo-router"],
-    "experiments": { "typedRoutes": false }
+    "plugins": [
+      "expo-router",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": false
+    }
   }
 }

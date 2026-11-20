@@ -1,4 +1,4 @@
-import { useLocalSearchParams } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import React, { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Chip, errText, KV, MiniBoard, Segmented, StatusPill } from '@/components/lab';
@@ -112,6 +112,7 @@ export default function RunDetailScreen() {
           : <Text style={styles.live} testID="stopped-label">Not running ({run.status}){run.resumable ? ': resume to continue from the checkpoint' : ''}</Text>}
         {demo.length > 0 && <Notice kind="warning" testID="demo-banner">CONTROLLED DEMO: {demo.join(' · ')}. This is not a normal run.</Notice>}
         {msg && <Notice kind={msg.kind} testID="run-msg">{msg.text}</Notice>}
+        <Button testID="open-tree" label="Open search tree and playback" variant="secondary" onPress={() => router.push({ pathname: '/trace/[runId]', params: { runId: run.run_id } })} />
         {run.mode === 'tot' && (
           <View style={styles.row}>
             <Button testID="pause" label="Pause" variant="secondary" disabled={run.status !== 'running'} onPress={() => act(() => api.pause(run.run_id), 'Paused at a safe checkpoint.')} />

@@ -1,0 +1,1858 @@
+{
+ "source": "recorded from the real backend by tests/recorded (do not edit)",
+ "run": {
+  "run_id": "run-824148723d39",
+  "thread_id": "thread-2b90801b2f1f",
+  "session_id": "session-5b2403c4afa1",
+  "puzzle_id": "puzzle-93f2642bef3e",
+  "mode": "tot",
+  "status": "completed",
+  "board": [
+   [
+    0,
+    0,
+    3,
+    4
+   ],
+   [
+    3,
+    4,
+    0,
+    0
+   ],
+   [
+    0,
+    1,
+    4,
+    0
+   ],
+   [
+    4,
+    0,
+    0,
+    1
+   ]
+  ],
+  "config": {
+   "strategy": "first_empty",
+   "order": "desc",
+   "max_nodes": 10000,
+   "timeout_s": 30.0,
+   "use_memory": false,
+   "user_id": "demo-user"
+  },
+  "created_at": "2026-11-20T12:42:00.087128+00:00",
+  "started_at": "2026-11-20T12:42:00.105711+00:00",
+  "finished_at": "2026-11-20T12:42:00.389337+00:00",
+  "result": {
+   "outcome": "solved",
+   "verified": true,
+   "solution": [
+    [
+     1,
+     2,
+     3,
+     4
+    ],
+    [
+     3,
+     4,
+     1,
+     2
+    ],
+    [
+     2,
+     1,
+     4,
+     3
+    ],
+    [
+     4,
+     3,
+     2,
+     1
+    ]
+   ],
+   "failure": null,
+   "counters": {
+    "steps": 24,
+    "nodes": 11,
+    "expansions": 11,
+    "candidates_proposed": 10,
+    "rule_violations": 0,
+    "dead_ends": 2,
+    "pruned": 2,
+    "backtracks": 2,
+    "memory_confirmed": 0,
+    "memory_rejected": 0,
+    "max_depth": 8
+   },
+   "vote": null,
+   "llm_calls": 0,
+   "tool_calls": 0,
+   "elapsed_seconds": 0.258964,
+   "note": null
+  },
+  "progress": {
+   "steps": 24,
+   "nodes": 11,
+   "expansions": 11,
+   "candidates_proposed": 10,
+   "rule_violations": 0,
+   "dead_ends": 2,
+   "pruned": 2,
+   "backtracks": 2,
+   "memory_confirmed": 0,
+   "memory_rejected": 0,
+   "max_depth": 8,
+   "active_seconds": 0.2589641999802552
+  },
+  "last_sequence": 49,
+  "live": false,
+  "resumable": false,
+  "duplicate": false,
+  "deterministic_components": [
+   "cell selection (MRV / first-empty)",
+   "candidate generation",
+   "row/column/box rule checking",
+   "pruning and backtracking",
+   "final solution verification"
+  ],
+  "llm_components": []
+ },
+ "trace": {
+  "run_id": "run-824148723d39",
+  "status": "completed",
+  "live": false,
+  "recorded": true,
+  "last_sequence": 49,
+  "terminal": true,
+  "events": [
+   {
+    "event_id": "run-824148723d39-event-00000",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 0,
+    "event": "search_started",
+    "agent": "Supervisor",
+    "depth": 0,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": [
+     [
+      0,
+      0,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "node_id": null,
+    "timestamp": "2026-11-20T12:42:00.115060+00:00",
+    "data": {
+     "strategy": "first_empty",
+     "order": "desc",
+     "max_nodes": 10000
+    }
+   },
+   {
+    "event_id": "run-824148723d39-event-00001",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 1,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 0,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0000",
+    "timestamp": "2026-11-20T12:42:00.116596+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00002",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 2,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 0,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": null,
+    "candidates": [
+     2,
+     1
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0000",
+    "timestamp": "2026-11-20T12:42:00.116596+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00003",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 3,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 1,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0001",
+    "timestamp": "2026-11-20T12:42:00.118127+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00004",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 4,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 1,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0001",
+    "timestamp": "2026-11-20T12:42:00.118127+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00005",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 5,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 1,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0001",
+    "timestamp": "2026-11-20T12:42:00.119664+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00006",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 6,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 1,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": null,
+    "candidates": [],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0001",
+    "timestamp": "2026-11-20T12:42:00.119664+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00007",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 7,
+    "event": "dead_end",
+    "agent": "Verifier",
+    "depth": 1,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "ZERO_CANDIDATES",
+    "reason": "cell [0, 1] has no legal candidates",
+    "board_snapshot": [
+     [
+      2,
+      0,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "node_id": "run-824148723d39-node-0001",
+    "timestamp": "2026-11-20T12:42:00.119664+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00008",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 8,
+    "event": "branch_pruned",
+    "agent": "Backtracker",
+    "depth": 1,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "ZERO_CANDIDATES",
+    "reason": "cell [0, 1] has no legal candidates",
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0001",
+    "timestamp": "2026-11-20T12:42:00.119664+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00009",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 9,
+    "event": "backtrack_started",
+    "agent": "Backtracker",
+    "depth": 1,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "RESTORE_PARENT",
+    "reason": "restoring the board to its state before this decision",
+    "board_snapshot": [
+     [
+      0,
+      0,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "node_id": "run-824148723d39-node-0000",
+    "timestamp": "2026-11-20T12:42:00.159096+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00010",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 10,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 1,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": 1,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0002",
+    "timestamp": "2026-11-20T12:42:00.160623+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00011",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 11,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 1,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": 1,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0002",
+    "timestamp": "2026-11-20T12:42:00.160623+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00012",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 12,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 1,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0002",
+    "timestamp": "2026-11-20T12:42:00.160623+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00013",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 13,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 1,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": null,
+    "candidates": [
+     2
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0002",
+    "timestamp": "2026-11-20T12:42:00.160623+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00014",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 14,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 2,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0003",
+    "timestamp": "2026-11-20T12:42:00.162155+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00015",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 15,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 2,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0003",
+    "timestamp": "2026-11-20T12:42:00.162155+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00016",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 16,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 2,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0003",
+    "timestamp": "2026-11-20T12:42:00.200235+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00017",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 17,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 2,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": null,
+    "candidates": [
+     2,
+     1
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0003",
+    "timestamp": "2026-11-20T12:42:00.200235+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00018",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 18,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 3,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0004",
+    "timestamp": "2026-11-20T12:42:00.201763+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00019",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 19,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 3,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0004",
+    "timestamp": "2026-11-20T12:42:00.201763+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00020",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 20,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 3,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0004",
+    "timestamp": "2026-11-20T12:42:00.201763+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00021",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 21,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 3,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": null,
+    "candidates": [],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0004",
+    "timestamp": "2026-11-20T12:42:00.201763+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00022",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 22,
+    "event": "dead_end",
+    "agent": "Verifier",
+    "depth": 3,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "ZERO_CANDIDATES",
+    "reason": "cell [1, 3] has no legal candidates",
+    "board_snapshot": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      2,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "node_id": "run-824148723d39-node-0004",
+    "timestamp": "2026-11-20T12:42:00.201763+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00023",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 23,
+    "event": "branch_pruned",
+    "agent": "Backtracker",
+    "depth": 3,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "ZERO_CANDIDATES",
+    "reason": "cell [1, 3] has no legal candidates",
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0004",
+    "timestamp": "2026-11-20T12:42:00.201763+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00024",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 24,
+    "event": "backtrack_started",
+    "agent": "Backtracker",
+    "depth": 3,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "RESTORE_PARENT",
+    "reason": "restoring the board to its state before this decision",
+    "board_snapshot": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "node_id": "run-824148723d39-node-0003",
+    "timestamp": "2026-11-20T12:42:00.203424+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00025",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 25,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 3,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": 1,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0005",
+    "timestamp": "2026-11-20T12:42:00.240088+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00026",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 26,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 3,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": 1,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0005",
+    "timestamp": "2026-11-20T12:42:00.240088+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00027",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 27,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 3,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0005",
+    "timestamp": "2026-11-20T12:42:00.241634+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00028",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 28,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 3,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": null,
+    "candidates": [
+     2
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0005",
+    "timestamp": "2026-11-20T12:42:00.241634+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00029",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 29,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 4,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0006",
+    "timestamp": "2026-11-20T12:42:00.243170+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00030",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 30,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 4,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0006",
+    "timestamp": "2026-11-20T12:42:00.243170+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00031",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 31,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 4,
+    "cell": [
+     2,
+     0
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0006",
+    "timestamp": "2026-11-20T12:42:00.243170+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00032",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 32,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 4,
+    "cell": [
+     2,
+     0
+    ],
+    "candidate": null,
+    "candidates": [
+     2
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0006",
+    "timestamp": "2026-11-20T12:42:00.243170+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00033",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 33,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 5,
+    "cell": [
+     2,
+     0
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0007",
+    "timestamp": "2026-11-20T12:42:00.283543+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00034",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 34,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 5,
+    "cell": [
+     2,
+     0
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0007",
+    "timestamp": "2026-11-20T12:42:00.283543+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00035",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 35,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 5,
+    "cell": [
+     2,
+     3
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0007",
+    "timestamp": "2026-11-20T12:42:00.285611+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00036",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 36,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 5,
+    "cell": [
+     2,
+     3
+    ],
+    "candidate": null,
+    "candidates": [
+     3
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0007",
+    "timestamp": "2026-11-20T12:42:00.285611+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00037",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 37,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 6,
+    "cell": [
+     2,
+     3
+    ],
+    "candidate": 3,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0008",
+    "timestamp": "2026-11-20T12:42:00.287132+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00038",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 38,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 6,
+    "cell": [
+     2,
+     3
+    ],
+    "candidate": 3,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0008",
+    "timestamp": "2026-11-20T12:42:00.287132+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00039",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 39,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 6,
+    "cell": [
+     3,
+     1
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0008",
+    "timestamp": "2026-11-20T12:42:00.288668+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00040",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 40,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 6,
+    "cell": [
+     3,
+     1
+    ],
+    "candidate": null,
+    "candidates": [
+     3
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0008",
+    "timestamp": "2026-11-20T12:42:00.288668+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00041",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 41,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 7,
+    "cell": [
+     3,
+     1
+    ],
+    "candidate": 3,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0009",
+    "timestamp": "2026-11-20T12:42:00.328863+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00042",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 42,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 7,
+    "cell": [
+     3,
+     1
+    ],
+    "candidate": 3,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0009",
+    "timestamp": "2026-11-20T12:42:00.328863+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00043",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 43,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 7,
+    "cell": [
+     3,
+     2
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0009",
+    "timestamp": "2026-11-20T12:42:00.330374+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00044",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 44,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 7,
+    "cell": [
+     3,
+     2
+    ],
+    "candidate": null,
+    "candidates": [
+     2
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0009",
+    "timestamp": "2026-11-20T12:42:00.330374+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00045",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 45,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 8,
+    "cell": [
+     3,
+     2
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0010",
+    "timestamp": "2026-11-20T12:42:00.331918+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00046",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 46,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 8,
+    "cell": [
+     3,
+     2
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-824148723d39-node-0010",
+    "timestamp": "2026-11-20T12:42:00.331918+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00047",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 47,
+    "event": "solution_found",
+    "agent": "Backtracker",
+    "depth": 8,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      4,
+      3
+     ],
+     [
+      4,
+      3,
+      2,
+      1
+     ]
+    ],
+    "node_id": "run-824148723d39-node-0010",
+    "timestamp": "2026-11-20T12:42:00.333454+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00048",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 48,
+    "event": "solution_verified",
+    "agent": "Verifier",
+    "depth": 8,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "VERIFIED",
+    "reason": "complete board satisfies all rules and clues",
+    "board_snapshot": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      4,
+      3
+     ],
+     [
+      4,
+      3,
+      2,
+      1
+     ]
+    ],
+    "node_id": "run-824148723d39-node-0010",
+    "timestamp": "2026-11-20T12:42:00.333454+00:00",
+    "data": {}
+   },
+   {
+    "event_id": "run-824148723d39-event-00049",
+    "run_id": "run-824148723d39",
+    "thread_id": "thread-2b90801b2f1f",
+    "sequence": 49,
+    "event": "search_completed",
+    "agent": "Supervisor",
+    "depth": 0,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "SOLVED",
+    "reason": "verified solution found",
+    "board_snapshot": null,
+    "node_id": null,
+    "timestamp": "2026-11-20T12:42:00.333454+00:00",
+    "data": {
+     "counters": {
+      "steps": 24,
+      "nodes": 11,
+      "expansions": 11,
+      "candidates_proposed": 10,
+      "rule_violations": 0,
+      "dead_ends": 2,
+      "pruned": 2,
+      "backtracks": 2,
+      "memory_confirmed": 0,
+      "memory_rejected": 0,
+      "max_depth": 8
+     }
+    }
+   }
+  ],
+  "nodes": [
+   {
+    "node_id": "run-824148723d39-node-0000",
+    "parent_node_id": null,
+    "depth": 0,
+    "decision_cell": [
+     0,
+     0
+    ],
+    "candidate_value": null,
+    "board_snapshot": [
+     [
+      0,
+      0,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "status": "expanded",
+    "reason_code": null,
+    "reason_text": null,
+    "candidate_list": [
+     2,
+     1
+    ],
+    "created_at": "2026-11-20T12:42:00.115060+00:00",
+    "agent_id": "Backtracker"
+   },
+   {
+    "node_id": "run-824148723d39-node-0001",
+    "parent_node_id": "run-824148723d39-node-0000",
+    "depth": 1,
+    "decision_cell": [
+     0,
+     1
+    ],
+    "candidate_value": 2,
+    "board_snapshot": [
+     [
+      2,
+      0,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "status": "dead_end",
+    "reason_code": "ZERO_CANDIDATES",
+    "reason_text": "cell [0, 1] has no legal candidates",
+    "candidate_list": [],
+    "created_at": "2026-11-20T12:42:00.118127+00:00",
+    "agent_id": "Backtracker"
+   },
+   {
+    "node_id": "run-824148723d39-node-0002",
+    "parent_node_id": "run-824148723d39-node-0000",
+    "depth": 1,
+    "decision_cell": [
+     0,
+     1
+    ],
+    "candidate_value": 1,
+    "board_snapshot": [
+     [
+      1,
+      0,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "status": "expanded",
+    "reason_code": "OK",
+    "reason_text": "valid placement",
+    "candidate_list": [
+     2
+    ],
+    "created_at": "2026-11-20T12:42:00.160623+00:00",
+    "agent_id": "Backtracker"
+   },
+   {
+    "node_id": "run-824148723d39-node-0003",
+    "parent_node_id": "run-824148723d39-node-0002",
+    "depth": 2,
+    "decision_cell": [
+     1,
+     2
+    ],
+    "candidate_value": 2,
+    "board_snapshot": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "status": "expanded",
+    "reason_code": "OK",
+    "reason_text": "valid placement",
+    "candidate_list": [
+     2,
+     1
+    ],
+    "created_at": "2026-11-20T12:42:00.162155+00:00",
+    "agent_id": "Backtracker"
+   },
+   {
+    "node_id": "run-824148723d39-node-0004",
+    "parent_node_id": "run-824148723d39-node-0003",
+    "depth": 3,
+    "decision_cell": [
+     1,
+     3
+    ],
+    "candidate_value": 2,
+    "board_snapshot": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      2,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "status": "dead_end",
+    "reason_code": "ZERO_CANDIDATES",
+    "reason_text": "cell [1, 3] has no legal candidates",
+    "candidate_list": [],
+    "created_at": "2026-11-20T12:42:00.201763+00:00",
+    "agent_id": "Backtracker"
+   },
+   {
+    "node_id": "run-824148723d39-node-0005",
+    "parent_node_id": "run-824148723d39-node-0003",
+    "depth": 3,
+    "decision_cell": [
+     1,
+     3
+    ],
+    "candidate_value": 1,
+    "board_snapshot": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      1,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "status": "expanded",
+    "reason_code": "OK",
+    "reason_text": "valid placement",
+    "candidate_list": [
+     2
+    ],
+    "created_at": "2026-11-20T12:42:00.240088+00:00",
+    "agent_id": "Backtracker"
+   },
+   {
+    "node_id": "run-824148723d39-node-0006",
+    "parent_node_id": "run-824148723d39-node-0005",
+    "depth": 4,
+    "decision_cell": [
+     2,
+     0
+    ],
+    "candidate_value": 2,
+    "board_snapshot": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      1,
+      2
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "status": "expanded",
+    "reason_code": "OK",
+    "reason_text": "valid placement",
+    "candidate_list": [
+     2
+    ],
+    "created_at": "2026-11-20T12:42:00.243170+00:00",
+    "agent_id": "Backtracker"
+   },
+   {
+    "node_id": "run-824148723d39-node-0007",
+    "parent_node_id": "run-824148723d39-node-0006",
+    "depth": 5,
+    "decision_cell": [
+     2,
+     3
+    ],
+    "candidate_value": 2,
+    "board_snapshot": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "status": "expanded",
+    "reason_code": "OK",
+    "reason_text": "valid placement",
+    "candidate_list": [
+     3
+    ],
+    "created_at": "2026-11-20T12:42:00.283543+00:00",
+    "agent_id": "Backtracker"
+   },
+   {
+    "node_id": "run-824148723d39-node-0008",
+    "parent_node_id": "run-824148723d39-node-0007",
+    "depth": 6,
+    "decision_cell": [
+     3,
+     1
+    ],
+    "candidate_value": 3,
+    "board_snapshot": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      4,
+      3
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "status": "expanded",
+    "reason_code": "OK",
+    "reason_text": "valid placement",
+    "candidate_list": [
+     3
+    ],
+    "created_at": "2026-11-20T12:42:00.287132+00:00",
+    "agent_id": "Backtracker"
+   },
+   {
+    "node_id": "run-824148723d39-node-0009",
+    "parent_node_id": "run-824148723d39-node-0008",
+    "depth": 7,
+    "decision_cell": [
+     3,
+     2
+    ],
+    "candidate_value": 3,
+    "board_snapshot": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      4,
+      3
+     ],
+     [
+      4,
+      3,
+      0,
+      1
+     ]
+    ],
+    "status": "expanded",
+    "reason_code": "OK",
+    "reason_text": "valid placement",
+    "candidate_list": [
+     2
+    ],
+    "created_at": "2026-11-20T12:42:00.328863+00:00",
+    "agent_id": "Backtracker"
+   },
+   {
+    "node_id": "run-824148723d39-node-0010",
+    "parent_node_id": "run-824148723d39-node-0009",
+    "depth": 8,
+    "decision_cell": [
+     3,
+     2
+    ],
+    "candidate_value": 2,
+    "board_snapshot": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      4,
+      3
+     ],
+     [
+      4,
+      3,
+      2,
+      1
+     ]
+    ],
+    "status": "solution",
+    "reason_code": "SOLUTION_VERIFIED",
+    "reason_text": "complete board verified",
+    "candidate_list": [],
+    "created_at": "2026-11-20T12:42:00.331918+00:00",
+    "agent_id": "Backtracker"
+   }
+  ]
+ }
+}

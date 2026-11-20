@@ -2,6 +2,7 @@ import { useLocalSearchParams } from 'expo-router';
 import React, { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
 import { Alert, Modal, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { NumberPad } from '@/components/NumberPad';
+import { SolveModeModal } from '@/components/SolveModeModal';
 import { SudokuBoard } from '@/components/SudokuBoard';
 import { Button, Card, EmptyState, Loading, Notice, Screen, SectionTitle } from '@/components/ui';
 import { SAMPLE_PUZZLE } from '@/constants/sample';
@@ -42,6 +43,7 @@ export default function PlayScreen() {
   const [loadOpen, setLoadOpen] = useState(false);
   const [saved, setSaved] = useState<SessionSummary[] | null>(null);
   const [savedError, setSavedError] = useState<string | null>(null);
+  const [solveOpen, setSolveOpen] = useState(false);
 
   // Conflicts are reported by the backend; the UI only draws them.
   const conflicts = useMemo(() => {
@@ -196,9 +198,11 @@ export default function PlayScreen() {
         <Button testID="clear-board" label="Clear board" variant="secondary" onPress={confirmClear} />
         <Button testID="save" label="Save" variant="secondary" onPress={doSave} />
         <Button testID="load-saved" label="Load saved" variant="secondary" onPress={openLoad} />
-        <Button testID="solve-ai" label="Solve with AI" variant="secondary" disabled hint="Available in the next phase" onPress={() => undefined} />
+        <Button testID="solve-ai" label="Solve with AI" disabled={blank || backend === 'down'} hint="Choose CoT, ToT or Multi-Agent" onPress={() => setSolveOpen(true)} />
       </View>
-      <Text style={styles.sub}>Solve modes (CoT, ToT, Multi-Agent) arrive with the solver integration phase.</Text>
+      <Text style={styles.sub}>Solving uses the puzzle's clues{state.meta.puzzleId && !state.dirty ? ' (the saved puzzle)' : ''}; your own entries are not sent.</Text>
+      <SolveModeModal visible={solveOpen} onClose={() => setSolveOpen(false)} puzzleId={state.meta.puzzleId && !state.dirty ? state.meta.puzzleId : null}
+        board={state.values.map((row, r) => row.map((v, c) => (state.fixed[r][c] ? v : 0)))} />
 
       <Modal visible={loadOpen} transparent animationType="slide" onRequestClose={() => setLoadOpen(false)}>
         <View style={styles.modalWrap}>

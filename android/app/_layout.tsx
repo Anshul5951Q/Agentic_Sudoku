@@ -14,6 +14,7 @@ export default function RootLayout() {
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="settings" options={{ title: 'Settings', presentation: 'card' }} />
           <Stack.Screen name="run/[runId]" options={{ title: 'Run' }} />
+          <Stack.Screen name="trace/[runId]" options={{ title: 'Search tree' }} />
         </Stack>
       </ConnectionProvider>
     </SafeAreaProvider>

@@ -8,8 +8,8 @@ This extension preserves the supplied TA1 scripts as references and adds Unit 3 
 - LangChain v1, LangGraph, `langgraph-checkpoint-sqlite`, Chroma via `langchain-chroma`
 - SQLite for long-term memory and LangGraph checkpoints
 
-## 1. Freeze the TA1 baseline
-Copy your existing TA1 files into `ta1/` and do not edit them. In this delivered package, `ta1_baseline_reference/` is a reminder folder; copy your original `cot_attempt.py`, `sudoku_tot.py`, and `tot_solver.py` into it or rename it to `ta1/` before submission. Keep TA2 code separate under `ta2/`.
+## 1. Frozen TA1 baseline
+The original TA1 scripts live unchanged in `ta1/` (`cot_attempt.py`, `sudoku_tot.py`, `tot_solver.py`). Their SHA-256 hashes are checked by `tests/test_ta1_frozen.py`; do not edit them. TA2 code lives under `ta2/`. (On Windows run `tot_solver.py` with `PYTHONUTF8=1`; it prints non-cp1252 characters.)
 
 ## 2. Install local models
 Install/start Ollama, then run:

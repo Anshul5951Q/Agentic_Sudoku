@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import sqlite3
+from contextlib import contextmanager
 from pathlib import Path
 from typing import Any
 
@@ -37,10 +38,16 @@ class SudokuMemory:
                 payload TEXT NOT NULL, created_at TEXT NOT NULL, last_used_at TEXT, use_count INTEGER NOT NULL DEFAULT 0,
                 UNIQUE(user_id, kind, memory_key))""")
 
-    def _con(self) -> sqlite3.Connection:
+    @contextmanager
+    def _con(self):
+        """Commit on success, roll back on error, and ALWAYS close (avoids locked files on Windows)."""
         con = sqlite3.connect(self.db_path, timeout=10)
         con.row_factory = sqlite3.Row
-        return con
+        try:
+            with con:
+                yield con
+        finally:
+            con.close()
 
     # ---------------------------------------------------------------- generic CRUD
     def put(self, kind: str, key: str, payload: Any, user_id: str | None = None) -> int:

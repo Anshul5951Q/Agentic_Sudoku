@@ -123,3 +123,28 @@ def test_run_checkpointed_wrapper_reuses_thread(tmp_path):
     a = run_checkpointed(SAMPLE, "w1", db)
     b = run_checkpointed(SAMPLE, "w1", db)
     assert a["solution"] == SOLUTION and len(a["events"]) == len(b["events"])
+
+
+def test_silent_chunk_boundaries_emit_no_pause_events(tmp_path):
+    with open_saver(tmp_path / "c.sqlite3") as saver:
+        app = build_graph(saver)
+        out = start_search(app, SAMPLE, "t-silent", "first_empty", "desc", max_steps=3, silent=True)
+        while out["status"] == "running":
+            out = resume_search(app, "t-silent", max_steps=3, silent=True)
+    names = [e["event"] for e in out["events"]]
+    assert "search_paused" not in names and "search_resumed" not in names
+    assert strip(out["events"]) == strip(reference()["events"])
+
+
+def test_mark_paused_and_cancel_are_recorded_in_the_checkpoint(tmp_path):
+    from ta2.checkpointer import mark_paused, mark_terminal
+    with open_saver(tmp_path / "c.sqlite3") as saver:
+        app = build_graph(saver)
+        start_search(app, SAMPLE, "t-ext", "first_empty", "desc", max_steps=4, silent=True)
+        st = mark_paused(app, "t-ext")
+        assert st["paused"] and st["events"][-1]["event"] == "search_paused" and st["seq"] == len(st["events"])
+        done = resume_search(app, "t-ext", max_steps=2, silent=True)
+        assert [e["event"] for e in done["events"]].count("search_resumed") == 1
+        end = mark_terminal(app, "t-ext", "search_cancelled", "cancelled", "CANCELLED", "cancelled by user")
+        assert end["status"] == "cancelled" and end["events"][-1]["event"] == "search_cancelled"
+        assert resume_search(app, "t-ext")["status"] == "cancelled"      # a cancelled run never restarts

@@ -52,6 +52,7 @@ class SudokuState(TypedDict, total=False):
     failure: Any
     pause_at_step: Any
     paused: bool
+    silent_pause: bool
 
 
 _REQUIRED = ("run_id", "puzzle", "board", "stack", "nodes", "events", "seq", "status", "phase", "counters")
@@ -93,6 +94,9 @@ def build_graph(checkpointer, memory_hook=None, crash_at_step: int | None = None
 
     def pause(state: SudokuState) -> SudokuState:
         s = deepcopy(dict(state))
+        if s.get("silent_pause"):      # internal chunk boundary (used by the API worker): no event, not "paused"
+            s["paused"] = False
+            return s
         s["paused"] = True
         engine._emit(s, "search_paused", "Supervisor", reason_code="PAUSED",
                      reason="paused at a safe decision boundary", data={"at_step": s["counters"]["steps"]},
@@ -127,11 +131,15 @@ def _cfg(thread_id: str) -> dict:
 
 
 def start_search(app, puzzle, thread_id: str, strategy: str = "mrv", order: str = "asc",
-                 max_steps: int | None = None, max_nodes: int = 10000) -> dict:
-    """Begin a new search on `thread_id`; optionally pause after `max_steps` decisions."""
-    state = SearchEngine.init_state(puzzle, run_id=thread_id, thread_id=thread_id, strategy=strategy,
+                 max_steps: int | None = None, max_nodes: int = 10000, silent: bool = False,
+                 run_id: str | None = None) -> dict:
+    """Begin a new search on `thread_id`; optionally pause after `max_steps` decisions.
+
+    silent=True makes that boundary an internal chunk end (no search_paused event).
+    run_id (default: thread_id) is the ID stamped on trace events and nodes."""
+    state = SearchEngine.init_state(puzzle, run_id=run_id or thread_id, thread_id=thread_id, strategy=strategy,
                                     order=order, max_nodes=max_nodes)
-    state.update(pause_at_step=max_steps, paused=False)
+    state.update(pause_at_step=max_steps, paused=False, silent_pause=silent)
     return app.invoke(state, _cfg(thread_id))
 
 
@@ -143,7 +151,7 @@ def load_state(app, thread_id: str) -> dict:
     return dict(snap.values)
 
 
-def resume_search(app, thread_id: str, max_steps: int | None = None) -> dict:
+def resume_search(app, thread_id: str, max_steps: int | None = None, silent: bool = False) -> dict:
     """Continue from the last checkpoint of `thread_id` (never from the root)."""
     cfg = _cfg(thread_id)
     snap = app.get_state(cfg)
@@ -154,10 +162,10 @@ def resume_search(app, thread_id: str, max_steps: int | None = None) -> dict:
         return dict(snap.values)  # already finished; nothing to resume
     if snap.next:  # interrupted mid-run (e.g. crash): replay from the last good checkpoint
         if max_steps is not None:
-            app.update_state(cfg, {"pause_at_step": snap.values["counters"]["steps"] + max_steps})
+            app.update_state(cfg, {"pause_at_step": snap.values["counters"]["steps"] + max_steps, "silent_pause": silent})
         return app.invoke(None, cfg)
     limit = None if max_steps is None else snap.values["counters"]["steps"] + max_steps
-    return app.invoke({"pause_at_step": limit}, cfg)
+    return app.invoke({"pause_at_step": limit, "silent_pause": silent}, cfg)
 
 
 def checkpoint_summaries(saver, thread_id: str) -> list[dict]:
@@ -182,3 +190,28 @@ def run_checkpointed(puzzle, thread_id: str = "sudoku-demo", db_path: str | Path
             if e.code != "NO_CHECKPOINT":
                 raise
             return start_search(app, puzzle, thread_id, strategy, order)
+
+
+def _append_event(app, thread_id: str, event: str, agent: str, extra: dict | None = None, **kw) -> dict:
+    """Record an externally caused event (pause/cancel/timeout) inside the checkpointed state."""
+    state = load_state(app, thread_id)
+    engine = SearchEngine()
+    engine._emit(state, event, agent, **kw)
+    update = {"events": state["events"], "seq": state["seq"], **(extra or {})}
+    app.update_state(_cfg(thread_id), update)
+    return load_state(app, thread_id)
+
+
+def mark_paused(app, thread_id: str) -> dict:
+    """Explicit user pause at a safe boundary: persists a search_paused event and the paused flag."""
+    st = load_state(app, thread_id)
+    return _append_event(app, thread_id, "search_paused", "Supervisor", {"paused": True, "pause_at_step": None},
+                         reason_code="PAUSED", reason="paused at a safe decision boundary",
+                         data={"at_step": st["counters"]["steps"]}, board_snapshot=R.copy_board(st["board"]))
+
+
+def mark_terminal(app, thread_id: str, event: str, status: str, code: str, reason: str) -> dict:
+    """Finish a run from outside the engine (cancel / timeout): terminal event + terminal status."""
+    failure = None if status == "cancelled" else {"code": code, "reason": reason}
+    return _append_event(app, thread_id, event, "Supervisor", {"status": status, "failure": failure},
+                         reason_code=code, reason=reason)

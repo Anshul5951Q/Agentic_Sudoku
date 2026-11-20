@@ -40,9 +40,18 @@ python -m ta2.main --mode demos                      # all of the above, saved t
 python -m ta2.corpus_build                           # regenerate the solved-example RAG chunks from the real solver
 ```
 
+## Backend API (Phase 2)
+```powershell
+pip install -r backend/requirements.txt     # adds fastapi
+python -m backend                           # http://127.0.0.1:8000, docs at /docs
+```
+FastAPI wraps `ta2/` without moving its logic: puzzles, CoT/ToT/multi-agent runs with persisted traces, WebSocket streaming
+with reconnect, pause/resume/cancel, memory, RAG, history, analytics, evaluation and human-approval endpoints. Host/port come
+from `SUDOKU_API_HOST` / `SUDOKU_API_PORT` (no hardcoded IPs). Full reference: [docs/API.md](docs/API.md).
+
 ## Tests
 ```powershell
-python -m pytest -q                 # offline logic tests + tests that use local Ollama (auto-skipped if it is down)
+python -m pytest -q                 # engine + API tests (backend/tests); offline logic tests + tests that use local Ollama (auto-skipped if it is down)
 python -m pytest -q -m "not ollama"
 ```
 
@@ -94,8 +103,8 @@ many puzzles they produce identical traces.
    (3 solver runs, thread pool overhead) without being more correct on these puzzles.
 7. The RAG relevance threshold (0.53) was calibrated on 16 queries of mine; it is a measured separation on a
    small set, not a general guarantee.
-8. Not built yet: FastAPI backend and Android app (Phases 2–4); approvals are persisted in the LangGraph
-   checkpoint database, not yet a dedicated table.
+8. The Android app (Phases 3–4) is not built yet. The API has no authentication and is meant for a trusted local network
+   (see docs/API.md §10).
 
 ## Report evidence checklist
 - [x] Dead-end / pruning trace (`checkpoint_resume.json`, `eval_case*_ta1_tot_search_tree.json`)

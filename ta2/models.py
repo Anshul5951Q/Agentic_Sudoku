@@ -20,7 +20,7 @@ CORE_EVENTS = (
 EXTRA_EVENTS = (
     "checkpoint_saved", "search_resumed", "search_paused", "memory_hit_confirmed",
     "memory_hit_rejected", "route", "tool_call", "tool_failure", "tool_recovered",
-    "guardrail_decision", "approval_requested", "approval_decision", "vote_tallied",
+    "guardrail_decision", "approval_requested", "approval_decision", "vote_tallied", "search_cancelled",
 )
 EVENT_NAMES = frozenset(CORE_EVENTS + EXTRA_EVENTS)
 

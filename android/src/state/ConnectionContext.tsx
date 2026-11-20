@@ -3,7 +3,7 @@ import React, { createContext, useCallback, useContext, useEffect, useMemo, useR
 import { AppState, Platform } from 'react-native';
 import { createApi, type Api } from '@/services/api';
 import { ApiClient, type FetchLike } from '@/services/apiClient';
-import { normalizeBaseUrl, resolveBaseUrl, type UrlSource } from '@/services/config';
+import { emulatorAliasUrl, normalizeBaseUrl, resolveBaseUrl, type UrlSource } from '@/services/config';
 import { loadBaseUrlOverride, saveBaseUrlOverride } from '@/services/storage';
 import type { RuntimeStatus } from '@/types/api';
 
@@ -23,6 +23,8 @@ export interface ConnectionValue {
 }
 
 const Ctx = createContext<ConnectionValue | null>(null);
+
+const dbg = (msg: string) => { if (__DEV__) console.log(`[connection] ${msg}`); };
 
 export function ollamaLevel(rt: RuntimeStatus): Level {
   if (rt.ollama.status !== 'up') return 'down';
@@ -44,6 +46,7 @@ export function ConnectionProvider({ children, pollMs = 10000, fetchImpl, initia
   const [ollama, setOllama] = useState<Level>('checking');
   const [runtime, setRuntime] = useState<RuntimeStatus | null>(null);
   const [lastChecked, setLastChecked] = useState<number | null>(null);
+  const [fallback, setFallback] = useState<string | null>(null);
 
   const resolved = useMemo(
     () =>
@@ -56,8 +59,11 @@ export function ConnectionProvider({ children, pollMs = 10000, fetchImpl, initia
       }),
     [override, initial],
   );
-  const urlRef = useRef(resolved.url);
-  urlRef.current = resolved.url;
+  const platform = initial?.platform ?? Platform.OS;
+  const effectiveUrl = fallback ?? resolved.url;
+  const effectiveSource: UrlSource = fallback ? 'emulator-default' : resolved.source;
+  const urlRef = useRef(effectiveUrl);
+  urlRef.current = effectiveUrl;
   const api = useMemo(() => createApi(new ApiClient(() => urlRef.current, fetchImpl)), [fetchImpl]);
 
   useEffect(() => {
@@ -73,8 +79,23 @@ export function ConnectionProvider({ children, pollMs = 10000, fetchImpl, initia
     const mine = ++seq.current;
     try {
       await api.health();
-    } catch {
+    } catch (e) {
+      dbg(`health failed via ${resolved.source} (${(e as { kind?: string }).kind ?? 'error'}); superseded=${mine !== seq.current}`);
       if (mine !== seq.current) return;
+      // Auto-derived host unreachable on Android: try the emulator alias once and keep it if it answers.
+      if (!fallback && resolved.source === 'expo-dev-host' && platform === 'android') {
+        const alias = emulatorAliasUrl(process.env.EXPO_PUBLIC_API_PORT);
+        dbg('trying emulator alias fallback');
+        try {
+          await createApi(new ApiClient(() => alias, fetchImpl)).health();
+          dbg(`emulator alias answered; superseded=${mine !== seq.current}`);
+          if (mine === seq.current) setFallback(alias);
+          return;
+        } catch (e2) {
+          dbg(`emulator alias failed (${(e2 as { kind?: string }).kind ?? 'error'})`);
+          /* neither address answers: report unreachable below */
+        }
+      }
       setBackend('down');
       setOllama('unknown');
       setRuntime(null);
@@ -94,7 +115,7 @@ export function ConnectionProvider({ children, pollMs = 10000, fetchImpl, initia
       setOllama('unknown');
     }
     setLastChecked(Date.now());
-  }, [api]);
+  }, [api, fallback, resolved.source, platform, fetchImpl]);
 
   useEffect(() => {
     if (!ready) return;
@@ -105,20 +126,21 @@ export function ConnectionProvider({ children, pollMs = 10000, fetchImpl, initia
       clearInterval(t);
       sub.remove();
     };
-  }, [ready, refresh, pollMs, resolved.url]);
+  }, [ready, refresh, pollMs, effectiveUrl]);
 
   const setBaseUrlOverride = useCallback(async (value: string | null) => {
     if (value !== null && value.trim() !== '' && normalizeBaseUrl(value) === null) return false;
     const clean = value && value.trim() ? normalizeBaseUrl(value) : null;
     await saveBaseUrlOverride(clean);
     setOverride(clean);
+    setFallback(null);
     setBackend('checking');
     setOllama('checking');
     return true;
   }, []);
 
   const value: ConnectionValue = {
-    backend, ollama, runtime, baseUrl: resolved.url, urlSource: resolved.source, lastChecked, api, refresh, setBaseUrlOverride,
+    backend, ollama, runtime, baseUrl: effectiveUrl, urlSource: effectiveSource, lastChecked, api, refresh, setBaseUrlOverride,
   };
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

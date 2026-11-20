@@ -4,6 +4,8 @@
  *  2. EXPO_PUBLIC_API_BASE_URL (build/dev environment)
  *  3. the Expo dev-server host (so a physical phone on the same network finds the computer automatically)
  *  4. the Android emulator's alias for the host machine
+ * If the auto-derived Expo host (3) is unreachable on Android, the connection layer tries (4) once and keeps it
+ * when it answers, so the emulator works against a backend that only listens on localhost.
  * No developer LAN address is ever written into source.
  */
 export const EMULATOR_HOST_ALIAS = '10.0.2.2'; // standard Android-emulator alias for the host machine, not a LAN address
@@ -25,6 +27,11 @@ export interface ResolvedUrl {
 }
 
 const LOOPBACK = new Set(['localhost', '127.0.0.1', '[::1]']);
+
+export function emulatorAliasUrl(envPort?: string | null): string {
+  const port = envPort && /^\d{1,5}$/.test(envPort) ? envPort : DEFAULT_PORT;
+  return `http://${EMULATOR_HOST_ALIAS}:${port}`;
+}
 
 export function normalizeBaseUrl(input: string): string | null {
   const t = (input ?? '').trim().replace(/\/+$/, '');

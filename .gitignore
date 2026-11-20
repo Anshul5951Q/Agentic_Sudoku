@@ -8,3 +8,5 @@ chroma_db/
 *.sqlite3-journal
 *.db
 node_modules/
+docs/screenshots/
+.live_data/

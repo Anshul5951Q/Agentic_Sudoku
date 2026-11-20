@@ -5,10 +5,10 @@ A 4x4 Sudoku uses digits 1, 2, 3, and 4. Every row, every column, and every 2x2 
 The candidate set for an empty cell is the digits 1 through 4 that are absent from its row, column, and 2x2 box. If the candidate set is empty, the current branch is a dead end and must be rejected.
 
 [CHUNK 3: DEAD-END PATTERN A]
-A branch that assigns (1,1)=2 in the sample puzzle leaves cell (1,2) with no candidates. This branch must be pruned. Restore the previous board state and try another candidate.
+In the sample puzzle (coordinates here are 1-based: row 1, column 1 is the top-left cell), a branch that assigns row 1 column 1 = 2 leaves row 1 column 2 with no candidates. This branch must be pruned. Restore the previous board state and try another candidate.
 
 [CHUNK 4: DEAD-END PATTERN B]
-In the sample puzzle, after (1,1)=1 and (1,2)=2, trying (2,3)=2 leaves (2,4) with no valid candidate. Reject this branch and backtrack to (2,3).
+In the sample puzzle (1-based coordinates), after row 1 column 1 = 1 and row 1 column 2 = 2, trying row 2 column 3 = 2 leaves row 2 column 4 with no valid candidate. Reject this branch and backtrack to row 2 column 3.
 
 [CHUNK 5: BACKTRACKING]
 Backtracking is depth-first search with state restoration. Choose an empty cell, try a valid candidate, recurse, and restore the cell to empty if the branch fails. Never keep a failed candidate in the board.
@@ -20,10 +20,25 @@ A checkpoint saves graph state under a thread identifier. Reusing the same threa
 The Proposer suggests candidate placements. The Rule Checker independently validates row, column, and box constraints. The Backtracker restores the board after a contradiction. A supervisor coordinates the stages and imposes a maximum number of graph hops.
 
 [CHUNK 8: VOTING]
-Three independent solver attempts can be compared by their completed grids. A vote is meaningful only after each proposed grid is checked against all Sudoku rules and the original clues. If valid solutions differ, report the disagreement rather than blindly accepting a majority.
+Three candidate-order variants of the same deterministic solver (they differ only in the order candidates are tried, and are not independent reasoning agents) can be compared by their completed grids. A vote is meaningful only after each proposed grid is checked against all Sudoku rules and the original clues. If valid solutions differ, report the disagreement rather than blindly accepting a majority.
 
 [CHUNK 9: EVALUATION]
 Compare the baseline and extension on the same puzzle cases. Record correctness, number of solver calls, elapsed time, and whether a dead end was detected. Measurements must come from actual repeatable runs, not estimates.
 
 [CHUNK 10: LIMITATIONS]
 A small local language model may propose invalid placements or produce inconsistent explanations. The deterministic rule checker is the authority for Sudoku validity. Retrieval supplies reference knowledge but does not replace constraint checking.
+
+[CHUNK 14: MINIMUM REMAINING VALUES]
+The minimum remaining values (MRV) heuristic chooses the empty cell that has the fewest legal candidates. Cells with one candidate are forced, and a cell with zero candidates exposes a dead end immediately, so the search wastes fewer branches. Ties are broken by reading order.
+
+[CHUNK 15: PRUNING]
+A branch must be pruned when it can no longer lead to a valid solution: a placement breaks a row, column or box rule, or some empty cell is left with no candidates. Pruning removes the whole branch from the active search so no effort is spent on its descendants.
+
+[CHUNK 11: SOLVED EXAMPLE 1]
+Puzzle (rows separated by '/', '.' = empty): . . 3 4 / 3 4 . . / . 1 4 . / 4 . . 1. Unique solution: 1 2 3 4 / 3 4 1 2 / 2 1 4 3 / 4 3 2 1. Solved with the first_empty cell strategy and desc candidate order in 11 search nodes, 2 dead ends and 2 backtracks; the final board was verified against all rules and the original clues.
+
+[CHUNK 12: SOLVED EXAMPLE 2]
+Puzzle (rows separated by '/', '.' = empty): . . 3 4 / 3 4 . . / . 1 4 . / 4 . . 1. Unique solution: 1 2 3 4 / 3 4 1 2 / 2 1 4 3 / 4 3 2 1. Solved with the mrv cell strategy and asc candidate order in 9 search nodes, 0 dead ends and 0 backtracks; the final board was verified against all rules and the original clues.
+
+[CHUNK 13: SOLVED EXAMPLE 3]
+Puzzle (rows separated by '/', '.' = empty): . 2 . 4 / 3 . 1 . / . 1 . 3 / 4 . 2 .. Unique solution: 1 2 3 4 / 3 4 1 2 / 2 1 4 3 / 4 3 2 1. Solved with the mrv cell strategy and asc candidate order in 9 search nodes, 0 dead ends and 0 backtracks; the final board was verified against all rules and the original clues.

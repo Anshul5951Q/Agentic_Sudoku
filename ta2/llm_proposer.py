@@ -49,11 +49,14 @@ def suggest_ordering(board, cell, legal: list[int], llm: Callable[[str], str] | 
     return {"ordering": sorted(legal), "source": "deterministic", "raw": raw, "error": "REJECTED_NOT_A_LEGAL_PERMUTATION"}
 
 
-def suggest_move(board, llm: Callable[[str], str] | None = None) -> dict:
-    """Ask the model for ONE move. The result is only a *suggestion*; validity is checked by the caller."""
+def suggest_move(board, llm: Callable[[str], str] | None = None, user_text: str = "") -> dict:
+    """Ask the model for ONE move. The result is only a *suggestion*; validity is checked by the caller.
+
+    `user_text` is untrusted: it is delimited in the prompt and can never change what is legal."""
+    request = f"<user_request>{user_text[:300]}</user_request>\n" if user_text else ""
     prompt = (
         "You are the Proposer for a 4x4 Sudoku. Suggest exactly one legal move for the board (0 = empty).\n"
-        f"{_board_text(board)}\n"
+        f"{_board_text(board)}\n{request}"
         'Reply with ONLY JSON: {"row": r, "col": c, "value": v} using zero-based row/col (0-3) and value 1-4.')
     try:
         raw = (llm or _default_llm)(prompt)

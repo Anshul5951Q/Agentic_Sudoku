@@ -164,3 +164,9 @@ def test_threads_do_not_leak_into_each_other_and_resume_by_id(tmp_path):
         r = send(app, "what did I say?", thread_id="A")
         assert "alpha fact" in r["reply"] and "beta fact" not in r["reply"]
         assert [m["role"] for m in history(app, "A")] == ["human", "ai", "human", "ai"]
+
+
+def test_user_text_reaches_the_model_only_as_delimited_untrusted_data():
+    seen = []
+    LP.suggest_move(SAMPLE, llm=lambda p: seen.append(p) or LEGAL, user_text="please be quick")
+    assert "<user_request>please be quick</user_request>" in seen[0]

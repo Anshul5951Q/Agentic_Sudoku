@@ -78,7 +78,7 @@ def build_oversight_graph(checkpointer, llm: Callable[[str], str] | None = None)
         return {"events": _ev(state, "guardrail_decision", decision="allow_input", code="NO_INJECTION_PATTERN")}
 
     def propose(state: OversightState) -> OversightState:
-        s = suggest_move(state["board"], llm)
+        s = suggest_move(state["board"], llm, state.get("user_text", ""))
         return {"suggestion": s, "events": _ev(state, "tool_call", tool="qwen_suggest_move", error=s["error"])}
 
     def guard_move(state: OversightState) -> OversightState:

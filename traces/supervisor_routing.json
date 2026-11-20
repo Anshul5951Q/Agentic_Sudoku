@@ -1,0 +1,519 @@
+{
+  "kind": "supervisor_routing",
+  "generated_at": "2026-11-20T10:56:19.639589+00:00",
+  "models": {
+    "llm": "qwen2.5:3b",
+    "embeddings": "nomic-embed-text"
+  },
+  "annotated_routing_trace": [
+    {
+      "hop": 1,
+      "from": "Supervisor",
+      "to": "Verifier",
+      "reason": "validate the input puzzle"
+    },
+    {
+      "hop": 2,
+      "from": "Verifier",
+      "to": "SolverVariants",
+      "reason": "run 3 candidate-order variants"
+    },
+    {
+      "hop": 3,
+      "from": "SolverVariants",
+      "to": "Verifier",
+      "reason": "verify every attempt's board deterministically"
+    },
+    {
+      "hop": 4,
+      "from": "Verifier",
+      "to": "Supervisor",
+      "reason": "tally votes from verified solutions only"
+    }
+  ],
+  "hops_used": 4,
+  "max_hops": 8,
+  "vote": {
+    "vote_type": "candidate_order_variants",
+    "votes": {
+      "1234/3412/2143/4321": 3
+    },
+    "winner": [
+      [
+        1,
+        2,
+        3,
+        4
+      ],
+      [
+        3,
+        4,
+        1,
+        2
+      ],
+      [
+        2,
+        1,
+        4,
+        3
+      ],
+      [
+        4,
+        3,
+        2,
+        1
+      ]
+    ],
+    "winner_key": "1234/3412/2143/4321",
+    "eligible": [
+      "variant-asc",
+      "variant-desc",
+      "variant-middle"
+    ],
+    "excluded": [],
+    "disagreement": false,
+    "solution_count": 1,
+    "note": "vote counts only deterministically verified complete boards from candidate-order variants; invalid, partial, errored or timed-out attempts are excluded"
+  },
+  "attempts": [
+    {
+      "name": "variant-asc",
+      "kind": "candidate-order variant",
+      "order": "asc",
+      "strategy": "first_empty",
+      "solution": [
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          1,
+          2
+        ],
+        [
+          2,
+          1,
+          4,
+          3
+        ],
+        [
+          4,
+          3,
+          2,
+          1
+        ]
+      ],
+      "status": "solved",
+      "nodes": 9,
+      "counters": {
+        "steps": 18,
+        "nodes": 9,
+        "expansions": 9,
+        "candidates_proposed": 8,
+        "rule_violations": 0,
+        "dead_ends": 0,
+        "pruned": 0,
+        "backtracks": 0,
+        "memory_confirmed": 0,
+        "memory_rejected": 0,
+        "max_depth": 8
+      },
+      "error": null,
+      "seconds": 0.000712,
+      "valid": true
+    },
+    {
+      "name": "variant-desc",
+      "kind": "candidate-order variant",
+      "order": "desc",
+      "strategy": "first_empty",
+      "solution": [
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          1,
+          2
+        ],
+        [
+          2,
+          1,
+          4,
+          3
+        ],
+        [
+          4,
+          3,
+          2,
+          1
+        ]
+      ],
+      "status": "solved",
+      "nodes": 11,
+      "counters": {
+        "steps": 24,
+        "nodes": 11,
+        "expansions": 11,
+        "candidates_proposed": 10,
+        "rule_violations": 0,
+        "dead_ends": 2,
+        "pruned": 2,
+        "backtracks": 2,
+        "memory_confirmed": 0,
+        "memory_rejected": 0,
+        "max_depth": 8
+      },
+      "error": null,
+      "seconds": 0.000855,
+      "valid": true
+    },
+    {
+      "name": "variant-middle",
+      "kind": "candidate-order variant",
+      "order": "middle",
+      "strategy": "first_empty",
+      "solution": [
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          1,
+          2
+        ],
+        [
+          2,
+          1,
+          4,
+          3
+        ],
+        [
+          4,
+          3,
+          2,
+          1
+        ]
+      ],
+      "status": "solved",
+      "nodes": 11,
+      "counters": {
+        "steps": 24,
+        "nodes": 11,
+        "expansions": 11,
+        "candidates_proposed": 10,
+        "rule_violations": 0,
+        "dead_ends": 2,
+        "pruned": 2,
+        "backtracks": 2,
+        "memory_confirmed": 0,
+        "memory_rejected": 0,
+        "max_depth": 8
+      },
+      "error": null,
+      "seconds": 0.000837,
+      "valid": true
+    }
+  ],
+  "events": [
+    {
+      "event_id": "routing-demo-event-00000",
+      "run_id": "routing-demo",
+      "thread_id": "routing-demo",
+      "sequence": 0,
+      "event": "route",
+      "agent": "Supervisor",
+      "depth": 0,
+      "cell": null,
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "ROUTE",
+      "reason": "Supervisor -> Verifier: validate the input puzzle",
+      "board_snapshot": null,
+      "node_id": null,
+      "timestamp": "2026-11-20T10:56:19.622846+00:00",
+      "data": {
+        "hop": 1,
+        "to": "Verifier"
+      }
+    },
+    {
+      "event_id": "routing-demo-event-00001",
+      "run_id": "routing-demo",
+      "thread_id": "routing-demo",
+      "sequence": 1,
+      "event": "route",
+      "agent": "Supervisor",
+      "depth": 0,
+      "cell": null,
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "ROUTE",
+      "reason": "Verifier -> SolverVariants: run 3 candidate-order variants",
+      "board_snapshot": null,
+      "node_id": null,
+      "timestamp": "2026-11-20T10:56:19.622846+00:00",
+      "data": {
+        "hop": 2,
+        "to": "SolverVariants"
+      }
+    },
+    {
+      "event_id": "routing-demo-event-00002",
+      "run_id": "routing-demo",
+      "thread_id": "routing-demo",
+      "sequence": 2,
+      "event": "route",
+      "agent": "Supervisor",
+      "depth": 0,
+      "cell": null,
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "ROUTE",
+      "reason": "SolverVariants -> Verifier: verify every attempt's board deterministically",
+      "board_snapshot": null,
+      "node_id": null,
+      "timestamp": "2026-11-20T10:56:19.625904+00:00",
+      "data": {
+        "hop": 3,
+        "to": "Verifier"
+      }
+    },
+    {
+      "event_id": "routing-demo-event-00003",
+      "run_id": "routing-demo",
+      "thread_id": "routing-demo",
+      "sequence": 3,
+      "event": "route",
+      "agent": "Supervisor",
+      "depth": 0,
+      "cell": null,
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "ROUTE",
+      "reason": "Verifier -> Supervisor: tally votes from verified solutions only",
+      "board_snapshot": null,
+      "node_id": null,
+      "timestamp": "2026-11-20T10:56:19.626323+00:00",
+      "data": {
+        "hop": 4,
+        "to": "Supervisor"
+      }
+    },
+    {
+      "event_id": "routing-demo-event-00004",
+      "run_id": "routing-demo",
+      "thread_id": "routing-demo",
+      "sequence": 4,
+      "event": "vote_tallied",
+      "agent": "Supervisor",
+      "depth": 0,
+      "cell": null,
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "VOTE",
+      "reason": "vote counts only deterministically verified complete boards from candidate-order variants; invalid, partial, errored or timed-out attempts are excluded",
+      "board_snapshot": null,
+      "node_id": null,
+      "timestamp": "2026-11-20T10:56:19.626323+00:00",
+      "data": {
+        "votes": {
+          "1234/3412/2143/4321": 3
+        },
+        "eligible": [
+          "variant-asc",
+          "variant-desc",
+          "variant-middle"
+        ]
+      }
+    },
+    {
+      "event_id": "routing-demo-event-00005",
+      "run_id": "routing-demo",
+      "thread_id": "routing-demo",
+      "sequence": 5,
+      "event": "search_completed",
+      "agent": "Supervisor",
+      "depth": 0,
+      "cell": null,
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "SOLVED",
+      "reason": "verified winner selected",
+      "board_snapshot": null,
+      "node_id": null,
+      "timestamp": "2026-11-20T10:56:19.626323+00:00",
+      "data": {}
+    }
+  ],
+  "label": "variants are candidate-order variants of one deterministic solver, not independent agents",
+  "hop_limit_run": {
+    "max_hops": 4,
+    "status": "failed",
+    "failure": {
+      "code": "HOP_LIMIT_EXCEEDED",
+      "reason": "MAX_HOPS=4 reached; refused to route to SolverVariants"
+    },
+    "hops_taken": 4,
+    "routing_trace": [
+      {
+        "hop": 1,
+        "from": "Supervisor",
+        "to": "SolverVariants",
+        "reason": "run 3 candidate-order variants"
+      },
+      {
+        "hop": 2,
+        "from": "SolverVariants",
+        "to": "SolverVariants",
+        "reason": "run 3 candidate-order variants"
+      },
+      {
+        "hop": 3,
+        "from": "SolverVariants",
+        "to": "SolverVariants",
+        "reason": "run 3 candidate-order variants"
+      },
+      {
+        "hop": 4,
+        "from": "SolverVariants",
+        "to": "SolverVariants",
+        "reason": "run 3 candidate-order variants"
+      }
+    ],
+    "events": [
+      {
+        "event_id": "hop-limit-demo-event-00000",
+        "run_id": "hop-limit-demo",
+        "thread_id": "hop-limit-demo",
+        "sequence": 0,
+        "event": "route",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "ROUTE",
+        "reason": "Supervisor -> SolverVariants: run 3 candidate-order variants",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-20T10:56:19.626323+00:00",
+        "data": {
+          "hop": 1,
+          "to": "SolverVariants"
+        }
+      },
+      {
+        "event_id": "hop-limit-demo-event-00001",
+        "run_id": "hop-limit-demo",
+        "thread_id": "hop-limit-demo",
+        "sequence": 1,
+        "event": "route",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "ROUTE",
+        "reason": "SolverVariants -> SolverVariants: run 3 candidate-order variants",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-20T10:56:19.628836+00:00",
+        "data": {
+          "hop": 2,
+          "to": "SolverVariants"
+        }
+      },
+      {
+        "event_id": "hop-limit-demo-event-00002",
+        "run_id": "hop-limit-demo",
+        "thread_id": "hop-limit-demo",
+        "sequence": 2,
+        "event": "route",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "ROUTE",
+        "reason": "SolverVariants -> SolverVariants: run 3 candidate-order variants",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-20T10:56:19.631919+00:00",
+        "data": {
+          "hop": 3,
+          "to": "SolverVariants"
+        }
+      },
+      {
+        "event_id": "hop-limit-demo-event-00003",
+        "run_id": "hop-limit-demo",
+        "thread_id": "hop-limit-demo",
+        "sequence": 3,
+        "event": "route",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "ROUTE",
+        "reason": "SolverVariants -> SolverVariants: run 3 candidate-order variants",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-20T10:56:19.636527+00:00",
+        "data": {
+          "hop": 4,
+          "to": "SolverVariants"
+        }
+      },
+      {
+        "event_id": "hop-limit-demo-event-00004",
+        "run_id": "hop-limit-demo",
+        "thread_id": "hop-limit-demo",
+        "sequence": 4,
+        "event": "search_failed",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "HOP_LIMIT_EXCEEDED",
+        "reason": "MAX_HOPS=4 reached; refused to route to SolverVariants",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-20T10:56:19.638061+00:00",
+        "data": {}
+      },
+      {
+        "event_id": "hop-limit-demo-event-00005",
+        "run_id": "hop-limit-demo",
+        "thread_id": "hop-limit-demo",
+        "sequence": 5,
+        "event": "search_failed",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "HOP_LIMIT_EXCEEDED",
+        "reason": "MAX_HOPS=4 reached; refused to route to SolverVariants",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-20T10:56:19.638061+00:00",
+        "data": {}
+      }
+    ]
+  }
+}

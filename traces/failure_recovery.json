@@ -1,0 +1,264 @@
+{
+  "kind": "failure_recovery",
+  "generated_at": "2026-11-20T10:56:19.621312+00:00",
+  "models": {
+    "llm": "qwen2.5:3b",
+    "embeddings": "nomic-embed-text"
+  },
+  "transient_failure_retry": {
+    "injected": "rag_retrieve x1",
+    "status": "solved",
+    "tool_calls": 2,
+    "tool_failures": 1,
+    "events": [
+      {
+        "event_id": "failure-retry-event-00002",
+        "run_id": "failure-retry",
+        "thread_id": "failure-retry",
+        "sequence": 2,
+        "event": "tool_call",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "TOOL_CALL",
+        "reason": "rag_retrieve attempt 1",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-20T10:56:19.591607+00:00",
+        "data": {
+          "tool": "rag_retrieve",
+          "attempt": 1
+        }
+      },
+      {
+        "event_id": "failure-retry-event-00003",
+        "run_id": "failure-retry",
+        "thread_id": "failure-retry",
+        "sequence": 3,
+        "event": "tool_failure",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "TOOL_FAILURE",
+        "reason": "rag_retrieve failed (ToolError: injected failure in tool 'rag_retrieve'); retrying",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-20T10:56:19.591607+00:00",
+        "data": {
+          "tool": "rag_retrieve",
+          "attempt": 1
+        }
+      },
+      {
+        "event_id": "failure-retry-event-00004",
+        "run_id": "failure-retry",
+        "thread_id": "failure-retry",
+        "sequence": 4,
+        "event": "tool_call",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "TOOL_CALL",
+        "reason": "rag_retrieve attempt 2",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-20T10:56:19.591607+00:00",
+        "data": {
+          "tool": "rag_retrieve",
+          "attempt": 2
+        }
+      },
+      {
+        "event_id": "failure-retry-event-00005",
+        "run_id": "failure-retry",
+        "thread_id": "failure-retry",
+        "sequence": 5,
+        "event": "tool_recovered",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "RETRY_SUCCEEDED",
+        "reason": "rag_retrieve succeeded on retry 1",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-20T10:56:19.614125+00:00",
+        "data": {
+          "tool": "rag_retrieve",
+          "attempts": 2
+        }
+      }
+    ],
+    "routing_trace": [
+      {
+        "hop": 1,
+        "from": "Supervisor",
+        "to": "Verifier",
+        "reason": "validate the input puzzle"
+      },
+      {
+        "hop": 2,
+        "from": "Verifier",
+        "to": "Tool:rag_retrieve",
+        "reason": "optional context tool"
+      },
+      {
+        "hop": 3,
+        "from": "Tool:rag_retrieve",
+        "to": "SolverVariants",
+        "reason": "run 3 candidate-order variants"
+      },
+      {
+        "hop": 4,
+        "from": "SolverVariants",
+        "to": "Verifier",
+        "reason": "verify every attempt's board deterministically"
+      },
+      {
+        "hop": 5,
+        "from": "Verifier",
+        "to": "Supervisor",
+        "reason": "tally votes from verified solutions only"
+      }
+    ]
+  },
+  "persistent_failure_fallback": {
+    "injected": "qwen_order x5",
+    "status": "solved",
+    "tool_calls": 2,
+    "tool_failures": 2,
+    "context": {
+      "qwen_order": {
+        "ok": true,
+        "value": {
+          "ordering": "deterministic",
+          "source": "fallback"
+        },
+        "attempts": 2,
+        "recovered": true,
+        "via_fallback": true,
+        "explanation": "qwen_order failed 2x; routed to fallback",
+        "errors": [
+          "ToolError: injected failure in tool 'qwen_order'",
+          "ToolError: injected failure in tool 'qwen_order'"
+        ]
+      }
+    },
+    "events": [
+      {
+        "event_id": "failure-fallback-event-00002",
+        "run_id": "failure-fallback",
+        "thread_id": "failure-fallback",
+        "sequence": 2,
+        "event": "tool_call",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "TOOL_CALL",
+        "reason": "qwen_order attempt 1",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-20T10:56:19.618183+00:00",
+        "data": {
+          "tool": "qwen_order",
+          "attempt": 1
+        }
+      },
+      {
+        "event_id": "failure-fallback-event-00003",
+        "run_id": "failure-fallback",
+        "thread_id": "failure-fallback",
+        "sequence": 3,
+        "event": "tool_failure",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "TOOL_FAILURE",
+        "reason": "qwen_order failed (ToolError: injected failure in tool 'qwen_order'); retrying",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-20T10:56:19.618183+00:00",
+        "data": {
+          "tool": "qwen_order",
+          "attempt": 1
+        }
+      },
+      {
+        "event_id": "failure-fallback-event-00004",
+        "run_id": "failure-fallback",
+        "thread_id": "failure-fallback",
+        "sequence": 4,
+        "event": "tool_call",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "TOOL_CALL",
+        "reason": "qwen_order attempt 2",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-20T10:56:19.618183+00:00",
+        "data": {
+          "tool": "qwen_order",
+          "attempt": 2
+        }
+      },
+      {
+        "event_id": "failure-fallback-event-00005",
+        "run_id": "failure-fallback",
+        "thread_id": "failure-fallback",
+        "sequence": 5,
+        "event": "tool_failure",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "TOOL_FAILURE",
+        "reason": "qwen_order failed (ToolError: injected failure in tool 'qwen_order'); no retries left",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-20T10:56:19.618183+00:00",
+        "data": {
+          "tool": "qwen_order",
+          "attempt": 2
+        }
+      },
+      {
+        "event_id": "failure-fallback-event-00006",
+        "run_id": "failure-fallback",
+        "thread_id": "failure-fallback",
+        "sequence": 6,
+        "event": "tool_recovered",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "FALLBACK_USED",
+        "reason": "qwen_order failed 2x; routed to fallback",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-20T10:56:19.618183+00:00",
+        "data": {
+          "tool": "qwen_order",
+          "attempts": 2,
+          "fallback": true
+        }
+      }
+    ]
+  },
+  "verified_solution_still_returned": true
+}

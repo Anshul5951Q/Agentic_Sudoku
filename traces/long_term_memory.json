@@ -1,0 +1,216 @@
+{
+  "kind": "long_term_memory",
+  "generated_at": "2026-11-20T10:56:05.932359+00:00",
+  "models": {
+    "llm": "qwen2.5:3b",
+    "embeddings": "nomic-embed-text"
+  },
+  "user_id": "demo-user",
+  "namespaces": [
+    "(user_id, 'profile')",
+    "(user_id, 'puzzle_history')",
+    "(user_id, 'dead_ends')"
+  ],
+  "first_run": {
+    "dead_ends": 2,
+    "nodes": 11
+  },
+  "read_back_by_a_separate_python_process": {
+    "profile": {
+      "skill": "learner",
+      "mode": "tot"
+    },
+    "dead_ends": 2,
+    "puzzle_history": 1
+  },
+  "second_run_using_recalled_memory": {
+    "dead_ends": 0,
+    "nodes": 11,
+    "memory_confirmed": 2,
+    "memory_rejected": 0,
+    "solved": true
+  },
+  "other_user_sees_dead_ends": 0,
+  "memory_records": [
+    {
+      "memory_id": 1,
+      "user_id": "demo-user",
+      "kind": "profile",
+      "memory_key": "preferences",
+      "payload": {
+        "skill": "learner",
+        "mode": "tot"
+      },
+      "created_at": "2026-11-20T10:56:05.610210+00:00",
+      "last_used_at": "2026-11-20T10:56:05.892834+00:00",
+      "use_count": 1
+    },
+    {
+      "memory_id": 2,
+      "user_id": "demo-user",
+      "kind": "puzzle_history",
+      "memory_key": "0034/3400/0140/4001#2026-11-20T10:56:05.613827+00:00",
+      "payload": {
+        "puzzle": [
+          [
+            0,
+            0,
+            3,
+            4
+          ],
+          [
+            3,
+            4,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            4,
+            0
+          ],
+          [
+            4,
+            0,
+            0,
+            1
+          ]
+        ],
+        "mode": "tot",
+        "status": "demo"
+      },
+      "created_at": "2026-11-20T10:56:05.615338+00:00",
+      "last_used_at": null,
+      "use_count": 0
+    },
+    {
+      "memory_id": 3,
+      "user_id": "demo-user",
+      "kind": "dead_ends",
+      "memory_key": "023034103114211224304331@00=2",
+      "payload": {
+        "givens": [
+          [
+            0,
+            2,
+            3
+          ],
+          [
+            0,
+            3,
+            4
+          ],
+          [
+            1,
+            0,
+            3
+          ],
+          [
+            1,
+            1,
+            4
+          ],
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            2,
+            2,
+            4
+          ],
+          [
+            3,
+            0,
+            4
+          ],
+          [
+            3,
+            3,
+            1
+          ]
+        ],
+        "cell": [
+          0,
+          0
+        ],
+        "value": 2,
+        "reason_code": "ZERO_CANDIDATES"
+      },
+      "created_at": "2026-11-20T10:56:05.621451+00:00",
+      "last_used_at": "2026-11-20T10:56:05.918080+00:00",
+      "use_count": 1
+    },
+    {
+      "memory_id": 4,
+      "user_id": "demo-user",
+      "kind": "dead_ends",
+      "memory_key": "001012023034103114211224304331@12=2",
+      "payload": {
+        "givens": [
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            2
+          ],
+          [
+            0,
+            2,
+            3
+          ],
+          [
+            0,
+            3,
+            4
+          ],
+          [
+            1,
+            0,
+            3
+          ],
+          [
+            1,
+            1,
+            4
+          ],
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            2,
+            2,
+            4
+          ],
+          [
+            3,
+            0,
+            4
+          ],
+          [
+            3,
+            3,
+            1
+          ]
+        ],
+        "cell": [
+          1,
+          2
+        ],
+        "value": 2,
+        "reason_code": "ZERO_CANDIDATES"
+      },
+      "created_at": "2026-11-20T10:56:05.627657+00:00",
+      "last_used_at": "2026-11-20T10:56:05.924273+00:00",
+      "use_count": 1
+    }
+  ]
+}

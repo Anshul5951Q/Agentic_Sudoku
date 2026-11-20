@@ -1,0 +1,35 @@
+{
+  "kind": "eval_case1_ta1_tot_search_tree",
+  "generated_at": "2026-11-20T10:58:19.651858+00:00",
+  "models": {
+    "llm": "qwen2.5:3b",
+    "embeddings": "nomic-embed-text"
+  },
+  "data": [
+    "Cell (1,1) candidates: [2, 1]",
+    "\u251c\u2500\u2500 Try 2 at (1,1)",
+    "  Cell (1,2) candidates: []",
+    "  \u2717 No valid candidates - DEAD END",
+    "  \u2717 Dead end - prune branch",
+    "\u251c\u2500\u2500 Try 1 at (1,1)",
+    "  Cell (1,2) candidates: [2]",
+    "  \u251c\u2500\u2500 Try 2 at (1,2)",
+    "    Cell (2,3) candidates: [2, 1]",
+    "    \u251c\u2500\u2500 Try 2 at (2,3)",
+    "      Cell (2,4) candidates: []",
+    "      \u2717 No valid candidates - DEAD END",
+    "      \u2717 Dead end - prune branch",
+    "    \u251c\u2500\u2500 Try 1 at (2,3)",
+    "      Cell (2,4) candidates: [2]",
+    "      \u251c\u2500\u2500 Try 2 at (2,4)",
+    "        Cell (3,1) candidates: [2]",
+    "        \u251c\u2500\u2500 Try 2 at (3,1)",
+    "          Cell (3,4) candidates: [3]",
+    "          \u251c\u2500\u2500 Try 3 at (3,4)",
+    "            Cell (4,2) candidates: [3]",
+    "            \u251c\u2500\u2500 Try 3 at (4,2)",
+    "              Cell (4,3) candidates: [2]",
+    "              \u251c\u2500\u2500 Try 2 at (4,3)",
+    "                SOLUTION FOUND"
+  ]
+}

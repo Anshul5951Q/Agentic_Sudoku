@@ -1,0 +1,40 @@
+{
+  "kind": "short_term_memory",
+  "generated_at": "2026-11-20T10:56:13.223977+00:00",
+  "models": {
+    "llm": "qwen2.5:3b",
+    "embeddings": "nomic-embed-text"
+  },
+  "turn_1": "I am working on this 4x4 Sudoku (0 = empty): [[0,0,3,4],[3,4,0,0],[0,1,4,0],[4,0,0,1]]. I plan to fill the cell in row 1, column 2 first.",
+  "turn_2_followup": "Which cell did I say I would fill first? Answer in one sentence.",
+  "with_memory": {
+    "thread_id": "chat-demo-001",
+    "reply": "You want to fill the cell in row 1, column 2 first, and the value that fits without violating the Sudoku rules is 1.",
+    "messages_seen_by_model": 3,
+    "history_len": 4,
+    "history": [
+      {
+        "role": "human",
+        "content": "I am working on this 4x4 Sudoku (0 = empty): [[0,0,3,4],[3,4,0,0],[0,1,4,0],[4,0,0,1]]. I plan to fill the cell in row 1, column 2 first."
+      },
+      {
+        "role": "ai",
+        "content": "Sure, let's start by filling the cell in row 1, column 2 of the Sudoku grid. The current state of the grid is:\n\n\\[\n\\begin{bmatrix}\n0 & 0 & 3 & 4 \\\\\n3 & 4 & 0 & 0 \\\\\n0 & 1 & 4 & 0 \\\\\n4 & 0 & 0 & 1\n\\end{bmatrix}\n\\]\n\nWe need to determine the value for the cell in row 1, column 2, which is currently empty (0). The value must be a number from 1 to 4 that does not violate the Sudoku rules (no repeated numbers in the same row, column, or 2x2 box).\n\nLet's analyze the row and column to"
+      },
+      {
+        "role": "human",
+        "content": "Which cell did I say I would fill first? Answer in one sentence."
+      },
+      {
+        "role": "ai",
+        "content": "You want to fill the cell in row 1, column 2 first, and the value that fits without violating the Sudoku rules is 1."
+      }
+    ]
+  },
+  "without_memory": {
+    "reply": "You mentioned that you would fill in the first cell of the table or form first.",
+    "messages_seen_by_model": 1,
+    "history_len": 2,
+    "thread_id": null
+  }
+}

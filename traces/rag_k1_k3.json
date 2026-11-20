@@ -1,0 +1,329 @@
+{
+  "kind": "rag_k1_k3",
+  "generated_at": "2026-11-20T10:56:19.583071+00:00",
+  "models": {
+    "llm": "qwen2.5:3b",
+    "embeddings": "nomic-embed-text"
+  },
+  "chunk_count": 15,
+  "threshold": 0.53,
+  "answerable": [
+    {
+      "query": "What should the solver do when a cell has no candidates?",
+      "k1": {
+        "query": "What should the solver do when a cell has no candidates?",
+        "k": 1,
+        "evidence": [
+          {
+            "chunk_id": "sudoku-chunk-2",
+            "heading": "CHUNK 2: CANDIDATES",
+            "text": "The candidate set for an empty cell is the digits 1 through 4 that are absent from its row, column, and 2x2 box. If the candidate set is empty, the current branch is a dead end and must be rejected.",
+            "distance": 0.26317131519317627,
+            "similarity": 0.7368
+          }
+        ],
+        "retrieved_chunk_ids": [
+          "sudoku-chunk-2"
+        ],
+        "threshold": 0.53,
+        "top_similarity": 0.7368,
+        "llm_calls": 1,
+        "answer": "When a cell has no candidates, the current branch is a dead end and must be rejected.",
+        "abstained": false,
+        "reason_code": "GROUNDED"
+      },
+      "k3": {
+        "query": "What should the solver do when a cell has no candidates?",
+        "k": 3,
+        "evidence": [
+          {
+            "chunk_id": "sudoku-chunk-2",
+            "heading": "CHUNK 2: CANDIDATES",
+            "text": "The candidate set for an empty cell is the digits 1 through 4 that are absent from its row, column, and 2x2 box. If the candidate set is empty, the current branch is a dead end and must be rejected.",
+            "distance": 0.26317131519317627,
+            "similarity": 0.7368
+          },
+          {
+            "chunk_id": "sudoku-chunk-14",
+            "heading": "CHUNK 14: MINIMUM REMAINING VALUES",
+            "text": "The minimum remaining values (MRV) heuristic chooses the empty cell that has the fewest legal candidates. Cells with one candidate are forced, and a cell with zero candidates exposes a dead end immediately, so the search wastes fewer branches. Ties are broken by reading order.",
+            "distance": 0.2977257966995239,
+            "similarity": 0.7023
+          },
+          {
+            "chunk_id": "sudoku-chunk-3",
+            "heading": "CHUNK 3: DEAD-END PATTERN A",
+            "text": "In the sample puzzle (coordinates here are 1-based: row 1, column 1 is the top-left cell), a branch that assigns row 1 column 1 = 2 leaves row 1 column 2 with no candidates. This branch must be pruned. Restore the previous board state and try another candidate.",
+            "distance": 0.3087503910064697,
+            "similarity": 0.6912
+          }
+        ],
+        "retrieved_chunk_ids": [
+          "sudoku-chunk-2",
+          "sudoku-chunk-14",
+          "sudoku-chunk-3"
+        ],
+        "threshold": 0.53,
+        "top_similarity": 0.7368,
+        "llm_calls": 1,
+        "answer": "When a cell has no candidates, the solver should prune the current branch and restore the previous board state. Then, the solver should try another candidate for that cell.",
+        "abstained": false,
+        "reason_code": "GROUNDED"
+      }
+    },
+    {
+      "query": "What is the minimum remaining values heuristic?",
+      "k1": {
+        "query": "What is the minimum remaining values heuristic?",
+        "k": 1,
+        "evidence": [
+          {
+            "chunk_id": "sudoku-chunk-14",
+            "heading": "CHUNK 14: MINIMUM REMAINING VALUES",
+            "text": "The minimum remaining values (MRV) heuristic chooses the empty cell that has the fewest legal candidates. Cells with one candidate are forced, and a cell with zero candidates exposes a dead end immediately, so the search wastes fewer branches. Ties are broken by reading order.",
+            "distance": 0.23416554927825928,
+            "similarity": 0.7658
+          }
+        ],
+        "retrieved_chunk_ids": [
+          "sudoku-chunk-14"
+        ],
+        "threshold": 0.53,
+        "top_similarity": 0.7658,
+        "llm_calls": 1,
+        "answer": "The minimum remaining values (MRV) heuristic chooses the empty cell that has the fewest legal candidates. Cells with one candidate are forced, and a cell with zero candidates exposes a dead end immediately. Ties are broken by reading order.",
+        "abstained": false,
+        "reason_code": "GROUNDED"
+      },
+      "k3": {
+        "query": "What is the minimum remaining values heuristic?",
+        "k": 3,
+        "evidence": [
+          {
+            "chunk_id": "sudoku-chunk-14",
+            "heading": "CHUNK 14: MINIMUM REMAINING VALUES",
+            "text": "The minimum remaining values (MRV) heuristic chooses the empty cell that has the fewest legal candidates. Cells with one candidate are forced, and a cell with zero candidates exposes a dead end immediately, so the search wastes fewer branches. Ties are broken by reading order.",
+            "distance": 0.23416554927825928,
+            "similarity": 0.7658
+          },
+          {
+            "chunk_id": "sudoku-chunk-8",
+            "heading": "CHUNK 8: VOTING",
+            "text": "Three candidate-order variants of the same deterministic solver (they differ only in the order candidates are tried, and are not independent reasoning agents) can be compared by their completed grids. A vote is meaningful only after each proposed grid is checked against all Sudoku rules and the original clues. If valid solutions differ, report the disagreement rather than blindly accepting a majority.",
+            "distance": 0.43210095167160034,
+            "similarity": 0.5679
+          },
+          {
+            "chunk_id": "sudoku-chunk-13",
+            "heading": "CHUNK 13: SOLVED EXAMPLE 3",
+            "text": "Puzzle (rows separated by '/', '.' = empty): . 2 . 4 / 3 . 1 . / . 1 . 3 / 4 . 2 .. Unique solution: 1 2 3 4 / 3 4 1 2 / 2 1 4 3 / 4 3 2 1. Solved with the mrv cell strategy and asc candidate order in 9 search nodes, 0 dead ends and 0 backtracks; the final board was verified against all rules and the original clues.",
+            "distance": 0.45242398977279663,
+            "similarity": 0.5476
+          }
+        ],
+        "retrieved_chunk_ids": [
+          "sudoku-chunk-14",
+          "sudoku-chunk-8",
+          "sudoku-chunk-13"
+        ],
+        "threshold": 0.53,
+        "top_similarity": 0.7658,
+        "llm_calls": 1,
+        "answer": "The minimum remaining values (MRV) heuristic chooses the empty cell that has the fewest legal candidates. Cells with one candidate are forced, and a cell with zero candidates exposes a dead end immediately, so the search wastes fewer branches. Ties are broken by reading order.",
+        "abstained": false,
+        "reason_code": "GROUNDED"
+      }
+    },
+    {
+      "query": "What does backtracking restore?",
+      "k1": {
+        "query": "What does backtracking restore?",
+        "k": 1,
+        "evidence": [
+          {
+            "chunk_id": "sudoku-chunk-5",
+            "heading": "CHUNK 5: BACKTRACKING",
+            "text": "Backtracking is depth-first search with state restoration. Choose an empty cell, try a valid candidate, recurse, and restore the cell to empty if the branch fails. Never keep a failed candidate in the board.",
+            "distance": 0.16175031661987305,
+            "similarity": 0.8382
+          }
+        ],
+        "retrieved_chunk_ids": [
+          "sudoku-chunk-5"
+        ],
+        "threshold": 0.53,
+        "top_similarity": 0.8382,
+        "llm_calls": 1,
+        "answer": "Backtracking restores a cell to empty if the branch fails.",
+        "abstained": false,
+        "reason_code": "GROUNDED"
+      },
+      "k3": {
+        "query": "What does backtracking restore?",
+        "k": 3,
+        "evidence": [
+          {
+            "chunk_id": "sudoku-chunk-5",
+            "heading": "CHUNK 5: BACKTRACKING",
+            "text": "Backtracking is depth-first search with state restoration. Choose an empty cell, try a valid candidate, recurse, and restore the cell to empty if the branch fails. Never keep a failed candidate in the board.",
+            "distance": 0.16175031661987305,
+            "similarity": 0.8382
+          },
+          {
+            "chunk_id": "sudoku-chunk-7",
+            "heading": "CHUNK 7: AGENT ROLES",
+            "text": "The Proposer suggests candidate placements. The Rule Checker independently validates row, column, and box constraints. The Backtracker restores the board after a contradiction. A supervisor coordinates the stages and imposes a maximum number of graph hops.",
+            "distance": 0.42031240463256836,
+            "similarity": 0.5797
+          },
+          {
+            "chunk_id": "sudoku-chunk-15",
+            "heading": "CHUNK 15: PRUNING",
+            "text": "A branch must be pruned when it can no longer lead to a valid solution: a placement breaks a row, column or box rule, or some empty cell is left with no candidates. Pruning removes the whole branch from the active search so no effort is spent on its descendants.",
+            "distance": 0.4579883813858032,
+            "similarity": 0.542
+          }
+        ],
+        "retrieved_chunk_ids": [
+          "sudoku-chunk-5",
+          "sudoku-chunk-7",
+          "sudoku-chunk-15"
+        ],
+        "threshold": 0.53,
+        "top_similarity": 0.8382,
+        "llm_calls": 1,
+        "answer": "The Backtracker restores the board after a contradiction.",
+        "abstained": false,
+        "reason_code": "GROUNDED"
+      }
+    }
+  ],
+  "unanswerable": [
+    {
+      "query": "Who won the 2018 football world cup?",
+      "k1": {
+        "query": "Who won the 2018 football world cup?",
+        "k": 1,
+        "evidence": [
+          {
+            "chunk_id": "sudoku-chunk-8",
+            "heading": "CHUNK 8: VOTING",
+            "text": "Three candidate-order variants of the same deterministic solver (they differ only in the order candidates are tried, and are not independent reasoning agents) can be compared by their completed grids. A vote is meaningful only after each proposed grid is checked against all Sudoku rules and the original clues. If valid solutions differ, report the disagreement rather than blindly accepting a majority.",
+            "distance": 0.5942825078964233,
+            "similarity": 0.4057
+          }
+        ],
+        "retrieved_chunk_ids": [
+          "sudoku-chunk-8"
+        ],
+        "threshold": 0.53,
+        "top_similarity": 0.4057,
+        "llm_calls": 0,
+        "answer": "I don't know.",
+        "abstained": true,
+        "reason_code": "LOW_RELEVANCE"
+      },
+      "k3": {
+        "query": "Who won the 2018 football world cup?",
+        "k": 3,
+        "evidence": [
+          {
+            "chunk_id": "sudoku-chunk-8",
+            "heading": "CHUNK 8: VOTING",
+            "text": "Three candidate-order variants of the same deterministic solver (they differ only in the order candidates are tried, and are not independent reasoning agents) can be compared by their completed grids. A vote is meaningful only after each proposed grid is checked against all Sudoku rules and the original clues. If valid solutions differ, report the disagreement rather than blindly accepting a majority.",
+            "distance": 0.5942825078964233,
+            "similarity": 0.4057
+          },
+          {
+            "chunk_id": "sudoku-chunk-13",
+            "heading": "CHUNK 13: SOLVED EXAMPLE 3",
+            "text": "Puzzle (rows separated by '/', '.' = empty): . 2 . 4 / 3 . 1 . / . 1 . 3 / 4 . 2 .. Unique solution: 1 2 3 4 / 3 4 1 2 / 2 1 4 3 / 4 3 2 1. Solved with the mrv cell strategy and asc candidate order in 9 search nodes, 0 dead ends and 0 backtracks; the final board was verified against all rules and the original clues.",
+            "distance": 0.6086987853050232,
+            "similarity": 0.3913
+          },
+          {
+            "chunk_id": "sudoku-chunk-11",
+            "heading": "CHUNK 11: SOLVED EXAMPLE 1",
+            "text": "Puzzle (rows separated by '/', '.' = empty): . . 3 4 / 3 4 . . / . 1 4 . / 4 . . 1. Unique solution: 1 2 3 4 / 3 4 1 2 / 2 1 4 3 / 4 3 2 1. Solved with the first_empty cell strategy and desc candidate order in 11 search nodes, 2 dead ends and 2 backtracks; the final board was verified against all rules and the original clues.",
+            "distance": 0.6139424443244934,
+            "similarity": 0.3861
+          }
+        ],
+        "retrieved_chunk_ids": [
+          "sudoku-chunk-8",
+          "sudoku-chunk-13",
+          "sudoku-chunk-11"
+        ],
+        "threshold": 0.53,
+        "top_similarity": 0.4057,
+        "llm_calls": 0,
+        "answer": "I don't know.",
+        "abstained": true,
+        "reason_code": "LOW_RELEVANCE"
+      }
+    },
+    {
+      "query": "What is the capital of France?",
+      "k1": {
+        "query": "What is the capital of France?",
+        "k": 1,
+        "evidence": [
+          {
+            "chunk_id": "sudoku-chunk-10",
+            "heading": "CHUNK 10: LIMITATIONS",
+            "text": "A small local language model may propose invalid placements or produce inconsistent explanations. The deterministic rule checker is the authority for Sudoku validity. Retrieval supplies reference knowledge but does not replace constraint checking.",
+            "distance": 0.6214844584465027,
+            "similarity": 0.3785
+          }
+        ],
+        "retrieved_chunk_ids": [
+          "sudoku-chunk-10"
+        ],
+        "threshold": 0.53,
+        "top_similarity": 0.3785,
+        "llm_calls": 0,
+        "answer": "I don't know.",
+        "abstained": true,
+        "reason_code": "LOW_RELEVANCE"
+      },
+      "k3": {
+        "query": "What is the capital of France?",
+        "k": 3,
+        "evidence": [
+          {
+            "chunk_id": "sudoku-chunk-10",
+            "heading": "CHUNK 10: LIMITATIONS",
+            "text": "A small local language model may propose invalid placements or produce inconsistent explanations. The deterministic rule checker is the authority for Sudoku validity. Retrieval supplies reference knowledge but does not replace constraint checking.",
+            "distance": 0.6214844584465027,
+            "similarity": 0.3785
+          },
+          {
+            "chunk_id": "sudoku-chunk-6",
+            "heading": "CHUNK 6: CHECKPOINTING",
+            "text": "A checkpoint saves graph state under a thread identifier. Reusing the same thread identifier allows a workflow to resume from its saved state when the graph and checkpoint database are available. Use a different thread identifier for an independent puzzle run.",
+            "distance": 0.6404531598091125,
+            "similarity": 0.3595
+          },
+          {
+            "chunk_id": "sudoku-chunk-1",
+            "heading": "CHUNK 1: RULES",
+            "text": "A 4x4 Sudoku uses digits 1, 2, 3, and 4. Every row, every column, and every 2x2 box must contain each digit exactly once. A placement is valid only if it does not duplicate a digit in its row, column, or box.",
+            "distance": 0.64704829454422,
+            "similarity": 0.353
+          }
+        ],
+        "retrieved_chunk_ids": [
+          "sudoku-chunk-10",
+          "sudoku-chunk-6",
+          "sudoku-chunk-1"
+        ],
+        "threshold": 0.53,
+        "top_similarity": 0.3785,
+        "llm_calls": 0,
+        "answer": "I don't know.",
+        "abstained": true,
+        "reason_code": "LOW_RELEVANCE"
+      }
+    }
+  ]
+}

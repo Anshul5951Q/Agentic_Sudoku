@@ -1,0 +1,1664 @@
+{
+  "kind": "checkpoint_resume",
+  "generated_at": "2026-11-20T10:56:05.601054+00:00",
+  "models": {
+    "llm": "qwen2.5:3b",
+    "embeddings": "nomic-embed-text"
+  },
+  "thread_id": "demo-resume-001",
+  "puzzle": [
+    [
+      0,
+      0,
+      3,
+      4
+    ],
+    [
+      3,
+      4,
+      0,
+      0
+    ],
+    [
+      0,
+      1,
+      4,
+      0
+    ],
+    [
+      4,
+      0,
+      0,
+      1
+    ]
+  ],
+  "strategy": "first_empty",
+  "order": "desc",
+  "paused": {
+    "steps": 10,
+    "board": [
+      [
+        1,
+        2,
+        3,
+        4
+      ],
+      [
+        3,
+        4,
+        2,
+        0
+      ],
+      [
+        0,
+        1,
+        4,
+        0
+      ],
+      [
+        4,
+        0,
+        0,
+        1
+      ]
+    ],
+    "decision_stack_depth": 3,
+    "pending_candidates_at_top": [
+      1
+    ],
+    "events_so_far": 21
+  },
+  "reloaded_from_checkpoint": {
+    "steps": 10,
+    "board_matches_pause": true
+  },
+  "final": {
+    "status": "solved",
+    "solution": [
+      [
+        1,
+        2,
+        3,
+        4
+      ],
+      [
+        3,
+        4,
+        1,
+        2
+      ],
+      [
+        2,
+        1,
+        4,
+        3
+      ],
+      [
+        4,
+        3,
+        2,
+        1
+      ]
+    ],
+    "counters": {
+      "steps": 24,
+      "nodes": 11,
+      "expansions": 11,
+      "candidates_proposed": 10,
+      "rule_violations": 0,
+      "dead_ends": 2,
+      "pruned": 2,
+      "backtracks": 2,
+      "memory_confirmed": 0,
+      "memory_rejected": 0,
+      "max_depth": 8
+    },
+    "search_started_events": 1,
+    "resume_events": 1
+  },
+  "checkpoint_count": 29,
+  "checkpoints": [
+    {
+      "checkpoint_id": "1f1e4d0f-be59-6593-801b-409e7ff79178",
+      "step": 27,
+      "status": "solved",
+      "search_steps": 24,
+      "events": 52,
+      "depth": 8
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-be54-64ba-801a-32bda242d5ed",
+      "step": 26,
+      "status": "running",
+      "search_steps": 23,
+      "events": 49,
+      "depth": 8
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-be50-68d6-8019-7e256f86d150",
+      "step": 25,
+      "status": "running",
+      "search_steps": 22,
+      "events": 47,
+      "depth": 8
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-be50-68d5-8018-a0928f79cdc1",
+      "step": 24,
+      "status": "running",
+      "search_steps": 21,
+      "events": 45,
+      "depth": 7
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-be4c-6ceb-8017-dbdc12af2b5b",
+      "step": 23,
+      "status": "running",
+      "search_steps": 20,
+      "events": 43,
+      "depth": 7
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-be49-60a9-8016-5227d52f57df",
+      "step": 22,
+      "status": "running",
+      "search_steps": 19,
+      "events": 41,
+      "depth": 6
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-be45-657a-8015-a6b3d20d749a",
+      "step": 21,
+      "status": "running",
+      "search_steps": 18,
+      "events": 39,
+      "depth": 6
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-be41-6a4d-8014-55d908615144",
+      "step": 20,
+      "status": "running",
+      "search_steps": 17,
+      "events": 37,
+      "depth": 5
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-be3d-6f1b-8013-fd1220165f38",
+      "step": 19,
+      "status": "running",
+      "search_steps": 16,
+      "events": 35,
+      "depth": 5
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-be3a-633a-8012-964d4a4dfc25",
+      "step": 18,
+      "status": "running",
+      "search_steps": 15,
+      "events": 33,
+      "depth": 4
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-be36-6775-8011-d93817f01709",
+      "step": 17,
+      "status": "running",
+      "search_steps": 14,
+      "events": 31,
+      "depth": 4
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-be32-6a57-8010-2cea558f09fc",
+      "step": 16,
+      "status": "running",
+      "search_steps": 13,
+      "events": 29,
+      "depth": 3
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-be2e-6ec5-800f-fa255d22bfba",
+      "step": 15,
+      "status": "running",
+      "search_steps": 12,
+      "events": 27,
+      "depth": 3
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-be2b-62d7-800e-2b471ff2acd9",
+      "step": 14,
+      "status": "running",
+      "search_steps": 11,
+      "events": 26,
+      "depth": 3
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-be29-6f2e-800d-8cf6d7d91dde",
+      "step": 13,
+      "status": "running",
+      "search_steps": 10,
+      "events": 21,
+      "depth": 3
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-be27-67df-800c-b34de4de0a25",
+      "step": 12,
+      "status": "running",
+      "search_steps": 10,
+      "events": 21,
+      "depth": 3
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-bde7-6fb0-800b-9aac0a6c7655",
+      "step": 11,
+      "status": "running",
+      "search_steps": 10,
+      "events": 21,
+      "depth": 3
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-bde4-637e-800a-60e7d18c55c4",
+      "step": 10,
+      "status": "running",
+      "search_steps": 10,
+      "events": 20,
+      "depth": 3
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-bde4-637d-8009-46403795b16a",
+      "step": 9,
+      "status": "running",
+      "search_steps": 9,
+      "events": 18,
+      "depth": 3
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-bde1-6c34-8008-392c742a0c48",
+      "step": 8,
+      "status": "running",
+      "search_steps": 8,
+      "events": 16,
+      "depth": 2
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-bdde-6143-8007-62d569cb4c73",
+      "step": 7,
+      "status": "running",
+      "search_steps": 7,
+      "events": 14,
+      "depth": 2
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-bdd9-6108-8006-fe9b8f7202c9",
+      "step": 6,
+      "status": "running",
+      "search_steps": 6,
+      "events": 12,
+      "depth": 1
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-bdd9-6107-8005-4e2dfbbcdebc",
+      "step": 5,
+      "status": "running",
+      "search_steps": 5,
+      "events": 10,
+      "depth": 1
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-bdd5-6481-8004-84178ce056c7",
+      "step": 4,
+      "status": "running",
+      "search_steps": 4,
+      "events": 9,
+      "depth": 1
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-bdd1-68ef-8003-fd50f330fc1c",
+      "step": 3,
+      "status": "running",
+      "search_steps": 3,
+      "events": 5,
+      "depth": 1
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-bdd1-68ee-8002-7dcd18eaf1c8",
+      "step": 2,
+      "status": "running",
+      "search_steps": 2,
+      "events": 3,
+      "depth": 1
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-bdcd-6cf0-8001-0ec190a73dcc",
+      "step": 1,
+      "status": "running",
+      "search_steps": 1,
+      "events": 1,
+      "depth": 0
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-bdca-6121-8000-23603ab30bbb",
+      "step": 0,
+      "status": "running",
+      "search_steps": 0,
+      "events": 0,
+      "depth": 0
+    },
+    {
+      "checkpoint_id": "1f1e4d0f-bdc6-6640-bfff-6def65ad7487",
+      "step": -1,
+      "status": null,
+      "search_steps": null,
+      "events": 0,
+      "depth": 0
+    }
+  ],
+  "events": [
+    {
+      "event_id": "demo-resume-001-event-00000",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 0,
+      "event": "search_started",
+      "agent": "Supervisor",
+      "depth": 0,
+      "cell": null,
+      "candidate": null,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": [
+        [
+          0,
+          0,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          4,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          1
+        ]
+      ],
+      "node_id": null,
+      "timestamp": "2026-11-20T10:56:05.508222+00:00",
+      "data": {
+        "strategy": "first_empty",
+        "order": "desc",
+        "max_nodes": 10000
+      }
+    },
+    {
+      "event_id": "demo-resume-001-event-00001",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 1,
+      "event": "cell_selected",
+      "agent": "Proposer",
+      "depth": 0,
+      "cell": [
+        0,
+        0
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "FIRST_EMPTY",
+      "reason": "selected by first_empty strategy",
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0000",
+      "timestamp": "2026-11-20T10:56:05.508222+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00002",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 2,
+      "event": "candidates_generated",
+      "agent": "Proposer",
+      "depth": 0,
+      "cell": [
+        0,
+        0
+      ],
+      "candidate": null,
+      "candidates": [
+        2,
+        1
+      ],
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0000",
+      "timestamp": "2026-11-20T10:56:05.508222+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00003",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 3,
+      "event": "candidate_proposed",
+      "agent": "Proposer",
+      "depth": 1,
+      "cell": [
+        0,
+        0
+      ],
+      "candidate": 2,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0001",
+      "timestamp": "2026-11-20T10:56:05.509758+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00004",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 4,
+      "event": "candidate_accepted",
+      "agent": "RuleChecker",
+      "depth": 1,
+      "cell": [
+        0,
+        0
+      ],
+      "candidate": 2,
+      "candidates": null,
+      "reason_code": "OK",
+      "reason": "valid placement",
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0001",
+      "timestamp": "2026-11-20T10:56:05.509758+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00005",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 5,
+      "event": "cell_selected",
+      "agent": "Proposer",
+      "depth": 1,
+      "cell": [
+        0,
+        1
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "FIRST_EMPTY",
+      "reason": "selected by first_empty strategy",
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0001",
+      "timestamp": "2026-11-20T10:56:05.511283+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00006",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 6,
+      "event": "candidates_generated",
+      "agent": "Proposer",
+      "depth": 1,
+      "cell": [
+        0,
+        1
+      ],
+      "candidate": null,
+      "candidates": [],
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0001",
+      "timestamp": "2026-11-20T10:56:05.511283+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00007",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 7,
+      "event": "dead_end",
+      "agent": "Verifier",
+      "depth": 1,
+      "cell": [
+        0,
+        1
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "ZERO_CANDIDATES",
+      "reason": "cell [0, 1] has no legal candidates",
+      "board_snapshot": [
+        [
+          2,
+          0,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          4,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          1
+        ]
+      ],
+      "node_id": "demo-resume-001-node-0001",
+      "timestamp": "2026-11-20T10:56:05.511283+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00008",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 8,
+      "event": "branch_pruned",
+      "agent": "Backtracker",
+      "depth": 1,
+      "cell": null,
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "ZERO_CANDIDATES",
+      "reason": "cell [0, 1] has no legal candidates",
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0001",
+      "timestamp": "2026-11-20T10:56:05.511283+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00009",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 9,
+      "event": "backtrack_started",
+      "agent": "Backtracker",
+      "depth": 1,
+      "cell": [
+        0,
+        0
+      ],
+      "candidate": 2,
+      "candidates": null,
+      "reason_code": "RESTORE_PARENT",
+      "reason": "restoring the board to its state before this decision",
+      "board_snapshot": [
+        [
+          0,
+          0,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          4,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          1
+        ]
+      ],
+      "node_id": "demo-resume-001-node-0000",
+      "timestamp": "2026-11-20T10:56:05.511283+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00010",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 10,
+      "event": "candidate_proposed",
+      "agent": "Proposer",
+      "depth": 1,
+      "cell": [
+        0,
+        0
+      ],
+      "candidate": 1,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0002",
+      "timestamp": "2026-11-20T10:56:05.512832+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00011",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 11,
+      "event": "candidate_accepted",
+      "agent": "RuleChecker",
+      "depth": 1,
+      "cell": [
+        0,
+        0
+      ],
+      "candidate": 1,
+      "candidates": null,
+      "reason_code": "OK",
+      "reason": "valid placement",
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0002",
+      "timestamp": "2026-11-20T10:56:05.512832+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00012",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 12,
+      "event": "cell_selected",
+      "agent": "Proposer",
+      "depth": 1,
+      "cell": [
+        0,
+        1
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "FIRST_EMPTY",
+      "reason": "selected by first_empty strategy",
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0002",
+      "timestamp": "2026-11-20T10:56:05.514374+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00013",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 13,
+      "event": "candidates_generated",
+      "agent": "Proposer",
+      "depth": 1,
+      "cell": [
+        0,
+        1
+      ],
+      "candidate": null,
+      "candidates": [
+        2
+      ],
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0002",
+      "timestamp": "2026-11-20T10:56:05.514374+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00014",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 14,
+      "event": "candidate_proposed",
+      "agent": "Proposer",
+      "depth": 2,
+      "cell": [
+        0,
+        1
+      ],
+      "candidate": 2,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0003",
+      "timestamp": "2026-11-20T10:56:05.515892+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00015",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 15,
+      "event": "candidate_accepted",
+      "agent": "RuleChecker",
+      "depth": 2,
+      "cell": [
+        0,
+        1
+      ],
+      "candidate": 2,
+      "candidates": null,
+      "reason_code": "OK",
+      "reason": "valid placement",
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0003",
+      "timestamp": "2026-11-20T10:56:05.515892+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00016",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 16,
+      "event": "cell_selected",
+      "agent": "Proposer",
+      "depth": 2,
+      "cell": [
+        1,
+        2
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "FIRST_EMPTY",
+      "reason": "selected by first_empty strategy",
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0003",
+      "timestamp": "2026-11-20T10:56:05.516395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00017",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 17,
+      "event": "candidates_generated",
+      "agent": "Proposer",
+      "depth": 2,
+      "cell": [
+        1,
+        2
+      ],
+      "candidate": null,
+      "candidates": [
+        2,
+        1
+      ],
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0003",
+      "timestamp": "2026-11-20T10:56:05.516395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00018",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 18,
+      "event": "candidate_proposed",
+      "agent": "Proposer",
+      "depth": 3,
+      "cell": [
+        1,
+        2
+      ],
+      "candidate": 2,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0004",
+      "timestamp": "2026-11-20T10:56:05.517401+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00019",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 19,
+      "event": "candidate_accepted",
+      "agent": "RuleChecker",
+      "depth": 3,
+      "cell": [
+        1,
+        2
+      ],
+      "candidate": 2,
+      "candidates": null,
+      "reason_code": "OK",
+      "reason": "valid placement",
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0004",
+      "timestamp": "2026-11-20T10:56:05.517401+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00020",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 20,
+      "event": "search_paused",
+      "agent": "Supervisor",
+      "depth": 0,
+      "cell": null,
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "PAUSED",
+      "reason": "paused at a safe decision boundary",
+      "board_snapshot": [
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          2,
+          0
+        ],
+        [
+          0,
+          1,
+          4,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          1
+        ]
+      ],
+      "node_id": null,
+      "timestamp": "2026-11-20T10:56:05.518942+00:00",
+      "data": {
+        "at_step": 10
+      }
+    },
+    {
+      "event_id": "demo-resume-001-event-00021",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 21,
+      "event": "search_resumed",
+      "agent": "Supervisor",
+      "depth": 0,
+      "cell": null,
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "RESUMED",
+      "reason": "resumed from checkpoint",
+      "board_snapshot": null,
+      "node_id": null,
+      "timestamp": "2026-11-20T10:56:05.546466+00:00",
+      "data": {
+        "at_step": 10
+      }
+    },
+    {
+      "event_id": "demo-resume-001-event-00022",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 22,
+      "event": "cell_selected",
+      "agent": "Proposer",
+      "depth": 3,
+      "cell": [
+        1,
+        3
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "FIRST_EMPTY",
+      "reason": "selected by first_empty strategy",
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0004",
+      "timestamp": "2026-11-20T10:56:05.546466+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00023",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 23,
+      "event": "candidates_generated",
+      "agent": "Proposer",
+      "depth": 3,
+      "cell": [
+        1,
+        3
+      ],
+      "candidate": null,
+      "candidates": [],
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0004",
+      "timestamp": "2026-11-20T10:56:05.546466+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00024",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 24,
+      "event": "dead_end",
+      "agent": "Verifier",
+      "depth": 3,
+      "cell": [
+        1,
+        3
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "ZERO_CANDIDATES",
+      "reason": "cell [1, 3] has no legal candidates",
+      "board_snapshot": [
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          2,
+          0
+        ],
+        [
+          0,
+          1,
+          4,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          1
+        ]
+      ],
+      "node_id": "demo-resume-001-node-0004",
+      "timestamp": "2026-11-20T10:56:05.546466+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00025",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 25,
+      "event": "branch_pruned",
+      "agent": "Backtracker",
+      "depth": 3,
+      "cell": null,
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "ZERO_CANDIDATES",
+      "reason": "cell [1, 3] has no legal candidates",
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0004",
+      "timestamp": "2026-11-20T10:56:05.546466+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00026",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 26,
+      "event": "backtrack_started",
+      "agent": "Backtracker",
+      "depth": 3,
+      "cell": [
+        1,
+        2
+      ],
+      "candidate": 2,
+      "candidates": null,
+      "reason_code": "RESTORE_PARENT",
+      "reason": "restoring the board to its state before this decision",
+      "board_snapshot": [
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          4,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          1
+        ]
+      ],
+      "node_id": "demo-resume-001-node-0003",
+      "timestamp": "2026-11-20T10:56:05.548000+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00027",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 27,
+      "event": "candidate_proposed",
+      "agent": "Proposer",
+      "depth": 3,
+      "cell": [
+        1,
+        2
+      ],
+      "candidate": 1,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0005",
+      "timestamp": "2026-11-20T10:56:05.549525+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00028",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 28,
+      "event": "candidate_accepted",
+      "agent": "RuleChecker",
+      "depth": 3,
+      "cell": [
+        1,
+        2
+      ],
+      "candidate": 1,
+      "candidates": null,
+      "reason_code": "OK",
+      "reason": "valid placement",
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0005",
+      "timestamp": "2026-11-20T10:56:05.549525+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00029",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 29,
+      "event": "cell_selected",
+      "agent": "Proposer",
+      "depth": 3,
+      "cell": [
+        1,
+        3
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "FIRST_EMPTY",
+      "reason": "selected by first_empty strategy",
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0005",
+      "timestamp": "2026-11-20T10:56:05.551090+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00030",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 30,
+      "event": "candidates_generated",
+      "agent": "Proposer",
+      "depth": 3,
+      "cell": [
+        1,
+        3
+      ],
+      "candidate": null,
+      "candidates": [
+        2
+      ],
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0005",
+      "timestamp": "2026-11-20T10:56:05.551090+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00031",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 31,
+      "event": "candidate_proposed",
+      "agent": "Proposer",
+      "depth": 4,
+      "cell": [
+        1,
+        3
+      ],
+      "candidate": 2,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0006",
+      "timestamp": "2026-11-20T10:56:05.552620+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00032",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 32,
+      "event": "candidate_accepted",
+      "agent": "RuleChecker",
+      "depth": 4,
+      "cell": [
+        1,
+        3
+      ],
+      "candidate": 2,
+      "candidates": null,
+      "reason_code": "OK",
+      "reason": "valid placement",
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0006",
+      "timestamp": "2026-11-20T10:56:05.552620+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00033",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 33,
+      "event": "cell_selected",
+      "agent": "Proposer",
+      "depth": 4,
+      "cell": [
+        2,
+        0
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "FIRST_EMPTY",
+      "reason": "selected by first_empty strategy",
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0006",
+      "timestamp": "2026-11-20T10:56:05.554153+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00034",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 34,
+      "event": "candidates_generated",
+      "agent": "Proposer",
+      "depth": 4,
+      "cell": [
+        2,
+        0
+      ],
+      "candidate": null,
+      "candidates": [
+        2
+      ],
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0006",
+      "timestamp": "2026-11-20T10:56:05.554153+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00035",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 35,
+      "event": "candidate_proposed",
+      "agent": "Proposer",
+      "depth": 5,
+      "cell": [
+        2,
+        0
+      ],
+      "candidate": 2,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0007",
+      "timestamp": "2026-11-20T10:56:05.555668+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00036",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 36,
+      "event": "candidate_accepted",
+      "agent": "RuleChecker",
+      "depth": 5,
+      "cell": [
+        2,
+        0
+      ],
+      "candidate": 2,
+      "candidates": null,
+      "reason_code": "OK",
+      "reason": "valid placement",
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0007",
+      "timestamp": "2026-11-20T10:56:05.555668+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00037",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 37,
+      "event": "cell_selected",
+      "agent": "Proposer",
+      "depth": 5,
+      "cell": [
+        2,
+        3
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "FIRST_EMPTY",
+      "reason": "selected by first_empty strategy",
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0007",
+      "timestamp": "2026-11-20T10:56:05.556179+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00038",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 38,
+      "event": "candidates_generated",
+      "agent": "Proposer",
+      "depth": 5,
+      "cell": [
+        2,
+        3
+      ],
+      "candidate": null,
+      "candidates": [
+        3
+      ],
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0007",
+      "timestamp": "2026-11-20T10:56:05.556179+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00039",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 39,
+      "event": "candidate_proposed",
+      "agent": "Proposer",
+      "depth": 6,
+      "cell": [
+        2,
+        3
+      ],
+      "candidate": 3,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0008",
+      "timestamp": "2026-11-20T10:56:05.557694+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00040",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 40,
+      "event": "candidate_accepted",
+      "agent": "RuleChecker",
+      "depth": 6,
+      "cell": [
+        2,
+        3
+      ],
+      "candidate": 3,
+      "candidates": null,
+      "reason_code": "OK",
+      "reason": "valid placement",
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0008",
+      "timestamp": "2026-11-20T10:56:05.557694+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00041",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 41,
+      "event": "cell_selected",
+      "agent": "Proposer",
+      "depth": 6,
+      "cell": [
+        3,
+        1
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "FIRST_EMPTY",
+      "reason": "selected by first_empty strategy",
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0008",
+      "timestamp": "2026-11-20T10:56:05.558698+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00042",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 42,
+      "event": "candidates_generated",
+      "agent": "Proposer",
+      "depth": 6,
+      "cell": [
+        3,
+        1
+      ],
+      "candidate": null,
+      "candidates": [
+        3
+      ],
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0008",
+      "timestamp": "2026-11-20T10:56:05.558698+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00043",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 43,
+      "event": "candidate_proposed",
+      "agent": "Proposer",
+      "depth": 7,
+      "cell": [
+        3,
+        1
+      ],
+      "candidate": 3,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0009",
+      "timestamp": "2026-11-20T10:56:05.560241+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00044",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 44,
+      "event": "candidate_accepted",
+      "agent": "RuleChecker",
+      "depth": 7,
+      "cell": [
+        3,
+        1
+      ],
+      "candidate": 3,
+      "candidates": null,
+      "reason_code": "OK",
+      "reason": "valid placement",
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0009",
+      "timestamp": "2026-11-20T10:56:05.560241+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00045",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 45,
+      "event": "cell_selected",
+      "agent": "Proposer",
+      "depth": 7,
+      "cell": [
+        3,
+        2
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "FIRST_EMPTY",
+      "reason": "selected by first_empty strategy",
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0009",
+      "timestamp": "2026-11-20T10:56:05.561774+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00046",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 46,
+      "event": "candidates_generated",
+      "agent": "Proposer",
+      "depth": 7,
+      "cell": [
+        3,
+        2
+      ],
+      "candidate": null,
+      "candidates": [
+        2
+      ],
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0009",
+      "timestamp": "2026-11-20T10:56:05.561774+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00047",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 47,
+      "event": "candidate_proposed",
+      "agent": "Proposer",
+      "depth": 8,
+      "cell": [
+        3,
+        2
+      ],
+      "candidate": 2,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0010",
+      "timestamp": "2026-11-20T10:56:05.563308+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00048",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 48,
+      "event": "candidate_accepted",
+      "agent": "RuleChecker",
+      "depth": 8,
+      "cell": [
+        3,
+        2
+      ],
+      "candidate": 2,
+      "candidates": null,
+      "reason_code": "OK",
+      "reason": "valid placement",
+      "board_snapshot": null,
+      "node_id": "demo-resume-001-node-0010",
+      "timestamp": "2026-11-20T10:56:05.563308+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00049",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 49,
+      "event": "solution_found",
+      "agent": "Backtracker",
+      "depth": 8,
+      "cell": null,
+      "candidate": null,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": [
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          1,
+          2
+        ],
+        [
+          2,
+          1,
+          4,
+          3
+        ],
+        [
+          4,
+          3,
+          2,
+          1
+        ]
+      ],
+      "node_id": "demo-resume-001-node-0010",
+      "timestamp": "2026-11-20T10:56:05.564834+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00050",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 50,
+      "event": "solution_verified",
+      "agent": "Verifier",
+      "depth": 8,
+      "cell": null,
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "VERIFIED",
+      "reason": "complete board satisfies all rules and clues",
+      "board_snapshot": [
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          1,
+          2
+        ],
+        [
+          2,
+          1,
+          4,
+          3
+        ],
+        [
+          4,
+          3,
+          2,
+          1
+        ]
+      ],
+      "node_id": "demo-resume-001-node-0010",
+      "timestamp": "2026-11-20T10:56:05.564834+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "demo-resume-001-event-00051",
+      "run_id": "demo-resume-001",
+      "thread_id": "demo-resume-001",
+      "sequence": 51,
+      "event": "search_completed",
+      "agent": "Supervisor",
+      "depth": 0,
+      "cell": null,
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "SOLVED",
+      "reason": "verified solution found",
+      "board_snapshot": null,
+      "node_id": null,
+      "timestamp": "2026-11-20T10:56:05.564834+00:00",
+      "data": {
+        "counters": {
+          "steps": 24,
+          "nodes": 11,
+          "expansions": 11,
+          "candidates_proposed": 10,
+          "rule_violations": 0,
+          "dead_ends": 2,
+          "pruned": 2,
+          "backtracks": 2,
+          "memory_confirmed": 0,
+          "memory_rejected": 0,
+          "max_depth": 8
+        }
+      }
+    }
+  ]
+}

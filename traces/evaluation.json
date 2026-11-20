@@ -1,67 +1,739 @@
-[
-  {
-    "case": 1,
-    "ta1_correct": true,
-    "ta1_nodes": 9,
-    "ta1_seconds": 0.000216,
-    "ta2_correct": true,
-    "ta2_solver_calls": 3,
-    "ta2_total_nodes": 27,
-    "ta2_seconds": 0.001333,
-    "votes": {
-      "1,2,3,4/3,4,1,2/2,1,4,3/4,3,2,1": 3
-    }
+{
+  "kind": "evaluation",
+  "generated_at": "2026-11-20T10:58:19.679064+00:00",
+  "models": {
+    "llm": "qwen2.5:3b",
+    "embeddings": "nomic-embed-text"
   },
-  {
-    "case": 2,
-    "ta1_correct": true,
-    "ta1_nodes": 9,
-    "ta1_seconds": 0.000169,
-    "ta2_correct": true,
-    "ta2_solver_calls": 3,
-    "ta2_total_nodes": 27,
-    "ta2_seconds": 0.001478,
-    "votes": {
-      "1,2,3,4/3,4,1,2/2,1,4,3/4,3,2,1": 3
+  "cases": [
+    {
+      "case": 1,
+      "name": "assignment-sample",
+      "puzzle": [
+        [
+          0,
+          0,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          4,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          1
+        ]
+      ],
+      "empties": 8,
+      "solution_count": 1,
+      "ta1_tot": {
+        "correct": true,
+        "nodes": 10,
+        "pruned": 2,
+        "dead_ends": 2,
+        "median_seconds": 0.0006603999936487526,
+        "llm_calls": 0,
+        "tool_calls": 0
+      },
+      "ta1_cot": {
+        "correct": true,
+        "seconds": 25.449577700026566,
+        "llm_calls": 1,
+        "error": null
+      },
+      "ta2_single_mrv": {
+        "correct": true,
+        "nodes": 9,
+        "candidates": 8,
+        "pruned": 0,
+        "backtracks": 0,
+        "dead_ends": 0,
+        "median_seconds": 0.0007081000076141208,
+        "llm_calls": 0,
+        "tool_calls": 0,
+        "solver_calls": 1
+      },
+      "ta2_single_first_empty_desc": {
+        "correct": true,
+        "nodes": 11,
+        "candidates": 10,
+        "pruned": 2,
+        "backtracks": 2,
+        "dead_ends": 2,
+        "median_seconds": 0.0007880000048317015,
+        "llm_calls": 0,
+        "tool_calls": 0,
+        "solver_calls": 1
+      },
+      "ta2_multi_agent_mrv": {
+        "correct": true,
+        "votes": {
+          "1234/3412/2143/4321": 3
+        },
+        "disagreement": false,
+        "solver_calls": 3,
+        "nodes": 27,
+        "pruned": 0,
+        "backtracks": 0,
+        "hops": 4,
+        "tool_calls": 0,
+        "tool_failures": 0,
+        "llm_calls": 0,
+        "median_seconds": 0.0038449999992735684
+      },
+      "ta2_multi_agent_first_empty": {
+        "correct": true,
+        "votes": {
+          "1234/3412/2143/4321": 3
+        },
+        "disagreement": false,
+        "solver_calls": 3,
+        "nodes": 31,
+        "pruned": 4,
+        "backtracks": 4,
+        "hops": 4,
+        "tool_calls": 0,
+        "tool_failures": 0,
+        "llm_calls": 0,
+        "median_seconds": 0.0036856000078842044
+      },
+      "ta2_multi_agent_with_rag": {
+        "correct": true,
+        "votes": {
+          "1234/3412/2143/4321": 3
+        },
+        "disagreement": false,
+        "solver_calls": 3,
+        "nodes": 27,
+        "pruned": 0,
+        "backtracks": 0,
+        "hops": 5,
+        "tool_calls": 1,
+        "tool_failures": 0,
+        "llm_calls": 0,
+        "median_seconds": 0.01811679999809712,
+        "rag_retrievals": 1
+      }
+    },
+    {
+      "case": 2,
+      "name": "generated-6-clues",
+      "puzzle": [
+        [
+          4,
+          0,
+          0,
+          1
+        ],
+        [
+          3,
+          0,
+          4,
+          0
+        ],
+        [
+          0,
+          4,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "empties": 10,
+      "solution_count": 1,
+      "ta1_tot": {
+        "correct": true,
+        "nodes": 10,
+        "pruned": 0,
+        "dead_ends": 0,
+        "median_seconds": 0.0007332999957725406,
+        "llm_calls": 0,
+        "tool_calls": 0
+      },
+      "ta1_cot": {
+        "correct": false,
+        "seconds": 14.292592400015565,
+        "llm_calls": 1,
+        "error": null
+      },
+      "ta2_single_mrv": {
+        "correct": true,
+        "nodes": 11,
+        "candidates": 10,
+        "pruned": 0,
+        "backtracks": 0,
+        "dead_ends": 0,
+        "median_seconds": 0.0008593000238761306,
+        "llm_calls": 0,
+        "tool_calls": 0,
+        "solver_calls": 1
+      },
+      "ta2_single_first_empty_desc": {
+        "correct": true,
+        "nodes": 11,
+        "candidates": 10,
+        "pruned": 0,
+        "backtracks": 0,
+        "dead_ends": 0,
+        "median_seconds": 0.000701199984177947,
+        "llm_calls": 0,
+        "tool_calls": 0,
+        "solver_calls": 1
+      },
+      "ta2_multi_agent_mrv": {
+        "correct": true,
+        "votes": {
+          "4231/3142/2413/1324": 3
+        },
+        "disagreement": false,
+        "solver_calls": 3,
+        "nodes": 33,
+        "pruned": 0,
+        "backtracks": 0,
+        "hops": 4,
+        "tool_calls": 0,
+        "tool_failures": 0,
+        "llm_calls": 0,
+        "median_seconds": 0.004466399986995384
+      },
+      "ta2_multi_agent_first_empty": {
+        "correct": true,
+        "votes": {
+          "4231/3142/2413/1324": 3
+        },
+        "disagreement": false,
+        "solver_calls": 3,
+        "nodes": 33,
+        "pruned": 0,
+        "backtracks": 0,
+        "hops": 4,
+        "tool_calls": 0,
+        "tool_failures": 0,
+        "llm_calls": 0,
+        "median_seconds": 0.0038941000238992274
+      },
+      "ta2_multi_agent_with_rag": {
+        "correct": true,
+        "votes": {
+          "4231/3142/2413/1324": 3
+        },
+        "disagreement": false,
+        "solver_calls": 3,
+        "nodes": 33,
+        "pruned": 0,
+        "backtracks": 0,
+        "hops": 5,
+        "tool_calls": 1,
+        "tool_failures": 0,
+        "llm_calls": 0,
+        "median_seconds": 0.019241100002545863,
+        "rag_retrievals": 1
+      }
+    },
+    {
+      "case": 3,
+      "name": "generated-5-clues",
+      "puzzle": [
+        [
+          0,
+          1,
+          0,
+          4
+        ],
+        [
+          3,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "empties": 11,
+      "solution_count": 1,
+      "ta1_tot": {
+        "correct": true,
+        "nodes": 11,
+        "pruned": 0,
+        "dead_ends": 0,
+        "median_seconds": 0.0006603999936487526,
+        "llm_calls": 0,
+        "tool_calls": 0
+      },
+      "ta1_cot": {
+        "correct": false,
+        "seconds": 22.969254900002852,
+        "llm_calls": 1,
+        "error": null
+      },
+      "ta2_single_mrv": {
+        "correct": true,
+        "nodes": 12,
+        "candidates": 11,
+        "pruned": 0,
+        "backtracks": 0,
+        "dead_ends": 0,
+        "median_seconds": 0.0009225000103469938,
+        "llm_calls": 0,
+        "tool_calls": 0,
+        "solver_calls": 1
+      },
+      "ta2_single_first_empty_desc": {
+        "correct": true,
+        "nodes": 12,
+        "candidates": 11,
+        "pruned": 0,
+        "backtracks": 0,
+        "dead_ends": 0,
+        "median_seconds": 0.0007582000107504427,
+        "llm_calls": 0,
+        "tool_calls": 0,
+        "solver_calls": 1
+      },
+      "ta2_multi_agent_mrv": {
+        "correct": true,
+        "votes": {
+          "2134/3421/4312/1243": 3
+        },
+        "disagreement": false,
+        "solver_calls": 3,
+        "nodes": 36,
+        "pruned": 0,
+        "backtracks": 0,
+        "hops": 4,
+        "tool_calls": 0,
+        "tool_failures": 0,
+        "llm_calls": 0,
+        "median_seconds": 0.004944899992551655
+      },
+      "ta2_multi_agent_first_empty": {
+        "correct": true,
+        "votes": {
+          "2134/3421/4312/1243": 3
+        },
+        "disagreement": false,
+        "solver_calls": 3,
+        "nodes": 37,
+        "pruned": 1,
+        "backtracks": 1,
+        "hops": 4,
+        "tool_calls": 0,
+        "tool_failures": 0,
+        "llm_calls": 0,
+        "median_seconds": 0.0044643000001087785
+      },
+      "ta2_multi_agent_with_rag": {
+        "correct": true,
+        "votes": {
+          "2134/3421/4312/1243": 3
+        },
+        "disagreement": false,
+        "solver_calls": 3,
+        "nodes": 36,
+        "pruned": 0,
+        "backtracks": 0,
+        "hops": 5,
+        "tool_calls": 1,
+        "tool_failures": 0,
+        "llm_calls": 0,
+        "median_seconds": 0.019301799999084324,
+        "rag_retrievals": 1
+      }
+    },
+    {
+      "case": 4,
+      "name": "generated-4-clues",
+      "puzzle": [
+        [
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          3,
+          0
+        ]
+      ],
+      "empties": 12,
+      "solution_count": 1,
+      "ta1_tot": {
+        "correct": true,
+        "nodes": 15,
+        "pruned": 3,
+        "dead_ends": 2,
+        "median_seconds": 0.0007169000164140016,
+        "llm_calls": 0,
+        "tool_calls": 0
+      },
+      "ta1_cot": {
+        "correct": false,
+        "seconds": 31.8525929999887,
+        "llm_calls": 1,
+        "error": null
+      },
+      "ta2_single_mrv": {
+        "correct": true,
+        "nodes": 13,
+        "candidates": 12,
+        "pruned": 0,
+        "backtracks": 0,
+        "dead_ends": 0,
+        "median_seconds": 0.0011009000008925796,
+        "llm_calls": 0,
+        "tool_calls": 0,
+        "solver_calls": 1
+      },
+      "ta2_single_first_empty_desc": {
+        "correct": true,
+        "nodes": 16,
+        "candidates": 15,
+        "pruned": 3,
+        "backtracks": 3,
+        "dead_ends": 2,
+        "median_seconds": 0.0012682999949902296,
+        "llm_calls": 0,
+        "tool_calls": 0,
+        "solver_calls": 1
+      },
+      "ta2_multi_agent_mrv": {
+        "correct": true,
+        "votes": {
+          "4123/2341/3214/1432": 3
+        },
+        "disagreement": false,
+        "solver_calls": 3,
+        "nodes": 39,
+        "pruned": 0,
+        "backtracks": 0,
+        "hops": 4,
+        "tool_calls": 0,
+        "tool_failures": 0,
+        "llm_calls": 0,
+        "median_seconds": 0.005316900002071634
+      },
+      "ta2_multi_agent_first_empty": {
+        "correct": true,
+        "votes": {
+          "4123/2341/3214/1432": 3
+        },
+        "disagreement": false,
+        "solver_calls": 3,
+        "nodes": 44,
+        "pruned": 5,
+        "backtracks": 5,
+        "hops": 4,
+        "tool_calls": 0,
+        "tool_failures": 0,
+        "llm_calls": 0,
+        "median_seconds": 0.004746399994473904
+      },
+      "ta2_multi_agent_with_rag": {
+        "correct": true,
+        "votes": {
+          "4123/2341/3214/1432": 3
+        },
+        "disagreement": false,
+        "solver_calls": 3,
+        "nodes": 39,
+        "pruned": 0,
+        "backtracks": 0,
+        "hops": 5,
+        "tool_calls": 1,
+        "tool_failures": 0,
+        "llm_calls": 0,
+        "median_seconds": 0.020531199988909066,
+        "rag_retrievals": 1
+      }
+    },
+    {
+      "case": 5,
+      "name": "generated-6-clues-b",
+      "puzzle": [
+        [
+          0,
+          4,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          3,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          3
+        ]
+      ],
+      "empties": 10,
+      "solution_count": 1,
+      "ta1_tot": {
+        "correct": true,
+        "nodes": 11,
+        "pruned": 1,
+        "dead_ends": 1,
+        "median_seconds": 0.0007525999972131103,
+        "llm_calls": 0,
+        "tool_calls": 0
+      },
+      "ta1_cot": {
+        "correct": false,
+        "seconds": 11.285501700011082,
+        "llm_calls": 1,
+        "error": null
+      },
+      "ta2_single_mrv": {
+        "correct": true,
+        "nodes": 11,
+        "candidates": 10,
+        "pruned": 0,
+        "backtracks": 0,
+        "dead_ends": 0,
+        "median_seconds": 0.0008914000063668936,
+        "llm_calls": 0,
+        "tool_calls": 0,
+        "solver_calls": 1
+      },
+      "ta2_single_first_empty_desc": {
+        "correct": true,
+        "nodes": 12,
+        "candidates": 11,
+        "pruned": 1,
+        "backtracks": 1,
+        "dead_ends": 1,
+        "median_seconds": 0.0009067000064533204,
+        "llm_calls": 0,
+        "tool_calls": 0,
+        "solver_calls": 1
+      },
+      "ta2_multi_agent_mrv": {
+        "correct": true,
+        "votes": {
+          "3412/1234/4321/2143": 3
+        },
+        "disagreement": false,
+        "solver_calls": 3,
+        "nodes": 33,
+        "pruned": 0,
+        "backtracks": 0,
+        "hops": 4,
+        "tool_calls": 0,
+        "tool_failures": 0,
+        "llm_calls": 0,
+        "median_seconds": 0.004944300017086789
+      },
+      "ta2_multi_agent_first_empty": {
+        "correct": true,
+        "votes": {
+          "3412/1234/4321/2143": 3
+        },
+        "disagreement": false,
+        "solver_calls": 3,
+        "nodes": 35,
+        "pruned": 2,
+        "backtracks": 2,
+        "hops": 4,
+        "tool_calls": 0,
+        "tool_failures": 0,
+        "llm_calls": 0,
+        "median_seconds": 0.004381999984616414
+      },
+      "ta2_multi_agent_with_rag": {
+        "correct": true,
+        "votes": {
+          "3412/1234/4321/2143": 3
+        },
+        "disagreement": false,
+        "solver_calls": 3,
+        "nodes": 33,
+        "pruned": 0,
+        "backtracks": 0,
+        "hops": 5,
+        "tool_calls": 1,
+        "tool_failures": 0,
+        "llm_calls": 0,
+        "median_seconds": 0.019232099992223084,
+        "rag_retrievals": 1
+      }
     }
-  },
-  {
-    "case": 3,
-    "ta1_correct": true,
-    "ta1_nodes": 9,
-    "ta1_seconds": 0.000175,
-    "ta2_correct": true,
-    "ta2_solver_calls": 3,
-    "ta2_total_nodes": 27,
-    "ta2_seconds": 0.000982,
-    "votes": {
-      "1,2,3,4/3,4,1,2/2,1,4,3/4,3,2,1": 3
+  ],
+  "memory_comparison": [
+    {
+      "case": 1,
+      "disabled": {
+        "solved": true,
+        "nodes": 11,
+        "dead_ends": 2,
+        "memory_confirmed": 0,
+        "memory_rejected": 0
+      },
+      "enabled_first_run": {
+        "solved": true,
+        "nodes": 11,
+        "dead_ends": 2,
+        "memory_confirmed": 0,
+        "memory_rejected": 0
+      },
+      "enabled_repeat_run": {
+        "solved": true,
+        "nodes": 11,
+        "dead_ends": 0,
+        "memory_confirmed": 2,
+        "memory_rejected": 0
+      }
+    },
+    {
+      "case": 2,
+      "disabled": {
+        "solved": true,
+        "nodes": 11,
+        "dead_ends": 0,
+        "memory_confirmed": 0,
+        "memory_rejected": 0
+      },
+      "enabled_first_run": {
+        "solved": true,
+        "nodes": 11,
+        "dead_ends": 0,
+        "memory_confirmed": 0,
+        "memory_rejected": 0
+      },
+      "enabled_repeat_run": {
+        "solved": true,
+        "nodes": 11,
+        "dead_ends": 0,
+        "memory_confirmed": 0,
+        "memory_rejected": 0
+      }
+    },
+    {
+      "case": 3,
+      "disabled": {
+        "solved": true,
+        "nodes": 12,
+        "dead_ends": 0,
+        "memory_confirmed": 0,
+        "memory_rejected": 0
+      },
+      "enabled_first_run": {
+        "solved": true,
+        "nodes": 12,
+        "dead_ends": 0,
+        "memory_confirmed": 0,
+        "memory_rejected": 0
+      },
+      "enabled_repeat_run": {
+        "solved": true,
+        "nodes": 12,
+        "dead_ends": 0,
+        "memory_confirmed": 0,
+        "memory_rejected": 0
+      }
+    },
+    {
+      "case": 4,
+      "disabled": {
+        "solved": true,
+        "nodes": 16,
+        "dead_ends": 2,
+        "memory_confirmed": 0,
+        "memory_rejected": 0
+      },
+      "enabled_first_run": {
+        "solved": true,
+        "nodes": 16,
+        "dead_ends": 2,
+        "memory_confirmed": 0,
+        "memory_rejected": 0
+      },
+      "enabled_repeat_run": {
+        "solved": true,
+        "nodes": 16,
+        "dead_ends": 0,
+        "memory_confirmed": 2,
+        "memory_rejected": 0
+      }
+    },
+    {
+      "case": 5,
+      "disabled": {
+        "solved": true,
+        "nodes": 12,
+        "dead_ends": 1,
+        "memory_confirmed": 0,
+        "memory_rejected": 0
+      },
+      "enabled_first_run": {
+        "solved": true,
+        "nodes": 12,
+        "dead_ends": 1,
+        "memory_confirmed": 0,
+        "memory_rejected": 0
+      },
+      "enabled_repeat_run": {
+        "solved": true,
+        "nodes": 12,
+        "dead_ends": 0,
+        "memory_confirmed": 1,
+        "memory_rejected": 0
+      }
     }
-  },
-  {
-    "case": 4,
-    "ta1_correct": true,
-    "ta1_nodes": 9,
-    "ta1_seconds": 0.000178,
-    "ta2_correct": true,
-    "ta2_solver_calls": 3,
-    "ta2_total_nodes": 27,
-    "ta2_seconds": 0.001037,
-    "votes": {
-      "1,2,3,4/3,4,1,2/2,1,4,3/4,3,2,1": 3
-    }
-  },
-  {
-    "case": 5,
-    "ta1_correct": true,
-    "ta1_nodes": 9,
-    "ta1_seconds": 0.000168,
-    "ta2_correct": true,
-    "ta2_solver_calls": 3,
-    "ta2_total_nodes": 27,
-    "ta2_seconds": 0.001176,
-    "votes": {
-      "1,2,3,4/3,4,1,2/2,1,4,3/4,3,2,1": 3
-    }
-  }
-]
+  ],
+  "rag_available": true,
+  "timing": "median of 5 runs for deterministic solvers; TA1 CoT is a single real Qwen call",
+  "notes": [
+    "ta1_* columns execute the frozen ta1/ source files, not TA2 code",
+    "nodes: TA1 = 'Try' lines in its search tree; TA2 = search nodes created including the root",
+    "all puzzles verified unique at run time"
+  ]
+}

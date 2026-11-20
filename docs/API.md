@@ -193,6 +193,27 @@ non-exhaustive by design; the real protection is that no text changes which move
   the API `run_id`, with `thread_id` as a separate field (spec 8.3).
 * Fixed a race found by the tests: `live` could be `true` for a few milliseconds after `status` was `completed`.
 
+## 11. Unit 3 / Unit 4 demonstration endpoints (added for the AI Lab and Memory screens)
+
+| Method | Path | Purpose |
+|---|---|---|
+| GET | `/api/solve?limit=` | Recent runs (newest first) with `resumable`, `board`, `config`; used to resume after a restart |
+| GET | `/api/agents/contracts` | Five-field role spec (name, goal, tools, inputs_outputs, limits) of every runtime agent incl. the Supervisor |
+| POST | `/api/chat` | One chat turn with short-term memory ON (`thread_id`, LangGraph checkpoint) or OFF (amnesia). Returns `messages_seen_by_model` |
+| GET | `/api/chat/{thread_id}` | Restore a thread's messages from its checkpoint (survives a backend restart) |
+| POST | `/api/memory/demo/stale-pattern` | DEMO: store a deliberately wrong dead-end pattern to show it cannot prune a valid branch |
+
+New optional fields on the solve requests: **multi-agent** `max_hops` (1-20), `faults` (up to 3 *controlled demo faults*:
+`{variant: asc|desc|middle, kind: invalid_board|crash|timeout}`), `inject_tool_failure` (`{tool: "rag_retrieve", times: 1-5}`);
+**tot** `use_memory` + `user_id` (consult/update long-term dead-end memory). Using them on the wrong mode is `422 INVALID_OPTION`.
+Runs started with faults say so in their first trace event (`data.demo_faults`), so a demonstration is never mistaken for a
+normal run. `POST /api/approvals` accepts `proposer: "qwen" | "stand_in"`; `stand_in` is a labelled deterministic legal move
+(the approval record carries `proposer`), because the real model rarely proposes a legal one. Agent status gained `retries` and
+`recovered`. Run results keep each attempt's `solution`, so a vote can be recomputed from saved data (`ta2.supervisor.tally_votes`).
+
+Error text from failing tools is never copied into traces: only our own `ToolError` messages are recorded; any other exception is
+reduced to its type name (detail goes to the server log).
+
 ## 10. Known limitations
 
 * Single-process, single-user, **no authentication**; intended for a trusted local network. Do not expose it to the internet.

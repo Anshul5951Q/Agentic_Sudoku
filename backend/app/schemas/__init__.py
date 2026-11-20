@@ -10,9 +10,9 @@ from typing import Annotated, Any, Literal
 from pydantic import AfterValidator, BaseModel, ConfigDict, Field, StrictInt, model_validator
 
 from ta2 import sudoku_rules as R
-from ta2.models import SearchNode, TraceEvent, VoteResult  # reused so API and engine share one definition
+from ta2.models import AgentContract, SearchNode, TraceEvent, VoteResult  # reused so API and engine share one definition
 
-__all__ = ["Board", "SearchNode", "TraceEvent", "VoteResult"]
+__all__ = ["AgentContract", "Board", "SearchNode", "TraceEvent", "VoteResult"]
 
 
 def _check_board(v):
@@ -99,6 +99,18 @@ class GenerateRequest(_Model):
 
 
 # ------------------------------------------------------------------ runs
+class Fault(_Model):
+    """A CONTROLLED demo fault injected into one candidate-order variant of a multi-agent run (labelled in the trace)."""
+    variant: Literal["asc", "desc", "middle"]
+    kind: Literal["invalid_board", "crash", "timeout"]
+
+
+class ToolFailure(_Model):
+    """A controlled failure injected into a supervisor tool call, to demonstrate catch / retry / recovery."""
+    tool: Literal["rag_retrieve"] = "rag_retrieve"
+    times: int = Field(default=1, ge=1, le=5)
+
+
 class SolveRequest(_Model):
     puzzle_id: str | None = Field(default=None, max_length=64)
     board: Board | None = None
@@ -106,9 +118,16 @@ class SolveRequest(_Model):
     order: Literal["asc", "desc", "middle"] = "asc"
     max_nodes: int = Field(default=10000, ge=1, le=100000)
     timeout_s: float = Field(default=30.0, ge=0.05, le=300)
+    max_hops: int | None = Field(default=None, ge=1, le=20, description="multi-agent only: supervisor MAX_HOPS for this run")
+    faults: list[Fault] = Field(default_factory=list, max_length=3, description="multi-agent only: controlled demo faults")
+    inject_tool_failure: ToolFailure | None = Field(default=None, description="multi-agent only")
+    use_memory: bool = Field(default=False, description="tot only: consult and update long-term dead-end memory")
+    user_id: str = Field(default="demo-user", min_length=1, max_length=64, pattern=r"^[A-Za-z0-9_-]+$")
 
     @model_validator(mode="after")
     def _one_source(self):
+        if len({f.variant for f in self.faults}) != len(self.faults):
+            raise ValueError("faults must target distinct variants")
         if (self.puzzle_id is None) == (self.board is None):
             raise ValueError("provide exactly one of puzzle_id or board")
         return self
@@ -175,6 +194,8 @@ class AgentMessage(BaseModel):
 
 class AgentStatus(BaseModel):
     agent: str
+    retries: int = 0
+    recovered: int = 0
     status: Literal["idle", "running", "waiting", "completed", "failed"]
     current_task: str | None = None
     latest_message: AgentMessage | None = None
@@ -300,6 +321,7 @@ class EvaluationRun(BaseModel):
 class ApprovalRequest(_Model):
     board: Board
     user_text: str = Field(default="", max_length=500)
+    proposer: Literal["qwen", "stand_in"] = Field(default="qwen", description="stand_in = deterministic legal move, clearly labelled, NOT Qwen")
 
 
 class ApprovalDecision(_Model):
@@ -312,6 +334,7 @@ class Approval(BaseModel):
     board_before: Board
     suggestion: dict[str, Any] | None = None
     suggestion_error: str | None = None
+    proposer: str = "qwen"
     guard: dict[str, Any] | None = None
     outcome: str | None = None
     board_after: Board | None = None
@@ -405,3 +428,45 @@ class AnalyticsSummary(BaseModel):
     tool_calls: int
     latest_evaluation: dict[str, Any] | None = None
     source: str = "computed from stored runs; nothing is hardcoded"
+
+
+# ------------------------------------------------------------------ run list, contracts, chat, memory demo
+class RunListItem(RunSummary):
+    puzzle_id: str
+    session_id: str
+    thread_id: str
+    board: Board
+    config: dict[str, Any] = {}
+
+
+class ChatRequest(_Model):
+    message: str = Field(min_length=1, max_length=500)
+    thread_id: str | None = Field(default=None, max_length=64)
+    memory: bool = True
+    puzzle: Board | None = None
+
+
+class ChatMessage(BaseModel):
+    role: str
+    content: str
+
+
+class ChatResponse(BaseModel):
+    thread_id: str | None
+    memory: bool
+    reply: str
+    messages_seen_by_model: int
+    history_len: int
+    note: str
+
+
+class ChatHistory(BaseModel):
+    thread_id: str
+    messages: list[ChatMessage]
+    puzzle: Board | None = None
+    restored_from_checkpoint: bool = True
+
+
+class StalePatternRequest(_Model):
+    board: Board
+    user_id: str = Field(default="demo-user", min_length=1, max_length=64, pattern=r"^[A-Za-z0-9_-]+$")

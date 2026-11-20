@@ -2,10 +2,18 @@ from fastapi import APIRouter, Depends
 
 from ..context import Context, get_ctx
 from ..core.errors import check_id
-from ..schemas import AgentStatusResponse
+from ta2.agents import CONTRACTS
+from ta2.supervisor import SUPERVISOR_CONTRACT
+
+from ..schemas import AgentContract, AgentStatusResponse
 from ..services import agents as svc
 
 router = APIRouter(prefix="/api/agents", tags=["agents"])
+
+
+@router.get("/contracts", response_model=list[AgentContract], summary="Five-field role specification of every runtime agent")
+def contracts() -> list[AgentContract]:
+    return [*CONTRACTS, SUPERVISOR_CONTRACT]
 
 
 @router.get("/{run_id}/status", response_model=AgentStatusResponse, summary="Per-agent status derived from the stored trace")

@@ -5,7 +5,8 @@ from fastapi import APIRouter, Depends, Header, Query, Response
 from ..context import Context, get_ctx
 from ..core.errors import APIError, check_id, not_found
 from ..core.ids import new_id
-from ..schemas import CheckpointSummary, SolveRequest, SolveRun, TERMINAL_STATUSES, TraceResponse
+from ..schemas import CheckpointSummary, RunListItem, SolveRequest, SolveRun, TERMINAL_STATUSES, TraceResponse
+from .history import run_summary
 from ..services.agents import TERMINAL_EVENTS
 
 router = APIRouter(prefix="/api/solve", tags=["solve"])
@@ -22,8 +23,17 @@ def _resolve(ctx: Context, body: SolveRequest) -> dict:
 
 
 def _start(mode: str, body: SolveRequest, ctx: Context, response: Response, idem: str | None) -> dict:
+    if mode != "multi-agent" and (body.max_hops is not None or body.faults or body.inject_tool_failure):
+        raise APIError(422, "INVALID_OPTION", "max_hops, faults and inject_tool_failure apply to multi-agent runs only.")
+    if mode != "tot" and body.use_memory:
+        raise APIError(422, "INVALID_OPTION", "use_memory applies to tree-of-thought runs only.")
     puzzle = _resolve(ctx, body)
     cfg = {"strategy": body.strategy, "order": body.order, "max_nodes": body.max_nodes, "timeout_s": body.timeout_s}
+    if mode == "multi-agent":
+        cfg.update(max_hops=body.max_hops, faults=[f.model_dump() for f in body.faults],
+                   inject_tool_failure=body.inject_tool_failure.model_dump() if body.inject_tool_failure else None)
+    if mode == "tot":
+        cfg.update(use_memory=body.use_memory, user_id=body.user_id)
     run, duplicate = ctx.runs.create(mode, puzzle["board"], puzzle, cfg, idem)
     response.status_code = 200 if duplicate else 202
     view = ctx.runs.view(run)
@@ -47,6 +57,15 @@ def solve_tot(body: SolveRequest, response: Response, ctx: Context = Depends(get
 def solve_multi(body: SolveRequest, response: Response, ctx: Context = Depends(get_ctx),
                 idempotency_key: str | None = Header(default=None)) -> dict:
     return _start("multi-agent", body, ctx, response, idempotency_key)
+
+
+@router.get("", response_model=list[RunListItem], summary="Recent runs (newest first), including resumable ones")
+def list_runs(limit: int = Query(default=20, ge=1, le=100), ctx: Context = Depends(get_ctx)) -> list[dict]:
+    out = []
+    for r in ctx.db.list_runs(limit=limit):
+        out.append({**run_summary(ctx, r), "puzzle_id": r["puzzle_id"], "session_id": r["session_id"], "thread_id": r["thread_id"],
+                    "board": r["board"], "config": r["config"]})
+    return out
 
 
 @router.get("/{run_id}", response_model=SolveRun, summary="Run status and result")

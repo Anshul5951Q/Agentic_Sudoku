@@ -1,10 +1,13 @@
 """Tool-failure handling (Unit 3, U3-4): inject, catch, explain, retry, route to a fallback."""
 from __future__ import annotations
 
+import logging
 from dataclasses import dataclass, field
 from typing import Any, Callable
 
 from .trace import Recorder
+
+log = logging.getLogger("sudokumind.tools")
 
 
 class ToolError(Exception):
@@ -77,7 +80,13 @@ class ToolRunner:
                 return res
             except Exception as e:  # tool errors must never crash the supervisor
                 self.failures += 1
-                msg = f"{type(e).__name__}: {str(e)[:200]}"
+                # Only our own ToolError text is safe to record; anything else may contain paths/secrets, so the trace gets
+                # just the exception type and the detail goes to the server log.
+                if isinstance(e, ToolError):
+                    msg = f"ToolError: {str(e)[:200]}"
+                else:
+                    msg = f"{type(e).__name__} (details in the server log)"
+                    log.warning("tool %s failed: %r", name, e)
                 res.errors.append(msg)
                 self._emit("tool_failure", reason_code="TOOL_FAILURE",
                            reason=f"{name} failed ({msg}); " + ("retrying" if attempt <= self.max_retries else "no retries left"),

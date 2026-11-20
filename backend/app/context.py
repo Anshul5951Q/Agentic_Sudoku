@@ -9,6 +9,7 @@ from fastapi import Request
 from .core.config import Settings
 from .persistence.db import Database
 from .services.approvals import ApprovalService
+from .services.chat import ChatService
 from .services.evaluation import EvaluationService
 from .services.runs import RunManager
 
@@ -20,6 +21,7 @@ class Context:
     runs: RunManager
     approvals: ApprovalService
     evaluation: EvaluationService
+    chat: ChatService
     ollama_models: Callable[[str], set[str] | None]
     rag_answer: Callable[[str, int], dict]
     extras: dict[str, Any] = field(default_factory=dict)

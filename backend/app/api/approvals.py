@@ -10,7 +10,7 @@ router = APIRouter(prefix="/api/approvals", tags=["oversight"])
 @router.post("", response_model=Approval, status_code=201,
              summary="Ask the proposer for a move; it is guarded and held for human approval (never auto-applied)")
 def request_approval(body: ApprovalRequest, ctx: Context = Depends(get_ctx)) -> dict:
-    return ctx.approvals.request(body.board, body.user_text)
+    return ctx.approvals.request(body.board, body.user_text, body.proposer)
 
 
 @router.get("", response_model=list[Approval], summary="List approval records")

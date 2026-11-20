@@ -36,6 +36,8 @@ def derive(run: dict, events: list[dict], live: bool) -> dict:
             "latest_message": {"event": last["event"], "sequence": last["sequence"], "reason_code": last.get("reason_code"),
                                "reason": last.get("reason"), "timestamp": last["timestamp"]},
             "event_count": len(mine), "tool_calls": sum(e["event"] == "tool_call" for e in mine),
+            "retries": sum(e["event"] == "tool_call" and (e.get("data") or {}).get("attempt", 1) > 1 for e in mine),
+            "recovered": sum(e["event"] == "tool_recovered" for e in mine),
             "first_activity_at": mine[0]["timestamp"], "last_activity_at": last["timestamp"],
             "active_seconds": _secs(mine[0]["timestamp"], last["timestamp"]), "error": err})
     routing = [{"hop": e["data"].get("hop"), "to": e["data"].get("to"), "reason": e.get("reason"), "sequence": e["sequence"]}

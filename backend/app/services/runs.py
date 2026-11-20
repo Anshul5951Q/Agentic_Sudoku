@@ -22,7 +22,9 @@ from ta2.agents import VerifierAgent
 from ta2.checkpointer import (CheckpointError, build_graph, load_state, mark_paused, mark_terminal, open_saver,
                               resume_search, start_search)
 from ta2.models import TraceEvent, utc_now
-from ta2.supervisor import Supervisor
+from ta2.failure import FailureInjector, ToolRunner
+from ta2.memory import SudokuMemory
+from ta2.supervisor import Supervisor, default_solver
 
 from ..core.errors import APIError, ID_RE, not_found
 from ..core.ids import new_id
@@ -56,11 +58,17 @@ def request_hash(mode: str, board, config: dict) -> str:
 
 
 class RunManager:
-    def __init__(self, db, settings, cot_runner: Callable[[list], dict] | None = None):
+    def __init__(self, db, settings, cot_runner: Callable[[list], dict] | None = None,
+                 rag_retrieve: Callable[[], object] | None = None):
         self.db, self.s = db, settings
         self.cot_runner = cot_runner
+        self.rag_retrieve = rag_retrieve or self._default_rag_retrieve
         self.controls: dict[str, RunControl] = {}
         self.lock = threading.RLock()
+
+    def _default_rag_retrieve(self):
+        from ta2 import rag
+        return rag.retrieve_scored("dead end backtracking candidates", 3, store=rag.get_vectorstore(self.s.chroma_dir))
 
     # ------------------------------------------------------------------ creation
     def recover(self) -> int:
@@ -284,8 +292,9 @@ class RunManager:
         seg_start = perf_counter()
         elapsed_before = (run.get("progress") or {}).get("active_seconds", 0.0)
         try:
+            hook = SudokuMemory(self.s.memory_db, user_id=cfg.get("user_id", "demo-user")) if cfg.get("use_memory") else None
             with open_saver(self.s.checkpoint_db) as saver:
-                app = build_graph(saver)
+                app = build_graph(saver, memory_hook=hook)
                 while True:
                     try:
                         if not started:
@@ -328,23 +337,51 @@ class RunManager:
         finally:
             ctl.cancel.clear()
 
+    @staticmethod
+    def _fault_solver(faults: list[dict]):
+        """Wrap the real solver with CONTROLLED demo faults; everything else is the unchanged deterministic solver."""
+        by = {f["variant"]: f["kind"] for f in faults}
+
+        def solver(puzzle, variant, deadline, max_nodes):
+            kind = by.get(variant["order"])
+            if kind == "crash":
+                raise RuntimeError("injected demo fault: crash")
+            if kind == "timeout":
+                time.sleep(max(0.0, deadline - perf_counter()) + 0.1)
+            out = default_solver(puzzle, variant, deadline, max_nodes)
+            if kind == "invalid_board":
+                out = {**out, "solution": [[1, 1, 1, 1] for _ in range(4)], "status": "solved"}
+            return out
+        return solver
+
     def _multi_worker(self, run_id: str, resume: bool) -> None:
         run = self.db.get_run(run_id)
         cfg = run["config"]
         self.db.update_run(run_id, status="running", started_at=utc_now())
-        sup = Supervisor(max_hops=self.s.max_hops, timeout_s=cfg["timeout_s"], max_nodes=cfg["max_nodes"], strategy=cfg["strategy"])
+        faults = cfg.get("faults") or []
+        timeout_s = min(cfg["timeout_s"], 1.5) if any(f["kind"] == "timeout" for f in faults) else cfg["timeout_s"]
+        max_hops = cfg.get("max_hops") or self.s.max_hops
+        tools, ctx_tools = None, ()
+        tf = cfg.get("inject_tool_failure")
+        if tf:
+            tools = ToolRunner({"rag_retrieve": lambda puzzle: self.rag_retrieve()},
+                               injector=FailureInjector({tf["tool"]: tf["times"]}), max_retries=1)
+            ctx_tools = ("rag_retrieve",)
+        sup = Supervisor(max_hops=max_hops, timeout_s=timeout_s, max_nodes=cfg["max_nodes"], strategy=cfg["strategy"],
+                         solver=self._fault_solver(faults) if faults else None, tool_runner=tools, context_tools=ctx_tools)
         t0 = perf_counter()
         res = sup.solve_and_vote(run["board"], run_id=run_id)
-        events = self._merge_multi_events(run_id, run["thread_id"], res)
+        events = self._merge_multi_events(run_id, run["thread_id"], res, cfg, max_hops)
         self.db.insert_events(run_id, events)
         verified = bool(res["solution"] is not None and VerifierAgent().verify_final(res["solution"], run["board"]).ok)
         outcome = "solved" if verified else ("no_valid_vote" if res["failure"] and res["failure"]["code"] in
                                               ("NO_VALID_VOTE", "NO_UNIQUE_WINNER") else "failed")
         counters = {"solver_calls": res["solver_calls"], "hops": res["hops"], "max_hops": res["max_hops"],
+                    "tool_calls": res["tool_calls"], "tool_failures": res["tool_failures"],
                     "nodes": sum(a["nodes"] for a in res["attempts"]),
                     "pruned": sum(a["counters"].get("pruned", 0) for a in res["attempts"]),
                     "backtracks": sum(a["counters"].get("backtracks", 0) for a in res["attempts"]),
-                    "attempts": [{k: v for k, v in a.items() if k not in ("trace", "solution")} | {"valid": a.get("valid", False)}
+                    "attempts": [{k: v for k, v in a.items() if k != "trace"} | {"valid": a.get("valid", False)}
                                  for a in res["attempts"]]}
         result = {"outcome": outcome, "verified": verified, "solution": res["solution"] if verified else None,
                   "failure": res["failure"], "counters": counters, "vote": res["vote"], "llm_calls": res["llm_calls"],
@@ -353,9 +390,17 @@ class RunManager:
                            result=result, progress=counters)
 
     @staticmethod
-    def _merge_multi_events(run_id: str, thread_id: str, res: dict) -> list[dict]:
+    def _merge_multi_events(run_id: str, thread_id: str, res: dict, cfg: dict | None = None, max_hops: int | None = None) -> list[dict]:
         """One ordered stream: supervisor events with each variant's real search events inserted after dispatch."""
-        merged: list[tuple[dict, dict]] = []
+        cfg = cfg or {}
+        faults = cfg.get("faults") or []
+        start = TraceEvent(event_id="x", run_id=run_id, thread_id=thread_id, sequence=0, event="search_started", agent="Supervisor",
+                           reason_code="SUPERVISED_RUN",
+                           reason=("supervised run of candidate-order variants" +
+                                   (f"; CONTROLLED DEMO FAULTS injected: {', '.join(f['variant'] + '=' + f['kind'] for f in faults)}" if faults else "") +
+                                   (f"; injected tool failure: {cfg['inject_tool_failure']['tool']} x{cfg['inject_tool_failure']['times']}" if cfg.get("inject_tool_failure") else "")),
+                           data={"max_hops": max_hops, "demo_faults": faults, "variants_are": "candidate-order variants, not independent agents"}).model_dump()
+        merged: list[tuple[dict, dict]] = [(start, {})]
         terminal = None
         for e in res["events"]:
             if e["event"] in TERMINAL_EVENTS:

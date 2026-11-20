@@ -171,3 +171,11 @@ def test_supervisor_degrades_gracefully_when_tool_never_recovers():
     assert r["status"] == "solved"  # deterministic solving does not depend on the tool
     assert r["events"][[e["event"] for e in r["events"]].index("tool_failure")]["reason_code"] == "TOOL_FAILURE"
     assert any(e["reason_code"] == "TOOL_UNAVAILABLE" for e in r["events"] if e["event"] == "tool_failure")
+
+
+def test_tool_failure_trace_never_contains_raw_exception_text():
+    def bad():
+        raise ConnectionError(r"refused at C:\Users\someone\secret.txt")
+    rec = Recorder("leak")
+    res = ToolRunner({"t": bad}, max_retries=0, recorder=rec).call("t")
+    assert "ConnectionError" in res.errors[0] and "someone" not in str(res.errors) and "someone" not in str(rec.events)

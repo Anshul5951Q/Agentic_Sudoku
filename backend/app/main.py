@@ -10,13 +10,14 @@ from fastapi.openapi.utils import get_openapi
 from fastapi.responses import JSONResponse
 
 from . import __version__
-from .api import agents, analytics, approvals, evaluation, health, history, memory, puzzles, rag, solve, ws
+from .api import agents, analytics, approvals, chat, evaluation, health, history, memory, puzzles, rag, solve, ws
 from .context import Context
 from .core import errors
 from .core.config import Settings
 from .persistence.db import Database
 from .schemas import APIError as APIErrorSchema
 from .services.approvals import ApprovalService
+from .services.chat import ChatService
 from .services.evaluation import EvaluationService
 from .services.runs import RunManager
 from .services.runtime import probe_ollama
@@ -75,12 +76,12 @@ def _default_rag(settings: Settings) -> Callable[[str, int], dict]:
 
 
 def create_app(settings: Settings | None = None, *, rag_answer=None, cot_runner=None, evaluation_runner=None,
-               approval_llm=None, ollama_models=None) -> FastAPI:
+               approval_llm=None, ollama_models=None, chat_llm=None, rag_retrieve=None) -> FastAPI:
     """Dependencies can be injected so tests run without Ollama (fake RAG/LLM/CoT) or with Ollama 'down'."""
     s = settings or Settings.from_env()
     db = Database(s.db_path)
-    ctx = Context(settings=s, db=db, runs=RunManager(db, s, cot_runner), approvals=ApprovalService(db, s, approval_llm),
-                  evaluation=EvaluationService(db, evaluation_runner), ollama_models=ollama_models or probe_ollama,
+    ctx = Context(settings=s, db=db, runs=RunManager(db, s, cot_runner, rag_retrieve), approvals=ApprovalService(db, s, approval_llm),
+                  evaluation=EvaluationService(db, evaluation_runner), chat=ChatService(s, chat_llm), ollama_models=ollama_models or probe_ollama,
                   rag_answer=rag_answer or _default_rag(s))
     ctx.runs.recover()
     app = FastAPI(title="SudokuMind AI API", version=__version__, openapi_tags=TAGS,
@@ -99,7 +100,7 @@ def create_app(settings: Settings | None = None, *, rag_answer=None, cot_runner=
         return await call_next(request)
 
     for r in (health.router, puzzles.router, solve.router, agents.router, memory.router, rag.router, history.router,
-              analytics.router, evaluation.router, approvals.router, ws.router):
+              analytics.router, evaluation.router, approvals.router, chat.router, ws.router):
         app.include_router(r, responses={c: {"model": APIErrorSchema, "description": "Error envelope (spec 8.5)"}
                                          for c in (404, 408, 409, 413, 422, 500, 503)})
     _install_openapi(app)

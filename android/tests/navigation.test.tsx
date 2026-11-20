@@ -27,7 +27,7 @@ describe('navigation', () => {
     expect(screen).toHavePathname('/');
     expect(screen.getByTestId('home-screen')).toBeTruthy();
     const expected: Record<string, [string, string]> = {
-      play: ['/play', 'play-screen'], 'ai-lab': ['/ai-lab', 'placeholder-ai-lab'], memory: ['/memory', 'placeholder-memory'],
+      play: ['/play', 'play-screen'], 'ai-lab': ['/ai-lab', 'ai-lab-screen'], memory: ['/memory', 'memory-screen'],
       analytics: ['/analytics', 'placeholder-analytics'], index: ['/', 'home-screen'],
     };
     for (const tab of ['play', 'ai-lab', 'memory', 'analytics', 'index']) {

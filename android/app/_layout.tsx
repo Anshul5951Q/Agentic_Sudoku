@@ -13,6 +13,7 @@ export default function RootLayout() {
         <Stack screenOptions={{ headerStyle: { backgroundColor: colors.surface }, headerTintColor: colors.text, contentStyle: { backgroundColor: colors.bg } }}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="settings" options={{ title: 'Settings', presentation: 'card' }} />
+          <Stack.Screen name="run/[runId]" options={{ title: 'Run' }} />
         </Stack>
       </ConnectionProvider>
     </SafeAreaProvider>

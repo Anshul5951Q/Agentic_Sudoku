@@ -20,7 +20,7 @@ tests/               Jest + React Native Testing Library (v14: async render/fire
 ```powershell
 cd android
 npm install
-npm test            # 79 tests
+npm test
 npm run typecheck
 npx expo start --android      # starts Metro and opens Expo Go on a running emulator
 ```
@@ -43,11 +43,29 @@ automatically for a physical phone) → 4. if that host is unreachable on Androi
 * Metro started with `CI=1` does **not** watch files; after editing code restart Metro and relaunch Expo Go.
 * Dev builds log connection decisions as `[connection] …` (host class and error kind only, no payloads).
 
+## Screens added in the analytics/hardening phase
+* **History** (`/history`, from Home and Analytics): saved sessions → session detail → reopen in Play, resume an eligible
+  checkpointed run, open a finished run as a **recorded replay**, export its trace as JSON (Android share sheet), tick two
+  runs and **compare** them (`/compare`, backend refuses runs of different puzzles).
+* **Analytics** tab: evaluation-run interface (start, poll, pick a stored evaluation), five-case TA1-vs-TA2 table (every
+  cell opens the recorded trace behind it, `/eval-trace`), one-measure-per-chart bars for time / nodes / solver calls /
+  LLM calls, single vs multi-agent trade-off computed from the stored values, sequential vs parallel, CoT vs ToT,
+  memory off/on, RAG k=1 vs k=3, voting tables, challenge analysis, and the stored-run comparisons with run links.
+* **Recorded replay (offline)** (`/replay`): two real traces bundled in `assets/recorded/`, labelled as recordings.
+
+## Build the APK (local, no cloud build)
+```powershell
+$env:JAVA_HOME = "C:\Program Files\Android\Android Studio\jbr"
+$env:ANDROID_HOME = "$env:LOCALAPPDATA\Android\Sdk"
+npm run prebuild:android          # generates android/android (git-ignored)
+npm run build:apk                 # -> android/android/app/build/outputs/apk/release/app-release.apk
+& "$env:ANDROID_HOME\platform-toolsdb.exe" install -r androidppuild\outputspkeleasepp-release.apk
+```
+The release APK bundles the JavaScript (no Metro needed) and is signed with the Expo template's debug keystore (fine
+for local installs, not for a store). Connect it to the backend as in `../docs/LOCAL_NETWORK.md`.
+
 ## Known gaps
-* The Analytics tab is still a placeholder; the search-tree visualisation and WebSocket live view are not built yet;
-  "Solve with AI" on Play is disabled (runs start from the AI Lab).
 * Multi-agent and CoT traces are written when the run ends, so their per-agent time spans are near zero; ToT spans include
   any pause or downtime (the UI labels them as spans, not active time).
-* Plain `http://` works in Expo Go. A standalone APK needs cleartext traffic enabled via the build-properties plugin (Phase 7).
 * Tab icons are emoji glyphs (no icon package added). Save stores the puzzle's clues, not in-progress entries.
-* Physical-phone test not yet done (needs a phone).
+* Export uses the Android share sheet (text JSON); there is no direct "save to file" without adding a native dependency.

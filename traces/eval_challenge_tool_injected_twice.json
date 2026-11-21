@@ -1,0 +1,313 @@
+{
+  "kind": "eval_challenge_tool_injected_twice",
+  "generated_at": "2026-11-21T09:30:05.822621+00:00",
+  "models": {
+    "llm": "qwen2.5:3b",
+    "embeddings": "nomic-embed-text"
+  },
+  "data": {
+    "status": "solved",
+    "routing_trace": [
+      {
+        "hop": 1,
+        "from": "Supervisor",
+        "to": "Verifier",
+        "reason": "validate the input puzzle"
+      },
+      {
+        "hop": 2,
+        "from": "Verifier",
+        "to": "Tool:candidate_summary",
+        "reason": "optional context tool"
+      },
+      {
+        "hop": 3,
+        "from": "Tool:candidate_summary",
+        "to": "SolverVariants",
+        "reason": "run 3 candidate-order variants"
+      },
+      {
+        "hop": 4,
+        "from": "SolverVariants",
+        "to": "Verifier",
+        "reason": "verify every attempt's board deterministically"
+      },
+      {
+        "hop": 5,
+        "from": "Verifier",
+        "to": "Supervisor",
+        "reason": "tally votes from verified solutions only"
+      }
+    ],
+    "events": [
+      {
+        "event_id": "challenge-tool-injected_twice-event-00000",
+        "run_id": "challenge-tool-injected_twice",
+        "thread_id": "challenge-tool-injected_twice",
+        "sequence": 0,
+        "event": "route",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "ROUTE",
+        "reason": "Supervisor -> Verifier: validate the input puzzle",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-21T09:29:57.215487+00:00",
+        "data": {
+          "hop": 1,
+          "to": "Verifier"
+        }
+      },
+      {
+        "event_id": "challenge-tool-injected_twice-event-00001",
+        "run_id": "challenge-tool-injected_twice",
+        "thread_id": "challenge-tool-injected_twice",
+        "sequence": 1,
+        "event": "route",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "ROUTE",
+        "reason": "Verifier -> Tool:candidate_summary: optional context tool",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-21T09:29:57.215487+00:00",
+        "data": {
+          "hop": 2,
+          "to": "Tool:candidate_summary"
+        }
+      },
+      {
+        "event_id": "challenge-tool-injected_twice-event-00002",
+        "run_id": "challenge-tool-injected_twice",
+        "thread_id": "challenge-tool-injected_twice",
+        "sequence": 2,
+        "event": "tool_call",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "TOOL_CALL",
+        "reason": "candidate_summary attempt 1",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-21T09:29:57.215487+00:00",
+        "data": {
+          "tool": "candidate_summary",
+          "attempt": 1
+        }
+      },
+      {
+        "event_id": "challenge-tool-injected_twice-event-00003",
+        "run_id": "challenge-tool-injected_twice",
+        "thread_id": "challenge-tool-injected_twice",
+        "sequence": 3,
+        "event": "tool_failure",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "TOOL_FAILURE",
+        "reason": "candidate_summary failed (ToolError: injected failure in tool 'candidate_summary'); retrying",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-21T09:29:57.215487+00:00",
+        "data": {
+          "tool": "candidate_summary",
+          "attempt": 1
+        }
+      },
+      {
+        "event_id": "challenge-tool-injected_twice-event-00004",
+        "run_id": "challenge-tool-injected_twice",
+        "thread_id": "challenge-tool-injected_twice",
+        "sequence": 4,
+        "event": "tool_call",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "TOOL_CALL",
+        "reason": "candidate_summary attempt 2",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-21T09:29:57.215487+00:00",
+        "data": {
+          "tool": "candidate_summary",
+          "attempt": 2
+        }
+      },
+      {
+        "event_id": "challenge-tool-injected_twice-event-00005",
+        "run_id": "challenge-tool-injected_twice",
+        "thread_id": "challenge-tool-injected_twice",
+        "sequence": 5,
+        "event": "tool_failure",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "TOOL_FAILURE",
+        "reason": "candidate_summary failed (ToolError: injected failure in tool 'candidate_summary'); no retries left",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-21T09:29:57.215487+00:00",
+        "data": {
+          "tool": "candidate_summary",
+          "attempt": 2
+        }
+      },
+      {
+        "event_id": "challenge-tool-injected_twice-event-00006",
+        "run_id": "challenge-tool-injected_twice",
+        "thread_id": "challenge-tool-injected_twice",
+        "sequence": 6,
+        "event": "tool_failure",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "TOOL_UNAVAILABLE",
+        "reason": "candidate_summary unavailable after 2 attempt(s); continuing without it",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-21T09:29:57.215487+00:00",
+        "data": {
+          "tool": "candidate_summary"
+        }
+      },
+      {
+        "event_id": "challenge-tool-injected_twice-event-00007",
+        "run_id": "challenge-tool-injected_twice",
+        "thread_id": "challenge-tool-injected_twice",
+        "sequence": 7,
+        "event": "route",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "ROUTE",
+        "reason": "Tool:candidate_summary -> SolverVariants: run 3 candidate-order variants",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-21T09:29:57.215487+00:00",
+        "data": {
+          "hop": 3,
+          "to": "SolverVariants"
+        }
+      },
+      {
+        "event_id": "challenge-tool-injected_twice-event-00008",
+        "run_id": "challenge-tool-injected_twice",
+        "thread_id": "challenge-tool-injected_twice",
+        "sequence": 8,
+        "event": "route",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "ROUTE",
+        "reason": "SolverVariants -> Verifier: verify every attempt's board deterministically",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-21T09:29:57.219941+00:00",
+        "data": {
+          "hop": 4,
+          "to": "Verifier"
+        }
+      },
+      {
+        "event_id": "challenge-tool-injected_twice-event-00009",
+        "run_id": "challenge-tool-injected_twice",
+        "thread_id": "challenge-tool-injected_twice",
+        "sequence": 9,
+        "event": "route",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "ROUTE",
+        "reason": "Verifier -> Supervisor: tally votes from verified solutions only",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-21T09:29:57.219941+00:00",
+        "data": {
+          "hop": 5,
+          "to": "Supervisor"
+        }
+      },
+      {
+        "event_id": "challenge-tool-injected_twice-event-00010",
+        "run_id": "challenge-tool-injected_twice",
+        "thread_id": "challenge-tool-injected_twice",
+        "sequence": 10,
+        "event": "vote_tallied",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "VOTE",
+        "reason": "vote counts only deterministically verified complete boards from candidate-order variants; invalid, partial, errored or timed-out attempts are excluded",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-21T09:29:57.219941+00:00",
+        "data": {
+          "votes": {
+            "1234/3412/2143/4321": 3
+          },
+          "eligible": [
+            "variant-asc",
+            "variant-desc",
+            "variant-middle"
+          ]
+        }
+      },
+      {
+        "event_id": "challenge-tool-injected_twice-event-00011",
+        "run_id": "challenge-tool-injected_twice",
+        "thread_id": "challenge-tool-injected_twice",
+        "sequence": 11,
+        "event": "search_completed",
+        "agent": "Supervisor",
+        "depth": 0,
+        "cell": null,
+        "candidate": null,
+        "candidates": null,
+        "reason_code": "SOLVED",
+        "reason": "verified winner selected",
+        "board_snapshot": null,
+        "node_id": null,
+        "timestamp": "2026-11-21T09:29:57.219941+00:00",
+        "data": {}
+      }
+    ],
+    "context": {
+      "candidate_summary": {
+        "ok": false,
+        "value": null,
+        "attempts": 2,
+        "recovered": false,
+        "via_fallback": false,
+        "explanation": "candidate_summary unavailable after 2 attempt(s); continuing without it",
+        "errors": [
+          "ToolError: injected failure in tool 'candidate_summary'",
+          "ToolError: injected failure in tool 'candidate_summary'"
+        ]
+      }
+    }
+  }
+}

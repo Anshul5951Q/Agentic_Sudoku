@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, Query
 
 from ..context import Context, get_ctx
-from ..core.errors import check_id, not_found
-from ..schemas import SessionDetail, SessionList
+from ..core.errors import APIError, check_id, not_found
+from ..schemas import RunComparison, SessionDetail, SessionList
 
 router = APIRouter(prefix="/api/history", tags=["history"])
 
@@ -28,6 +28,26 @@ def session_summary(ctx: Context, s: dict) -> dict:
 def list_history(limit: int = Query(default=50, ge=1, le=100), offset: int = Query(default=0, ge=0), ctx: Context = Depends(get_ctx)) -> dict:
     sessions, total = ctx.db.list_sessions(limit, offset)
     return {"total": total, "limit": limit, "offset": offset, "sessions": [session_summary(ctx, s) for s in sessions]}
+
+
+COMPARE_FIELDS = ("outcome", "verified", "seconds", "nodes", "pruned", "backtracks", "dead_ends", "llm_calls", "tool_calls",
+                  "solver_calls", "memory_confirmed")
+
+
+@router.get("/compare", response_model=RunComparison, summary="Compare two stored runs of the same puzzle, metric by metric")
+def compare(a: str, b: str, ctx: Context = Depends(get_ctx)) -> dict:
+    from .analytics import _metrics
+    check_id(a, "a")
+    check_id(b, "b")
+    if a == b:
+        raise APIError(422, "SAME_RUN", "Pick two different runs to compare.")
+    ra, rb = ctx.runs.get(a), ctx.runs.get(b)
+    if ra["board"] != rb["board"]:
+        raise APIError(422, "RUNS_NOT_COMPARABLE", "The two runs were made on different puzzles; compare runs of the same puzzle.")
+    ma, mb = _metrics(ra), _metrics(rb)
+    diffs = [{"metric": f, "a": ma.get(f), "b": mb.get(f), "equal": ma.get(f) == mb.get(f)} for f in COMPARE_FIELDS]
+    return {"same_puzzle": True, "board": ra["board"], "a": ma, "b": mb, "differences": diffs,
+            "note": "both columns are read from the stored runs; nothing is recomputed or estimated"}
 
 
 @router.get("/{session_id}", response_model=SessionDetail, summary="Session with its puzzle and all runs")

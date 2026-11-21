@@ -22,7 +22,7 @@ from ta2.agents import VerifierAgent
 from ta2.checkpointer import (CheckpointError, build_graph, load_state, mark_paused, mark_terminal, open_saver,
                               resume_search, start_search)
 from ta2.models import TraceEvent, utc_now
-from ta2.failure import FailureInjector, ToolRunner
+from ta2.failure import FailureInjector, ToolRunner, fault_solver
 from ta2.memory import SudokuMemory
 from ta2.supervisor import Supervisor, default_solver
 
@@ -342,20 +342,8 @@ class RunManager:
 
     @staticmethod
     def _fault_solver(faults: list[dict]):
-        """Wrap the real solver with CONTROLLED demo faults; everything else is the unchanged deterministic solver."""
-        by = {f["variant"]: f["kind"] for f in faults}
-
-        def solver(puzzle, variant, deadline, max_nodes):
-            kind = by.get(variant["order"])
-            if kind == "crash":
-                raise RuntimeError("injected demo fault: crash")
-            if kind == "timeout":
-                time.sleep(max(0.0, deadline - perf_counter()) + 0.1)
-            out = default_solver(puzzle, variant, deadline, max_nodes)
-            if kind == "invalid_board":
-                out = {**out, "solution": [[1, 1, 1, 1] for _ in range(4)], "status": "solved"}
-            return out
-        return solver
+        """CONTROLLED demo faults around the unchanged deterministic solver (shared with the evaluation harness)."""
+        return fault_solver(faults, default_solver)
 
     def _multi_worker(self, run_id: str, resume: bool) -> None:
         run = self.db.get_run(run_id)

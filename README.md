@@ -38,15 +38,16 @@ yet started. See **Honest limitations** below and the per-phase reports in the g
 ## Structure
 
 ```
-ta1/                frozen baseline (hash-checked)
-ta2/                engine + agents + supervisor + memory + rag + oversight + evaluation
-backend/            FastAPI app (routers, services, Pydantic schemas, SQLite persistence)
-android/            Expo Router + React Native + TypeScript client
-docs/               docs/API.md, docs/PHASE0_AUDIT.md
+ta1/                frozen baseline (hash-checked, never edited)
+ta2/                engine + agents + supervisor + memory + rag + oversight + evaluation (also a CLI)
+backend/            FastAPI app (routers, services, Pydantic schemas, SQLite persistence) + its tests
+android/            Expo Router + React Native + TypeScript client + Jest tests
+traces/             real recorded evidence (CLI runs: python -m ta2.main --mode demos / evaluate)
 tests/              engine + Unit 3/4 pytest suites
-traces/             real recorded demo evidence (produced by ta2/demos.py)
-requirements.txt    runtime deps (langchain, langgraph, langchain-chroma, chromadb)
-requirements-dev.txt    pytest
+scripts/            record_app_fixtures.py (Jest fixtures from the real backend), build_report_tables.py
+docs/               API.md, LOCAL_NETWORK.md, DEMO_SCRIPT.md, TESTING.md, EVIDENCE_CHECKLIST.md, PHASE0_AUDIT.md
+docs/report/        report-evidence package: ARCHITECTURE, ROLE_TABLE, COMPONENT_CHECKLIST, FIVE_CASE_TABLE,
+                    LIMITATIONS, CONTRIBUTION_TABLE (template), AI_ASSISTANCE_DISCLOSURE (template)
 ```
 
 ## Quickstart
@@ -79,7 +80,8 @@ python -m ta2.main --mode inject-failure             # tool failure -> retry / f
 python -m ta2.main --mode hop-limit                  # annotated routing trace + MAX_HOPS stop
 python -m ta2.main --mode approve                    # approved / rejected / prompt-injection paths
 python -m ta2.main --mode challenge                  # prompt-injection before/after (real Qwen calls)
-python -m ta2.main --mode evaluate                   # five-case TA1-vs-TA2 evaluation
+python -m ta2.main --mode evaluate                   # five-case TA1-vs-TA2 evaluation (+ sequential vs parallel, challenge, RAG k=1/k=3)
+python scripts/build_report_tables.py                # regenerate docs/report/FIVE_CASE_TABLE.md and ROLE_TABLE.md from traces/
 python -m ta2.main --mode demos                      # all of the above, saved to traces/
 ```
 
@@ -103,6 +105,11 @@ npx expo start --android       # starts Metro and opens Expo Go on a running emu
 Base URL lookup, in order: Settings override → `EXPO_PUBLIC_API_BASE_URL` → Expo dev-server host →
 emulator alias `10.0.2.2`. For an emulator against a loopback-only backend, the verified route is
 `adb reverse tcp:8000 tcp:8000` + `EXPO_PUBLIC_API_BASE_URL=http://localhost:8000`.
+
+### 4b. Installable APK
+
+See [android/README.md](android/README.md#build-the-apk-local-no-cloud-build) (`npm run prebuild:android`, `npm run build:apk`,
+`adb install`). Connect a phone with [docs/LOCAL_NETWORK.md](docs/LOCAL_NETWORK.md).
 
 ### 5. Tests
 
@@ -152,39 +159,18 @@ independent reasoning. On most unique-solution puzzles they produce identical tr
 
 ## Honest limitations
 
-1. **Qwen 3B is a weak Sudoku player.** In the recorded runs it rarely proposed a legal move for the
-   sample board (see `oversight.json`, `challenge_injection.json`), even with no attack. It is advisory
-   only: every suggestion passes the deterministic filter, and the approval demo uses a clearly labelled
-   deterministic stand-in for the approve/reject paths because the real model offered no legal move.
-2. The injection detector is rule-based and not exhaustive. The real protection is that no text can
-   change which moves are legal, and nothing is applied without validation and human approval.
-3. TA2's MRV search does not backtrack on the unique-solution 4×4 puzzles tested (naked singles suffice),
-   so dead ends, pruning and mid-search resume are demonstrated with the TA1 cell order (`first_empty`).
-4. TA1 CoT is non-deterministic; its recorded outcomes are single samples.
-5. "Nodes" are counted differently for TA1 (`Try` lines in its own search tree) and TA2 (search nodes
-   created, including the root); compare trends, not exact equality.
-6. Timing differences between the deterministic solvers are microseconds; the multi-agent run costs more
-   (3 solver runs, thread-pool overhead) without being more correct on these puzzles.
-7. The RAG relevance threshold (0.53) was calibrated on 16 queries; it is a measured separation on a
-   small set, not a general guarantee.
-8. The API has no authentication and is meant for a trusted local network; see `docs/API.md` §10.
-9. On the Android emulator, the app cannot reach a loopback-only backend through `10.0.2.2` — only through
-   `adb reverse`. The cause is unidentified; the fallback is documented in `android/README.md`.
-10. The Analytics tab, history replay with playback, APK release and physical-device test are not built
-    yet (planned for Phase 5).
+The full list, with the measured numbers behind each point, is [docs/report/LIMITATIONS.md](docs/report/LIMITATIONS.md). In short:
+Qwen 3B CoT is usually wrong on these puzzles; multi-agent costs ≈3× the nodes and several times the time of one solver
+without being more correct here; sequential dispatch beat the thread pool on 4×4; the injection pattern guard misses
+disguised attacks (the deterministic legality check and human approval catch them); MRV rarely backtracks, so dead ends are
+shown with the TA1 cell order; the API has no authentication; the APK is debug-signed.
 
-## Report evidence checklist
+## Report evidence
 
-- [x] Dead-end / pruning trace (`checkpoint_resume.json`, `eval_case*_ta1_tot_search_tree.json`)
-- [x] RAG k=1 vs k=3 and an unanswerable query (`rag_k1_k3.json`)
-- [x] Stop/restart long-term memory (`long_term_memory.json`)
-- [x] Checkpoint DB + stable thread ID + mid-search resume (`checkpoint_resume.json`)
-- [x] Voting table with valid flag, nodes, time (`supervisor_routing.json`)
-- [x] Five-case TA1 vs TA2 table (`evaluation.json`)
-- [x] Injected failure and recovery; approved/rejected/injection paths
-- [x] Role table (above) and contracts in code
-- [ ] Analytics tab in the app; history playback; APK on a physical device
-- [ ] Contribution table and AI-assistance disclosure (for your own declaration; the SOP requires it)
+* Demo walkthrough (spec §16, 19 steps, recorded-replay fallback): [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md)
+* Evidence checklist mapped to spec §17: [docs/EVIDENCE_CHECKLIST.md](docs/EVIDENCE_CHECKLIST.md)
+* Report package: [docs/report/](docs/report/)
+* Regression and recovery matrix: [docs/TESTING.md](docs/TESTING.md)
 
 ## Original sample puzzle
 
@@ -208,7 +194,8 @@ Unique solution (verified by `count_solutions`):
 
 This project was developed with Claude Code (Anthropic) assistance across all phases. The academic
 course requires the student to write their own contribution table and AI-assistance disclosure before
-submission (see **Report evidence checklist** above and `SUDOKUMIND_AI_REQUIREMENTS.md` §2.4).
+submission: templates are in [docs/report/CONTRIBUTION_TABLE.md](docs/report/CONTRIBUTION_TABLE.md) and
+[docs/report/AI_ASSISTANCE_DISCLOSURE.md](docs/report/AI_ASSISTANCE_DISCLOSURE.md).
 
 ## License
 

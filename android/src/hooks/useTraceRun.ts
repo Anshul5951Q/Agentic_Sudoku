@@ -7,7 +7,9 @@ import type { SolveRun, TraceEvent } from '@/types/api';
 const TERMINAL = ['completed', 'failed', 'cancelled'];
 
 /** Loads a run and its stored trace; if the run is still live, follows it over the WebSocket (with catch-up). */
-export function useTraceRun(runId: string, opts: { WebSocketImpl?: typeof WebSocket; baseDelayMs?: number } = {}) {
+export interface RecordedTrace { source: string; run: SolveRun; trace: { events: TraceEvent[] } }
+
+export function useTraceRun(runId: string, opts: { WebSocketImpl?: typeof WebSocket; baseDelayMs?: number; recorded?: RecordedTrace } = {}) {
   const { api, baseUrl } = useConnection();
   const [run, setRun] = useState<SolveRun | null>(null);
   const [events, setEvents] = useState<TraceEvent[]>([]);
@@ -44,6 +46,10 @@ export function useTraceRun(runId: string, opts: { WebSocketImpl?: typeof WebSoc
 
   const load = useCallback(async () => {
     setError(null);
+    if (opts.recorded) {                       // bundled recorded replay: no backend, never live
+      setRun({ ...opts.recorded.run, live: false }); setEvents(opts.recorded.trace.events); setConn('closed');
+      return;
+    }
     try {
       const r = await api.getRun(runId);
       const t = await api.getTrace(runId, -1);
@@ -55,7 +61,7 @@ export function useTraceRun(runId: string, opts: { WebSocketImpl?: typeof WebSoc
       if (!alive.current) return;
       setError({ code: (e as { code?: string }).code ?? null, message: (e as Error).message });
     }
-  }, [api, follow, runId]);
+  }, [api, follow, runId, opts.recorded]);
 
   useEffect(() => {
     alive.current = true;
@@ -64,8 +70,13 @@ export function useTraceRun(runId: string, opts: { WebSocketImpl?: typeof WebSoc
     const sub = AppState.addEventListener('change', async (st) => {
       if (st === 'background') { stream.current?.stop(); setConn('idle'); }
       if (st === 'active' && stream.current && !stream.current.finished) {
-        try { append((await api.getTrace(runId, stream.current.lastSeq)).events); } catch { /* reconnect will retry */ }
-        follow(stream.current.lastSeq);
+        let last = stream.current.lastSeq;
+        try {
+          const missed = (await api.getTrace(runId, last)).events;
+          append(missed);
+          if (missed.length) last = Math.max(last, missed[missed.length - 1].sequence);
+        } catch { /* reconnect will retry */ }
+        follow(last);                          // continue after what was caught up, so nothing is sent twice
       }
     });
     return () => { alive.current = false; sub.remove(); stream.current?.stop(); };

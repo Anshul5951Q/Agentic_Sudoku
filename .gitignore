@@ -1,12 +1,34 @@
+# Python
 .venv/
 __pycache__/
 *.pyc
 .pytest_cache/
+
+# secrets / local config
 .env
+.env.*
+!.env.example
+android/android/local.properties
+
+# local databases, vector store, run logs (never commit: machine-specific and may contain personal data)
 chroma_db/
 *.sqlite3
 *.sqlite3-journal
+*.sqlite3-wal
+*.sqlite3-shm
 *.db
-node_modules/
-docs/screenshots/
 .live_data/
+*.log
+
+# Node / Expo / native build output
+node_modules/
+android/.expo/
+android/android/
+android/ios/
+*.apk
+*.aab
+*.keystore
+release/
+
+# local screenshots (may show LAN addresses); curated evidence goes in docs/report/
+docs/screenshots/

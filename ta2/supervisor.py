@@ -83,8 +83,9 @@ class Supervisor:
     def __init__(self, max_hops: int = DEFAULT_MAX_HOPS, timeout_s: float = 30.0, max_nodes: int = 10000,
                  strategy: str = "mrv", orders: tuple[str, ...] = VARIANT_ORDERS,
                  solver: Callable | None = None, router: Callable | None = None,
-                 tool_runner: ToolRunner | None = None, context_tools: tuple[str, ...] = ()):
+                 tool_runner: ToolRunner | None = None, context_tools: tuple[str, ...] = (), parallel: bool = True):
         self.max_hops, self.timeout_s, self.max_nodes = max_hops, timeout_s, max_nodes
+        self.parallel = parallel  # False: run the variants one after another (measured in the evaluation)
         self.strategy, self.orders = strategy, orders
         self.solver = solver or default_solver
         self.router = router or self._default_router
@@ -173,7 +174,7 @@ class Supervisor:
             "context": context, "solver_calls": solver_calls, "hops": ctx["hops"], "max_hops": self.max_hops,
             "tool_calls": self.tools.calls if self.tools else 0,
             "tool_failures": self.tools.failures if self.tools else 0,
-            "llm_calls": 0, "elapsed_seconds": round(perf_counter() - t0, 6),
+            "llm_calls": 0, "elapsed_seconds": round(perf_counter() - t0, 6), "dispatch": "parallel" if self.parallel else "sequential",
             "note": "Variants differ only in candidate ordering; they are not independent LLM agents.",
         }
 
@@ -195,6 +196,16 @@ class Supervisor:
             rec["seconds"] = round(perf_counter() - t, 6)
             return rec
 
+        if not self.parallel:
+            out = []
+            for v in variants:
+                if perf_counter() >= deadline:
+                    out.append({"name": v["name"], "kind": "candidate-order variant", "order": v["order"],
+                                "strategy": v["strategy"], "solution": None, "status": "timeout", "nodes": 0,
+                                "counters": {}, "trace": [], "error": "timeout", "seconds": 0.0})
+                else:
+                    out.append(run(v))
+            return out
         pool = ThreadPoolExecutor(max_workers=len(variants))
         futures = [(v, pool.submit(run, v)) for v in variants]
         out = []

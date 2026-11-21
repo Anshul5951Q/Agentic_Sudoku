@@ -45,6 +45,8 @@ ROUTE_ERRORS: dict[tuple[str, str], tuple[int, ...]] = {
     ("get", "/api/memory"): (422,), ("post", "/api/memory"): (413, 422), ("delete", "/api/memory/{memory_id}"): (404, 422),
     ("delete", "/api/memory"): (422,), ("post", "/api/rag/query"): (413, 422, 503),
     ("get", "/api/history"): (422,), ("get", "/api/history/{session_id}"): (404, 422), ("get", "/api/analytics/summary"): (),
+    ("get", "/api/history/compare"): (404, 422), ("get", "/api/analytics/comparisons"): (),
+    ("get", "/api/evaluation"): (422,), ("get", "/api/evaluation/{evaluation_id}/traces/{trace_key}"): (404, 422),
     ("post", "/api/evaluation/run"): (409, 413, 422), ("get", "/api/evaluation/latest"): (404,),
     ("get", "/api/evaluation/{evaluation_id}"): (404, 422), ("post", "/api/approvals"): (413, 422), ("get", "/api/approvals"): (422,),
     ("get", "/api/approvals/{approval_id}"): (404, 422), ("post", "/api/approvals/{approval_id}/decision"): (404, 409, 413, 422),

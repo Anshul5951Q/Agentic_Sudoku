@@ -293,6 +293,8 @@ class EvaluationMetrics(BaseModel):
     disagreement: bool | None = None
     rag_retrievals: int | None = None
     skipped: str | None = None
+    error: str | None = None
+    trace_key: str | None = Field(default=None, description="GET /api/evaluation/{id}/traces/{trace_key} returns the recorded data")
 
 
 class EvaluationCase(BaseModel):
@@ -314,6 +316,19 @@ class EvaluationRun(BaseModel):
     memory_comparison: list[dict[str, Any]] = []
     notes: list[str] = []
     timing: str | None = None
+    challenge: dict[str, Any] | None = None
+    rag_comparison: list[dict[str, Any]] = []
+    rag_available: bool | None = None
+    trace_keys: list[str] = []
+    error: str | None = None
+
+
+class EvaluationListItem(BaseModel):
+    evaluation_id: str
+    status: Literal["running", "completed", "failed"]
+    created_at: str
+    finished_at: str | None = None
+    options: dict[str, Any] | None = None
     error: str | None = None
 
 
@@ -428,6 +443,80 @@ class AnalyticsSummary(BaseModel):
     tool_calls: int
     latest_evaluation: dict[str, Any] | None = None
     source: str = "computed from stored runs; nothing is hardcoded"
+
+
+class RunMetrics(BaseModel):
+    run_id: str
+    mode: RunMode
+    status: RunStatus
+    created_at: str
+    outcome: str | None = None
+    verified: bool = False
+    seconds: float | None = None
+    nodes: int | None = None
+    pruned: int | None = None
+    backtracks: int | None = None
+    dead_ends: int | None = None
+    llm_calls: int | None = None
+    tool_calls: int | None = None
+    solver_calls: int | None = None
+    memory_confirmed: int | None = None
+    use_memory: bool = False
+
+
+class ModeAggregate(BaseModel):
+    label: str
+    runs: int
+    verified: int
+    verified_rate: float | None = None
+    mean_seconds: float | None = None
+    median_seconds: float | None = None
+    mean_nodes: float | None = None
+    mean_dead_ends: float | None = None
+    mean_backtracks: float | None = None
+    llm_calls: int = 0
+    tool_calls: int = 0
+    solver_calls: int = 0
+    run_ids: list[str] = []
+
+
+class SamePuzzleGroup(BaseModel):
+    board: Board
+    modes: list[str]
+    runs: list[RunMetrics]
+
+
+class StoredVote(BaseModel):
+    run_id: str
+    created_at: str
+    votes: dict[str, int]
+    eligible: list[str]
+    excluded: list[dict[str, Any]]
+    disagreement: bool | None = None
+    verified_winner: bool
+    faults: list[dict[str, Any]] = []
+    inject_tool_failure: dict[str, Any] | None = None
+    max_hops: int | None = None
+    outcome: str | None = None
+
+
+class AnalyticsComparisons(BaseModel):
+    source: str
+    finished_runs: int
+    modes: list[ModeAggregate]
+    same_puzzle: list[SamePuzzleGroup]
+    memory: list[ModeAggregate]
+    votes: list[StoredVote]
+    approvals: dict[str, dict[str, Any]]
+
+
+class RunComparison(BaseModel):
+    same_puzzle: bool
+    board: Board
+    a: RunMetrics
+    b: RunMetrics
+    differences: list[dict[str, Any]]
+    note: str
 
 
 # ------------------------------------------------------------------ run list, contracts, chat, memory demo

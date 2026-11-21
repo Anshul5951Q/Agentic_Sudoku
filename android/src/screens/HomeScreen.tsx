@@ -79,6 +79,8 @@ export default function HomeScreen() {
         <Button testID="continue" label="Continue Previous Puzzle" variant="secondary" disabled={!latest}
           hint={latest ? undefined : 'No saved puzzle available'} onPress={() => latest && openPuzzle(latest)} />
         <Button testID="open-lab" label="Open AI Lab" variant="secondary" onPress={() => router.push('/ai-lab')} />
+        <Button testID="open-history" label="History and replay" variant="secondary" onPress={() => router.push('/history')} />
+        {down && <Button testID="open-bundled" label="Open bundled recorded replay (offline)" variant="ghost" onPress={() => router.push('/replay')} />}
       </View>
 
       <SectionTitle>Overview</SectionTitle>

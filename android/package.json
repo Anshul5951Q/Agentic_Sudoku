@@ -28,6 +28,8 @@
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
+    "prebuild:android": "expo prebuild --platform android --no-install",
+    "build:apk": "cd android && gradlew.bat assembleRelease",
     "typecheck": "tsc --noEmit",
     "test": "jest",
     "lint": "expo lint"

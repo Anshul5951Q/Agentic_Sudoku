@@ -1,0 +1,254 @@
+{
+ "source": "recorded from the real backend by scripts/record_app_fixtures.py (do not edit)",
+ "data": {
+  "source": "computed from stored runs and approvals in the backend database; nothing is hardcoded or estimated",
+  "finished_runs": 4,
+  "modes": [
+   {
+    "label": "cot",
+    "runs": 0,
+    "verified": 0,
+    "verified_rate": null,
+    "mean_seconds": null,
+    "median_seconds": null,
+    "mean_nodes": null,
+    "mean_dead_ends": null,
+    "mean_backtracks": null,
+    "llm_calls": 0,
+    "tool_calls": 0,
+    "solver_calls": 0,
+    "run_ids": []
+   },
+   {
+    "label": "tot",
+    "runs": 2,
+    "verified": 2,
+    "verified_rate": 1.0,
+    "mean_seconds": 0.365105,
+    "median_seconds": 0.365105,
+    "mean_nodes": 11.0,
+    "mean_dead_ends": 2.0,
+    "mean_backtracks": 2.0,
+    "llm_calls": 0,
+    "tool_calls": 0,
+    "solver_calls": 2,
+    "run_ids": [
+     "run-b526bd6851a5",
+     "run-852e87370254"
+    ]
+   },
+   {
+    "label": "multi-agent",
+    "runs": 2,
+    "verified": 2,
+    "verified_rate": 1.0,
+    "mean_seconds": 0.032324,
+    "median_seconds": 0.032324,
+    "mean_nodes": 27.0,
+    "mean_dead_ends": null,
+    "mean_backtracks": 0.0,
+    "llm_calls": 0,
+    "tool_calls": 0,
+    "solver_calls": 6,
+    "run_ids": [
+     "run-f85dc0422621",
+     "run-15a9a60e35b8"
+    ]
+   }
+  ],
+  "same_puzzle": [
+   {
+    "board": [
+     [
+      0,
+      0,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "modes": [
+     "multi-agent",
+     "tot"
+    ],
+    "runs": [
+     {
+      "run_id": "run-f85dc0422621",
+      "mode": "multi-agent",
+      "status": "completed",
+      "created_at": "2026-11-21T09:17:26.619994+00:00",
+      "outcome": "solved",
+      "verified": true,
+      "seconds": 0.034201,
+      "nodes": 27,
+      "pruned": 0,
+      "backtracks": 0,
+      "dead_ends": null,
+      "llm_calls": 0,
+      "tool_calls": 0,
+      "solver_calls": 3,
+      "memory_confirmed": null,
+      "use_memory": false
+     },
+     {
+      "run_id": "run-b526bd6851a5",
+      "mode": "tot",
+      "status": "completed",
+      "created_at": "2026-11-21T09:17:26.186891+00:00",
+      "outcome": "solved",
+      "verified": true,
+      "seconds": 0.369942,
+      "nodes": 11,
+      "pruned": 2,
+      "backtracks": 2,
+      "dead_ends": 2,
+      "llm_calls": 0,
+      "tool_calls": 0,
+      "solver_calls": 1,
+      "memory_confirmed": 0,
+      "use_memory": true
+     },
+     {
+      "run_id": "run-15a9a60e35b8",
+      "mode": "multi-agent",
+      "status": "completed",
+      "created_at": "2026-11-21T09:17:26.072767+00:00",
+      "outcome": "solved",
+      "verified": true,
+      "seconds": 0.030447,
+      "nodes": 27,
+      "pruned": 0,
+      "backtracks": 0,
+      "dead_ends": null,
+      "llm_calls": 0,
+      "tool_calls": 0,
+      "solver_calls": 3,
+      "memory_confirmed": null,
+      "use_memory": false
+     },
+     {
+      "run_id": "run-852e87370254",
+      "mode": "tot",
+      "status": "completed",
+      "created_at": "2026-11-21T09:17:25.637499+00:00",
+      "outcome": "solved",
+      "verified": true,
+      "seconds": 0.360269,
+      "nodes": 11,
+      "pruned": 2,
+      "backtracks": 2,
+      "dead_ends": 2,
+      "llm_calls": 0,
+      "tool_calls": 0,
+      "solver_calls": 1,
+      "memory_confirmed": 0,
+      "use_memory": false
+     }
+    ]
+   }
+  ],
+  "memory": [
+   {
+    "label": "memory off",
+    "runs": 1,
+    "verified": 1,
+    "verified_rate": 1.0,
+    "mean_seconds": 0.360269,
+    "median_seconds": 0.360269,
+    "mean_nodes": 11.0,
+    "mean_dead_ends": 2.0,
+    "mean_backtracks": 2.0,
+    "llm_calls": 0,
+    "tool_calls": 0,
+    "solver_calls": 1,
+    "run_ids": [
+     "run-852e87370254"
+    ]
+   },
+   {
+    "label": "memory on",
+    "runs": 1,
+    "verified": 1,
+    "verified_rate": 1.0,
+    "mean_seconds": 0.369942,
+    "median_seconds": 0.369942,
+    "mean_nodes": 11.0,
+    "mean_dead_ends": 2.0,
+    "mean_backtracks": 2.0,
+    "llm_calls": 0,
+    "tool_calls": 0,
+    "solver_calls": 1,
+    "run_ids": [
+     "run-b526bd6851a5"
+    ]
+   }
+  ],
+  "votes": [
+   {
+    "run_id": "run-f85dc0422621",
+    "created_at": "2026-11-21T09:17:26.619994+00:00",
+    "votes": {
+     "1234/3412/2143/4321": 2
+    },
+    "eligible": [
+     "variant-asc",
+     "variant-middle"
+    ],
+    "excluded": [
+     {
+      "attempt": "variant-desc",
+      "reason": "RULE_VIOLATION"
+     }
+    ],
+    "disagreement": false,
+    "verified_winner": true,
+    "faults": [
+     {
+      "variant": "desc",
+      "kind": "invalid_board"
+     }
+    ],
+    "inject_tool_failure": null,
+    "max_hops": null,
+    "outcome": "solved"
+   },
+   {
+    "run_id": "run-15a9a60e35b8",
+    "created_at": "2026-11-21T09:17:26.072767+00:00",
+    "votes": {
+     "1234/3412/2143/4321": 3
+    },
+    "eligible": [
+     "variant-asc",
+     "variant-desc",
+     "variant-middle"
+    ],
+    "excluded": [],
+    "disagreement": false,
+    "verified_winner": true,
+    "faults": [],
+    "inject_tool_failure": null,
+    "max_hops": null,
+    "outcome": "solved"
+   }
+  ],
+  "approvals": {}
+ }
+}

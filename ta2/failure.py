@@ -103,3 +103,26 @@ class ToolRunner:
         res.explanation = f"{name} unavailable after {res.attempts} attempt(s); continuing without it"
         self._emit("tool_failure", reason_code="TOOL_UNAVAILABLE", reason=res.explanation, data={"tool": name})
         return res
+
+
+def fault_solver(faults: list[dict], base: Callable) -> Callable:
+    """Wrap a real solver with CONTROLLED demo faults, keyed by variant order (``{"variant": "desc", "kind": ...}``).
+
+    ``crash`` raises, ``timeout`` sleeps past the deadline, ``invalid_board`` returns a rule-breaking "solution".
+    Variants without a fault run the unchanged deterministic solver.
+    """
+    import time
+    from time import perf_counter
+    by = {f["variant"]: f["kind"] for f in faults}
+
+    def solver(puzzle, variant, deadline, max_nodes):
+        kind = by.get(variant["order"])
+        if kind == "crash":
+            raise RuntimeError("injected demo fault: crash")
+        if kind == "timeout":
+            time.sleep(max(0.0, (deadline or perf_counter()) - perf_counter()) + 0.1)
+        out = base(puzzle, variant, deadline, max_nodes)
+        if kind == "invalid_board":
+            out = {**out, "solution": [[1, 1, 1, 1] for _ in range(4)], "status": "solved"}
+        return out
+    return solver

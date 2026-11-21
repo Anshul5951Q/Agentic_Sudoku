@@ -1,6 +1,6 @@
 {
   "kind": "evaluation",
-  "generated_at": "2026-11-20T10:58:19.679064+00:00",
+  "generated_at": "2026-11-21T09:30:05.830316+00:00",
   "models": {
     "llm": "qwen2.5:3b",
     "embeddings": "nomic-embed-text"
@@ -42,13 +42,13 @@
         "nodes": 10,
         "pruned": 2,
         "dead_ends": 2,
-        "median_seconds": 0.0006603999936487526,
+        "median_seconds": 0.00105009999970207,
         "llm_calls": 0,
         "tool_calls": 0
       },
       "ta1_cot": {
-        "correct": true,
-        "seconds": 25.449577700026566,
+        "correct": false,
+        "seconds": 24.239000299996405,
         "llm_calls": 1,
         "error": null
       },
@@ -59,7 +59,7 @@
         "pruned": 0,
         "backtracks": 0,
         "dead_ends": 0,
-        "median_seconds": 0.0007081000076141208,
+        "median_seconds": 0.0009693999963928945,
         "llm_calls": 0,
         "tool_calls": 0,
         "solver_calls": 1
@@ -71,7 +71,7 @@
         "pruned": 2,
         "backtracks": 2,
         "dead_ends": 2,
-        "median_seconds": 0.0007880000048317015,
+        "median_seconds": 0.0010445999942021444,
         "llm_calls": 0,
         "tool_calls": 0,
         "solver_calls": 1
@@ -90,7 +90,23 @@
         "tool_calls": 0,
         "tool_failures": 0,
         "llm_calls": 0,
-        "median_seconds": 0.0038449999992735684
+        "median_seconds": 0.0050604999996721745
+      },
+      "ta2_multi_agent_sequential": {
+        "correct": true,
+        "votes": {
+          "1234/3412/2143/4321": 3
+        },
+        "disagreement": false,
+        "solver_calls": 3,
+        "nodes": 27,
+        "pruned": 0,
+        "backtracks": 0,
+        "hops": 4,
+        "tool_calls": 0,
+        "tool_failures": 0,
+        "llm_calls": 0,
+        "median_seconds": 0.0037673999977414496
       },
       "ta2_multi_agent_first_empty": {
         "correct": true,
@@ -106,7 +122,7 @@
         "tool_calls": 0,
         "tool_failures": 0,
         "llm_calls": 0,
-        "median_seconds": 0.0036856000078842044
+        "median_seconds": 0.005153499994776212
       },
       "ta2_multi_agent_with_rag": {
         "correct": true,
@@ -122,7 +138,7 @@
         "tool_calls": 1,
         "tool_failures": 0,
         "llm_calls": 0,
-        "median_seconds": 0.01811679999809712,
+        "median_seconds": 0.035590199993748683,
         "rag_retrievals": 1
       }
     },
@@ -162,13 +178,13 @@
         "nodes": 10,
         "pruned": 0,
         "dead_ends": 0,
-        "median_seconds": 0.0007332999957725406,
+        "median_seconds": 0.0009504000045126304,
         "llm_calls": 0,
         "tool_calls": 0
       },
       "ta1_cot": {
         "correct": false,
-        "seconds": 14.292592400015565,
+        "seconds": 29.722476100003405,
         "llm_calls": 1,
         "error": null
       },
@@ -179,7 +195,7 @@
         "pruned": 0,
         "backtracks": 0,
         "dead_ends": 0,
-        "median_seconds": 0.0008593000238761306,
+        "median_seconds": 0.0012265000041224994,
         "llm_calls": 0,
         "tool_calls": 0,
         "solver_calls": 1
@@ -191,7 +207,7 @@
         "pruned": 0,
         "backtracks": 0,
         "dead_ends": 0,
-        "median_seconds": 0.000701199984177947,
+        "median_seconds": 0.0010752999951364473,
         "llm_calls": 0,
         "tool_calls": 0,
         "solver_calls": 1
@@ -210,7 +226,23 @@
         "tool_calls": 0,
         "tool_failures": 0,
         "llm_calls": 0,
-        "median_seconds": 0.004466399986995384
+        "median_seconds": 0.0057816000044113025
+      },
+      "ta2_multi_agent_sequential": {
+        "correct": true,
+        "votes": {
+          "4231/3142/2413/1324": 3
+        },
+        "disagreement": false,
+        "solver_calls": 3,
+        "nodes": 33,
+        "pruned": 0,
+        "backtracks": 0,
+        "hops": 4,
+        "tool_calls": 0,
+        "tool_failures": 0,
+        "llm_calls": 0,
+        "median_seconds": 0.004704200000560377
       },
       "ta2_multi_agent_first_empty": {
         "correct": true,
@@ -226,7 +258,7 @@
         "tool_calls": 0,
         "tool_failures": 0,
         "llm_calls": 0,
-        "median_seconds": 0.0038941000238992274
+        "median_seconds": 0.005319899995811284
       },
       "ta2_multi_agent_with_rag": {
         "correct": true,
@@ -242,7 +274,7 @@
         "tool_calls": 1,
         "tool_failures": 0,
         "llm_calls": 0,
-        "median_seconds": 0.019241100002545863,
+        "median_seconds": 0.03448240000579972,
         "rag_retrievals": 1
       }
     },
@@ -282,13 +314,13 @@
         "nodes": 11,
         "pruned": 0,
         "dead_ends": 0,
-        "median_seconds": 0.0006603999936487526,
+        "median_seconds": 0.0010763000027509406,
         "llm_calls": 0,
         "tool_calls": 0
       },
       "ta1_cot": {
         "correct": false,
-        "seconds": 22.969254900002852,
+        "seconds": 21.985127100000682,
         "llm_calls": 1,
         "error": null
       },
@@ -299,7 +331,7 @@
         "pruned": 0,
         "backtracks": 0,
         "dead_ends": 0,
-        "median_seconds": 0.0009225000103469938,
+        "median_seconds": 0.0013314000025275163,
         "llm_calls": 0,
         "tool_calls": 0,
         "solver_calls": 1
@@ -311,7 +343,7 @@
         "pruned": 0,
         "backtracks": 0,
         "dead_ends": 0,
-        "median_seconds": 0.0007582000107504427,
+        "median_seconds": 0.0010447000022395514,
         "llm_calls": 0,
         "tool_calls": 0,
         "solver_calls": 1
@@ -330,7 +362,23 @@
         "tool_calls": 0,
         "tool_failures": 0,
         "llm_calls": 0,
-        "median_seconds": 0.004944899992551655
+        "median_seconds": 0.005933000000368338
+      },
+      "ta2_multi_agent_sequential": {
+        "correct": true,
+        "votes": {
+          "2134/3421/4312/1243": 3
+        },
+        "disagreement": false,
+        "solver_calls": 3,
+        "nodes": 36,
+        "pruned": 0,
+        "backtracks": 0,
+        "hops": 4,
+        "tool_calls": 0,
+        "tool_failures": 0,
+        "llm_calls": 0,
+        "median_seconds": 0.004789700004039332
       },
       "ta2_multi_agent_first_empty": {
         "correct": true,
@@ -346,7 +394,7 @@
         "tool_calls": 0,
         "tool_failures": 0,
         "llm_calls": 0,
-        "median_seconds": 0.0044643000001087785
+        "median_seconds": 0.005183900000702124
       },
       "ta2_multi_agent_with_rag": {
         "correct": true,
@@ -362,7 +410,7 @@
         "tool_calls": 1,
         "tool_failures": 0,
         "llm_calls": 0,
-        "median_seconds": 0.019301799999084324,
+        "median_seconds": 0.025073100005101878,
         "rag_retrievals": 1
       }
     },
@@ -402,13 +450,13 @@
         "nodes": 15,
         "pruned": 3,
         "dead_ends": 2,
-        "median_seconds": 0.0007169000164140016,
+        "median_seconds": 0.001011699998343829,
         "llm_calls": 0,
         "tool_calls": 0
       },
       "ta1_cot": {
         "correct": false,
-        "seconds": 31.8525929999887,
+        "seconds": 30.29554559999815,
         "llm_calls": 1,
         "error": null
       },
@@ -419,7 +467,7 @@
         "pruned": 0,
         "backtracks": 0,
         "dead_ends": 0,
-        "median_seconds": 0.0011009000008925796,
+        "median_seconds": 0.0014344000010169111,
         "llm_calls": 0,
         "tool_calls": 0,
         "solver_calls": 1
@@ -431,7 +479,7 @@
         "pruned": 3,
         "backtracks": 3,
         "dead_ends": 2,
-        "median_seconds": 0.0012682999949902296,
+        "median_seconds": 0.0015306999994209036,
         "llm_calls": 0,
         "tool_calls": 0,
         "solver_calls": 1
@@ -450,7 +498,23 @@
         "tool_calls": 0,
         "tool_failures": 0,
         "llm_calls": 0,
-        "median_seconds": 0.005316900002071634
+        "median_seconds": 0.007071199994243216
+      },
+      "ta2_multi_agent_sequential": {
+        "correct": true,
+        "votes": {
+          "4123/2341/3214/1432": 3
+        },
+        "disagreement": false,
+        "solver_calls": 3,
+        "nodes": 39,
+        "pruned": 0,
+        "backtracks": 0,
+        "hops": 4,
+        "tool_calls": 0,
+        "tool_failures": 0,
+        "llm_calls": 0,
+        "median_seconds": 0.005833300005178899
       },
       "ta2_multi_agent_first_empty": {
         "correct": true,
@@ -466,7 +530,7 @@
         "tool_calls": 0,
         "tool_failures": 0,
         "llm_calls": 0,
-        "median_seconds": 0.004746399994473904
+        "median_seconds": 0.007087799996952526
       },
       "ta2_multi_agent_with_rag": {
         "correct": true,
@@ -482,7 +546,7 @@
         "tool_calls": 1,
         "tool_failures": 0,
         "llm_calls": 0,
-        "median_seconds": 0.020531199988909066,
+        "median_seconds": 0.031174000003375113,
         "rag_retrievals": 1
       }
     },
@@ -522,13 +586,13 @@
         "nodes": 11,
         "pruned": 1,
         "dead_ends": 1,
-        "median_seconds": 0.0007525999972131103,
+        "median_seconds": 0.0012387000024318695,
         "llm_calls": 0,
         "tool_calls": 0
       },
       "ta1_cot": {
         "correct": false,
-        "seconds": 11.285501700011082,
+        "seconds": 38.61897879999742,
         "llm_calls": 1,
         "error": null
       },
@@ -539,7 +603,7 @@
         "pruned": 0,
         "backtracks": 0,
         "dead_ends": 0,
-        "median_seconds": 0.0008914000063668936,
+        "median_seconds": 0.0013355999981286004,
         "llm_calls": 0,
         "tool_calls": 0,
         "solver_calls": 1
@@ -551,7 +615,7 @@
         "pruned": 1,
         "backtracks": 1,
         "dead_ends": 1,
-        "median_seconds": 0.0009067000064533204,
+        "median_seconds": 0.001334699998551514,
         "llm_calls": 0,
         "tool_calls": 0,
         "solver_calls": 1
@@ -570,7 +634,23 @@
         "tool_calls": 0,
         "tool_failures": 0,
         "llm_calls": 0,
-        "median_seconds": 0.004944300017086789
+        "median_seconds": 0.006756400005542673
+      },
+      "ta2_multi_agent_sequential": {
+        "correct": true,
+        "votes": {
+          "3412/1234/4321/2143": 3
+        },
+        "disagreement": false,
+        "solver_calls": 3,
+        "nodes": 33,
+        "pruned": 0,
+        "backtracks": 0,
+        "hops": 4,
+        "tool_calls": 0,
+        "tool_failures": 0,
+        "llm_calls": 0,
+        "median_seconds": 0.005802100000437349
       },
       "ta2_multi_agent_first_empty": {
         "correct": true,
@@ -586,7 +666,7 @@
         "tool_calls": 0,
         "tool_failures": 0,
         "llm_calls": 0,
-        "median_seconds": 0.004381999984616414
+        "median_seconds": 0.006981500002439134
       },
       "ta2_multi_agent_with_rag": {
         "correct": true,
@@ -602,7 +682,7 @@
         "tool_calls": 1,
         "tool_failures": 0,
         "llm_calls": 0,
-        "median_seconds": 0.019232099992223084,
+        "median_seconds": 0.02704979999543866,
         "rag_retrievals": 1
       }
     }
@@ -730,10 +810,414 @@
     }
   ],
   "rag_available": true,
+  "challenge": {
+    "puzzle": [
+      [
+        0,
+        0,
+        3,
+        4
+      ],
+      [
+        3,
+        4,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        4,
+        0
+      ],
+      [
+        4,
+        0,
+        0,
+        1
+      ]
+    ],
+    "fault_propagation": [
+      {
+        "fault": "none",
+        "faulty_variant": null,
+        "solved": true,
+        "verified_votes": 3,
+        "excluded": [],
+        "solver_calls": 3,
+        "hops": 4,
+        "seconds": 0.005006,
+        "attempts": [
+          {
+            "name": "variant-asc",
+            "status": "solved",
+            "valid": true,
+            "error": null,
+            "nodes": 9,
+            "seconds": 0.001167
+          },
+          {
+            "name": "variant-desc",
+            "status": "solved",
+            "valid": true,
+            "error": null,
+            "nodes": 9,
+            "seconds": 0.001051
+          },
+          {
+            "name": "variant-middle",
+            "status": "solved",
+            "valid": true,
+            "error": null,
+            "nodes": 9,
+            "seconds": 0.001086
+          }
+        ],
+        "trace_key": "challenge_fault_none",
+        "propagated_to_answer": false
+      },
+      {
+        "fault": "invalid_board",
+        "faulty_variant": "variant-desc",
+        "solved": true,
+        "verified_votes": 2,
+        "excluded": [
+          {
+            "attempt": "variant-desc",
+            "reason": "RULE_VIOLATION"
+          }
+        ],
+        "solver_calls": 3,
+        "hops": 4,
+        "seconds": 0.004775,
+        "attempts": [
+          {
+            "name": "variant-asc",
+            "status": "solved",
+            "valid": true,
+            "error": null,
+            "nodes": 9,
+            "seconds": 0.001122
+          },
+          {
+            "name": "variant-desc",
+            "status": "solved",
+            "valid": false,
+            "error": null,
+            "nodes": 9,
+            "seconds": 0.001052
+          },
+          {
+            "name": "variant-middle",
+            "status": "solved",
+            "valid": true,
+            "error": null,
+            "nodes": 9,
+            "seconds": 0.001047
+          }
+        ],
+        "trace_key": "challenge_fault_invalid_board",
+        "propagated_to_answer": false
+      },
+      {
+        "fault": "crash",
+        "faulty_variant": "variant-desc",
+        "solved": true,
+        "verified_votes": 2,
+        "excluded": [
+          {
+            "attempt": "variant-desc",
+            "reason": "status=error"
+          }
+        ],
+        "solver_calls": 3,
+        "hops": 4,
+        "seconds": 0.003634,
+        "attempts": [
+          {
+            "name": "variant-asc",
+            "status": "solved",
+            "valid": true,
+            "error": null,
+            "nodes": 9,
+            "seconds": 0.001156
+          },
+          {
+            "name": "variant-desc",
+            "status": "error",
+            "valid": false,
+            "error": "RuntimeError",
+            "nodes": 0,
+            "seconds": 1e-05
+          },
+          {
+            "name": "variant-middle",
+            "status": "solved",
+            "valid": true,
+            "error": null,
+            "nodes": 9,
+            "seconds": 0.001109
+          }
+        ],
+        "trace_key": "challenge_fault_crash",
+        "propagated_to_answer": false
+      },
+      {
+        "fault": "timeout",
+        "faulty_variant": "variant-desc",
+        "solved": true,
+        "verified_votes": 2,
+        "excluded": [
+          {
+            "attempt": "variant-desc",
+            "reason": "status=timeout"
+          }
+        ],
+        "solver_calls": 3,
+        "hops": 4,
+        "seconds": 0.509468,
+        "attempts": [
+          {
+            "name": "variant-asc",
+            "status": "solved",
+            "valid": true,
+            "error": null,
+            "nodes": 9,
+            "seconds": 0.001148
+          },
+          {
+            "name": "variant-desc",
+            "status": "timeout",
+            "valid": false,
+            "error": "timeout",
+            "nodes": 0,
+            "seconds": 0.5
+          },
+          {
+            "name": "variant-middle",
+            "status": "solved",
+            "valid": true,
+            "error": null,
+            "nodes": 9,
+            "seconds": 0.001033
+          }
+        ],
+        "trace_key": "challenge_fault_timeout",
+        "propagated_to_answer": false
+      }
+    ],
+    "tool_failure": [
+      {
+        "case": "injected_once",
+        "tool": "candidate_summary (deterministic local tool)",
+        "injected_failures": 1,
+        "tool_calls": 2,
+        "tool_failures": 1,
+        "tool_ok": true,
+        "recovered": true,
+        "solved": true,
+        "seconds": 0.005883,
+        "explanation": "candidate_summary succeeded on retry 1",
+        "trace_key": "challenge_tool_injected_once"
+      },
+      {
+        "case": "injected_twice",
+        "tool": "candidate_summary (deterministic local tool)",
+        "injected_failures": 2,
+        "tool_calls": 2,
+        "tool_failures": 2,
+        "tool_ok": false,
+        "recovered": false,
+        "solved": true,
+        "seconds": 0.00486,
+        "explanation": "candidate_summary unavailable after 2 attempt(s); continuing without it",
+        "trace_key": "challenge_tool_injected_twice"
+      }
+    ],
+    "injection_guard": {
+      "injection_detectable": {
+        "attempts": 6,
+        "blocked_by_pattern_guard": 6,
+        "passed_to_legality_check": 0
+      },
+      "injection_disguised": {
+        "attempts": 4,
+        "blocked_by_pattern_guard": 0,
+        "passed_to_legality_check": 4
+      },
+      "benign_control": {
+        "attempts": 5,
+        "blocked_by_pattern_guard": 0,
+        "passed_to_legality_check": 5
+      }
+    },
+    "notes": [
+      "faults are controlled demo faults on variant-desc; the other variants are unchanged",
+      "the injection guard row measures only the deterministic pattern guard; every text that passes it still meets the deterministic legality check and human approval. The live-Qwen injection measurement is traces/challenge_injection.json (python -m ta2.main --mode challenge)"
+    ]
+  },
+  "rag_comparison": [
+    {
+      "group": "answerable",
+      "query": "What should the solver do when a cell has no candidates?",
+      "k1": {
+        "abstained": false,
+        "reason_code": "GROUNDED",
+        "answer": "When a cell has no candidates, the current branch is a dead end and must be rejected.",
+        "top_similarity": 0.7368,
+        "evidence": 1,
+        "chunk_ids": [
+          "sudoku-chunk-2"
+        ],
+        "llm_calls": 1,
+        "seconds": 1.2997
+      },
+      "k3": {
+        "abstained": false,
+        "reason_code": "GROUNDED",
+        "answer": "When a cell has no candidates, the solver should prune the current branch and restore the previous board state. Then, the solver should try another candidate for that cell.",
+        "top_similarity": 0.7368,
+        "evidence": 3,
+        "chunk_ids": [
+          "sudoku-chunk-2",
+          "sudoku-chunk-14",
+          "sudoku-chunk-3"
+        ],
+        "llm_calls": 1,
+        "seconds": 1.4989
+      },
+      "trace_key": "rag_1"
+    },
+    {
+      "group": "answerable",
+      "query": "What does backtracking restore?",
+      "k1": {
+        "abstained": false,
+        "reason_code": "GROUNDED",
+        "answer": "Backtracking restores a cell to empty if the branch fails.",
+        "top_similarity": 0.8382,
+        "evidence": 1,
+        "chunk_ids": [
+          "sudoku-chunk-5"
+        ],
+        "llm_calls": 1,
+        "seconds": 0.8965
+      },
+      "k3": {
+        "abstained": false,
+        "reason_code": "GROUNDED",
+        "answer": "The Backtracker restores the board after a contradiction.",
+        "top_similarity": 0.8382,
+        "evidence": 3,
+        "chunk_ids": [
+          "sudoku-chunk-5",
+          "sudoku-chunk-7",
+          "sudoku-chunk-15"
+        ],
+        "llm_calls": 1,
+        "seconds": 0.9882
+      },
+      "trace_key": "rag_2"
+    },
+    {
+      "group": "answerable",
+      "query": "What is the minimum remaining values heuristic?",
+      "k1": {
+        "abstained": false,
+        "reason_code": "GROUNDED",
+        "answer": "The minimum remaining values (MRV) heuristic chooses the empty cell that has the fewest legal candidates. Cells with one candidate are forced, and a cell with zero candidates exposes a dead end immediately. Ties are broken by reading order.",
+        "top_similarity": 0.7658,
+        "evidence": 1,
+        "chunk_ids": [
+          "sudoku-chunk-14"
+        ],
+        "llm_calls": 1,
+        "seconds": 1.694
+      },
+      "k3": {
+        "abstained": false,
+        "reason_code": "GROUNDED",
+        "answer": "The minimum remaining values (MRV) heuristic chooses the empty cell that has the fewest legal candidates. Cells with one candidate are forced, and a cell with zero candidates exposes a dead end immediately, so the search wastes fewer branches. Ties are broken by reading order.",
+        "top_similarity": 0.7658,
+        "evidence": 3,
+        "chunk_ids": [
+          "sudoku-chunk-14",
+          "sudoku-chunk-8",
+          "sudoku-chunk-13"
+        ],
+        "llm_calls": 1,
+        "seconds": 1.9921
+      },
+      "trace_key": "rag_3"
+    },
+    {
+      "group": "unanswerable",
+      "query": "Who won the 2018 football world cup?",
+      "k1": {
+        "abstained": true,
+        "reason_code": "LOW_RELEVANCE",
+        "answer": "I don't know.",
+        "top_similarity": 0.4057,
+        "evidence": 1,
+        "chunk_ids": [
+          "sudoku-chunk-8"
+        ],
+        "llm_calls": 0,
+        "seconds": 0.0249
+      },
+      "k3": {
+        "abstained": true,
+        "reason_code": "LOW_RELEVANCE",
+        "answer": "I don't know.",
+        "top_similarity": 0.4057,
+        "evidence": 3,
+        "chunk_ids": [
+          "sudoku-chunk-8",
+          "sudoku-chunk-13",
+          "sudoku-chunk-11"
+        ],
+        "llm_calls": 0,
+        "seconds": 0.0244
+      },
+      "trace_key": "rag_4"
+    },
+    {
+      "group": "unanswerable",
+      "query": "What is the capital of France?",
+      "k1": {
+        "abstained": true,
+        "reason_code": "LOW_RELEVANCE",
+        "answer": "I don't know.",
+        "top_similarity": 0.3785,
+        "evidence": 1,
+        "chunk_ids": [
+          "sudoku-chunk-10"
+        ],
+        "llm_calls": 0,
+        "seconds": 0.0234
+      },
+      "k3": {
+        "abstained": true,
+        "reason_code": "LOW_RELEVANCE",
+        "answer": "I don't know.",
+        "top_similarity": 0.3785,
+        "evidence": 3,
+        "chunk_ids": [
+          "sudoku-chunk-10",
+          "sudoku-chunk-6",
+          "sudoku-chunk-1"
+        ],
+        "llm_calls": 0,
+        "seconds": 0.0262
+      },
+      "trace_key": "rag_5"
+    }
+  ],
   "timing": "median of 5 runs for deterministic solvers; TA1 CoT is a single real Qwen call",
   "notes": [
     "ta1_* columns execute the frozen ta1/ source files, not TA2 code",
     "nodes: TA1 = 'Try' lines in its search tree; TA2 = search nodes created including the root",
-    "all puzzles verified unique at run time"
+    "all puzzles verified unique at run time",
+    "ta2_multi_agent_sequential runs the same three variants one after another instead of in a thread pool"
   ]
 }

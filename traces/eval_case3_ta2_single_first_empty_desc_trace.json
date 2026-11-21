@@ -1,0 +1,1122 @@
+{
+  "kind": "eval_case3_ta2_single_first_empty_desc_trace",
+  "generated_at": "2026-11-21T09:30:05.733447+00:00",
+  "models": {
+    "llm": "qwen2.5:3b",
+    "embeddings": "nomic-embed-text"
+  },
+  "data": [
+    {
+      "event_id": "run-local-event-00000",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 0,
+      "event": "search_started",
+      "agent": "Supervisor",
+      "depth": 0,
+      "cell": null,
+      "candidate": null,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": [
+        [
+          0,
+          1,
+          0,
+          4
+        ],
+        [
+          3,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          2
+        ],
+        [
+          1,
+          0,
+          0,
+          0
+        ]
+      ],
+      "node_id": null,
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {
+        "strategy": "first_empty",
+        "order": "desc",
+        "max_nodes": 10000
+      }
+    },
+    {
+      "event_id": "run-local-event-00001",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 1,
+      "event": "cell_selected",
+      "agent": "Proposer",
+      "depth": 0,
+      "cell": [
+        0,
+        0
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "FIRST_EMPTY",
+      "reason": "selected by first_empty strategy",
+      "board_snapshot": null,
+      "node_id": "run-local-node-0000",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00002",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 2,
+      "event": "candidates_generated",
+      "agent": "Proposer",
+      "depth": 0,
+      "cell": [
+        0,
+        0
+      ],
+      "candidate": null,
+      "candidates": [
+        2
+      ],
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "run-local-node-0000",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00003",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 3,
+      "event": "candidate_proposed",
+      "agent": "Proposer",
+      "depth": 1,
+      "cell": [
+        0,
+        0
+      ],
+      "candidate": 2,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "run-local-node-0001",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00004",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 4,
+      "event": "candidate_accepted",
+      "agent": "RuleChecker",
+      "depth": 1,
+      "cell": [
+        0,
+        0
+      ],
+      "candidate": 2,
+      "candidates": null,
+      "reason_code": "OK",
+      "reason": "valid placement",
+      "board_snapshot": null,
+      "node_id": "run-local-node-0001",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00005",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 5,
+      "event": "cell_selected",
+      "agent": "Proposer",
+      "depth": 1,
+      "cell": [
+        0,
+        2
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "FIRST_EMPTY",
+      "reason": "selected by first_empty strategy",
+      "board_snapshot": null,
+      "node_id": "run-local-node-0001",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00006",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 6,
+      "event": "candidates_generated",
+      "agent": "Proposer",
+      "depth": 1,
+      "cell": [
+        0,
+        2
+      ],
+      "candidate": null,
+      "candidates": [
+        3
+      ],
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "run-local-node-0001",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00007",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 7,
+      "event": "candidate_proposed",
+      "agent": "Proposer",
+      "depth": 2,
+      "cell": [
+        0,
+        2
+      ],
+      "candidate": 3,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "run-local-node-0002",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00008",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 8,
+      "event": "candidate_accepted",
+      "agent": "RuleChecker",
+      "depth": 2,
+      "cell": [
+        0,
+        2
+      ],
+      "candidate": 3,
+      "candidates": null,
+      "reason_code": "OK",
+      "reason": "valid placement",
+      "board_snapshot": null,
+      "node_id": "run-local-node-0002",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00009",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 9,
+      "event": "cell_selected",
+      "agent": "Proposer",
+      "depth": 2,
+      "cell": [
+        1,
+        1
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "FIRST_EMPTY",
+      "reason": "selected by first_empty strategy",
+      "board_snapshot": null,
+      "node_id": "run-local-node-0002",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00010",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 10,
+      "event": "candidates_generated",
+      "agent": "Proposer",
+      "depth": 2,
+      "cell": [
+        1,
+        1
+      ],
+      "candidate": null,
+      "candidates": [
+        4
+      ],
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "run-local-node-0002",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00011",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 11,
+      "event": "candidate_proposed",
+      "agent": "Proposer",
+      "depth": 3,
+      "cell": [
+        1,
+        1
+      ],
+      "candidate": 4,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "run-local-node-0003",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00012",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 12,
+      "event": "candidate_accepted",
+      "agent": "RuleChecker",
+      "depth": 3,
+      "cell": [
+        1,
+        1
+      ],
+      "candidate": 4,
+      "candidates": null,
+      "reason_code": "OK",
+      "reason": "valid placement",
+      "board_snapshot": null,
+      "node_id": "run-local-node-0003",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00013",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 13,
+      "event": "cell_selected",
+      "agent": "Proposer",
+      "depth": 3,
+      "cell": [
+        1,
+        2
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "FIRST_EMPTY",
+      "reason": "selected by first_empty strategy",
+      "board_snapshot": null,
+      "node_id": "run-local-node-0003",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00014",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 14,
+      "event": "candidates_generated",
+      "agent": "Proposer",
+      "depth": 3,
+      "cell": [
+        1,
+        2
+      ],
+      "candidate": null,
+      "candidates": [
+        2,
+        1
+      ],
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "run-local-node-0003",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00015",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 15,
+      "event": "candidate_proposed",
+      "agent": "Proposer",
+      "depth": 4,
+      "cell": [
+        1,
+        2
+      ],
+      "candidate": 2,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "run-local-node-0004",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00016",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 16,
+      "event": "candidate_accepted",
+      "agent": "RuleChecker",
+      "depth": 4,
+      "cell": [
+        1,
+        2
+      ],
+      "candidate": 2,
+      "candidates": null,
+      "reason_code": "OK",
+      "reason": "valid placement",
+      "board_snapshot": null,
+      "node_id": "run-local-node-0004",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00017",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 17,
+      "event": "cell_selected",
+      "agent": "Proposer",
+      "depth": 4,
+      "cell": [
+        1,
+        3
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "FIRST_EMPTY",
+      "reason": "selected by first_empty strategy",
+      "board_snapshot": null,
+      "node_id": "run-local-node-0004",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00018",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 18,
+      "event": "candidates_generated",
+      "agent": "Proposer",
+      "depth": 4,
+      "cell": [
+        1,
+        3
+      ],
+      "candidate": null,
+      "candidates": [
+        1
+      ],
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "run-local-node-0004",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00019",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 19,
+      "event": "candidate_proposed",
+      "agent": "Proposer",
+      "depth": 5,
+      "cell": [
+        1,
+        3
+      ],
+      "candidate": 1,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "run-local-node-0005",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00020",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 20,
+      "event": "candidate_accepted",
+      "agent": "RuleChecker",
+      "depth": 5,
+      "cell": [
+        1,
+        3
+      ],
+      "candidate": 1,
+      "candidates": null,
+      "reason_code": "OK",
+      "reason": "valid placement",
+      "board_snapshot": null,
+      "node_id": "run-local-node-0005",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00021",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 21,
+      "event": "cell_selected",
+      "agent": "Proposer",
+      "depth": 5,
+      "cell": [
+        2,
+        0
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "FIRST_EMPTY",
+      "reason": "selected by first_empty strategy",
+      "board_snapshot": null,
+      "node_id": "run-local-node-0005",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00022",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 22,
+      "event": "candidates_generated",
+      "agent": "Proposer",
+      "depth": 5,
+      "cell": [
+        2,
+        0
+      ],
+      "candidate": null,
+      "candidates": [
+        4
+      ],
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "run-local-node-0005",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00023",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 23,
+      "event": "candidate_proposed",
+      "agent": "Proposer",
+      "depth": 6,
+      "cell": [
+        2,
+        0
+      ],
+      "candidate": 4,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "run-local-node-0006",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00024",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 24,
+      "event": "candidate_accepted",
+      "agent": "RuleChecker",
+      "depth": 6,
+      "cell": [
+        2,
+        0
+      ],
+      "candidate": 4,
+      "candidates": null,
+      "reason_code": "OK",
+      "reason": "valid placement",
+      "board_snapshot": null,
+      "node_id": "run-local-node-0006",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00025",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 25,
+      "event": "cell_selected",
+      "agent": "Proposer",
+      "depth": 6,
+      "cell": [
+        2,
+        1
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "FIRST_EMPTY",
+      "reason": "selected by first_empty strategy",
+      "board_snapshot": null,
+      "node_id": "run-local-node-0006",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00026",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 26,
+      "event": "candidates_generated",
+      "agent": "Proposer",
+      "depth": 6,
+      "cell": [
+        2,
+        1
+      ],
+      "candidate": null,
+      "candidates": [
+        3
+      ],
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "run-local-node-0006",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00027",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 27,
+      "event": "candidate_proposed",
+      "agent": "Proposer",
+      "depth": 7,
+      "cell": [
+        2,
+        1
+      ],
+      "candidate": 3,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "run-local-node-0007",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00028",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 28,
+      "event": "candidate_accepted",
+      "agent": "RuleChecker",
+      "depth": 7,
+      "cell": [
+        2,
+        1
+      ],
+      "candidate": 3,
+      "candidates": null,
+      "reason_code": "OK",
+      "reason": "valid placement",
+      "board_snapshot": null,
+      "node_id": "run-local-node-0007",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00029",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 29,
+      "event": "cell_selected",
+      "agent": "Proposer",
+      "depth": 7,
+      "cell": [
+        2,
+        2
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "FIRST_EMPTY",
+      "reason": "selected by first_empty strategy",
+      "board_snapshot": null,
+      "node_id": "run-local-node-0007",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00030",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 30,
+      "event": "candidates_generated",
+      "agent": "Proposer",
+      "depth": 7,
+      "cell": [
+        2,
+        2
+      ],
+      "candidate": null,
+      "candidates": [
+        1
+      ],
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "run-local-node-0007",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00031",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 31,
+      "event": "candidate_proposed",
+      "agent": "Proposer",
+      "depth": 8,
+      "cell": [
+        2,
+        2
+      ],
+      "candidate": 1,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "run-local-node-0008",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00032",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 32,
+      "event": "candidate_accepted",
+      "agent": "RuleChecker",
+      "depth": 8,
+      "cell": [
+        2,
+        2
+      ],
+      "candidate": 1,
+      "candidates": null,
+      "reason_code": "OK",
+      "reason": "valid placement",
+      "board_snapshot": null,
+      "node_id": "run-local-node-0008",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00033",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 33,
+      "event": "cell_selected",
+      "agent": "Proposer",
+      "depth": 8,
+      "cell": [
+        3,
+        1
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "FIRST_EMPTY",
+      "reason": "selected by first_empty strategy",
+      "board_snapshot": null,
+      "node_id": "run-local-node-0008",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00034",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 34,
+      "event": "candidates_generated",
+      "agent": "Proposer",
+      "depth": 8,
+      "cell": [
+        3,
+        1
+      ],
+      "candidate": null,
+      "candidates": [
+        2
+      ],
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "run-local-node-0008",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00035",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 35,
+      "event": "candidate_proposed",
+      "agent": "Proposer",
+      "depth": 9,
+      "cell": [
+        3,
+        1
+      ],
+      "candidate": 2,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "run-local-node-0009",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00036",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 36,
+      "event": "candidate_accepted",
+      "agent": "RuleChecker",
+      "depth": 9,
+      "cell": [
+        3,
+        1
+      ],
+      "candidate": 2,
+      "candidates": null,
+      "reason_code": "OK",
+      "reason": "valid placement",
+      "board_snapshot": null,
+      "node_id": "run-local-node-0009",
+      "timestamp": "2026-11-21T09:28:46.806395+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00037",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 37,
+      "event": "cell_selected",
+      "agent": "Proposer",
+      "depth": 9,
+      "cell": [
+        3,
+        2
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "FIRST_EMPTY",
+      "reason": "selected by first_empty strategy",
+      "board_snapshot": null,
+      "node_id": "run-local-node-0009",
+      "timestamp": "2026-11-21T09:28:46.807907+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00038",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 38,
+      "event": "candidates_generated",
+      "agent": "Proposer",
+      "depth": 9,
+      "cell": [
+        3,
+        2
+      ],
+      "candidate": null,
+      "candidates": [
+        4
+      ],
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "run-local-node-0009",
+      "timestamp": "2026-11-21T09:28:46.807907+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00039",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 39,
+      "event": "candidate_proposed",
+      "agent": "Proposer",
+      "depth": 10,
+      "cell": [
+        3,
+        2
+      ],
+      "candidate": 4,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "run-local-node-0010",
+      "timestamp": "2026-11-21T09:28:46.807907+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00040",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 40,
+      "event": "candidate_accepted",
+      "agent": "RuleChecker",
+      "depth": 10,
+      "cell": [
+        3,
+        2
+      ],
+      "candidate": 4,
+      "candidates": null,
+      "reason_code": "OK",
+      "reason": "valid placement",
+      "board_snapshot": null,
+      "node_id": "run-local-node-0010",
+      "timestamp": "2026-11-21T09:28:46.807907+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00041",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 41,
+      "event": "cell_selected",
+      "agent": "Proposer",
+      "depth": 10,
+      "cell": [
+        3,
+        3
+      ],
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "FIRST_EMPTY",
+      "reason": "selected by first_empty strategy",
+      "board_snapshot": null,
+      "node_id": "run-local-node-0010",
+      "timestamp": "2026-11-21T09:28:46.807907+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00042",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 42,
+      "event": "candidates_generated",
+      "agent": "Proposer",
+      "depth": 10,
+      "cell": [
+        3,
+        3
+      ],
+      "candidate": null,
+      "candidates": [
+        3
+      ],
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "run-local-node-0010",
+      "timestamp": "2026-11-21T09:28:46.807907+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00043",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 43,
+      "event": "candidate_proposed",
+      "agent": "Proposer",
+      "depth": 11,
+      "cell": [
+        3,
+        3
+      ],
+      "candidate": 3,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": null,
+      "node_id": "run-local-node-0011",
+      "timestamp": "2026-11-21T09:28:46.807907+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00044",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 44,
+      "event": "candidate_accepted",
+      "agent": "RuleChecker",
+      "depth": 11,
+      "cell": [
+        3,
+        3
+      ],
+      "candidate": 3,
+      "candidates": null,
+      "reason_code": "OK",
+      "reason": "valid placement",
+      "board_snapshot": null,
+      "node_id": "run-local-node-0011",
+      "timestamp": "2026-11-21T09:28:46.807907+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00045",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 45,
+      "event": "solution_found",
+      "agent": "Backtracker",
+      "depth": 11,
+      "cell": null,
+      "candidate": null,
+      "candidates": null,
+      "reason_code": null,
+      "reason": null,
+      "board_snapshot": [
+        [
+          2,
+          1,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          2,
+          1
+        ],
+        [
+          4,
+          3,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          4,
+          3
+        ]
+      ],
+      "node_id": "run-local-node-0011",
+      "timestamp": "2026-11-21T09:28:46.807907+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00046",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 46,
+      "event": "solution_verified",
+      "agent": "Verifier",
+      "depth": 11,
+      "cell": null,
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "VERIFIED",
+      "reason": "complete board satisfies all rules and clues",
+      "board_snapshot": [
+        [
+          2,
+          1,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          2,
+          1
+        ],
+        [
+          4,
+          3,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          4,
+          3
+        ]
+      ],
+      "node_id": "run-local-node-0011",
+      "timestamp": "2026-11-21T09:28:46.807907+00:00",
+      "data": {}
+    },
+    {
+      "event_id": "run-local-event-00047",
+      "run_id": "run-local",
+      "thread_id": "run-local",
+      "sequence": 47,
+      "event": "search_completed",
+      "agent": "Supervisor",
+      "depth": 0,
+      "cell": null,
+      "candidate": null,
+      "candidates": null,
+      "reason_code": "SOLVED",
+      "reason": "verified solution found",
+      "board_snapshot": null,
+      "node_id": null,
+      "timestamp": "2026-11-21T09:28:46.807907+00:00",
+      "data": {
+        "counters": {
+          "steps": 24,
+          "nodes": 12,
+          "expansions": 12,
+          "candidates_proposed": 11,
+          "rule_violations": 0,
+          "dead_ends": 0,
+          "pruned": 0,
+          "backtracks": 0,
+          "memory_confirmed": 0,
+          "memory_rejected": 0,
+          "max_depth": 11
+        }
+      }
+    }
+  ]
+}

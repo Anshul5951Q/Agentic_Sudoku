@@ -1,15 +1,15 @@
 {
   "kind": "challenge_cost",
-  "generated_at": "2026-11-20T10:58:19.680598+00:00",
+  "generated_at": "2026-11-21T09:30:05.833568+00:00",
   "models": {
     "llm": "qwen2.5:3b",
     "embeddings": "nomic-embed-text"
   },
   "cases": 5,
   "mean_seconds": {
-    "ta1_tot": 0.0007047199993394315,
-    "ta2_single_mrv": 0.0008964400098193437,
-    "ta2_multi_agent_mrv": 0.004703499999595806
+    "ta1_tot": 0.001065440001548268,
+    "ta2_single_mrv": 0.0012594600004376844,
+    "ta2_multi_agent_mrv": 0.006120540000847541
   },
   "mean_nodes": {
     "ta1_tot": 11.4,
@@ -20,11 +20,11 @@
     "ta2_single_mrv": 1,
     "ta2_multi_agent_mrv": 3
   },
-  "multi_vs_single_time_ratio": 5.246865320685191,
+  "multi_vs_single_time_ratio": 4.85965413647162,
   "multi_vs_single_node_ratio": 3.0000000000000004,
   "ta1_cot": {
     "llm_calls": 5,
-    "mean_seconds": 21.169903940008954,
-    "correct": 1
+    "mean_seconds": 28.97222557999921,
+    "correct": 0
   }
 }

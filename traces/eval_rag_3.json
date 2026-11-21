@@ -1,0 +1,39 @@
+{
+  "kind": "eval_rag_3",
+  "generated_at": "2026-11-21T09:30:05.825732+00:00",
+  "models": {
+    "llm": "qwen2.5:3b",
+    "embeddings": "nomic-embed-text"
+  },
+  "data": {
+    "group": "answerable",
+    "query": "What is the minimum remaining values heuristic?",
+    "k1": {
+      "abstained": false,
+      "reason_code": "GROUNDED",
+      "answer": "The minimum remaining values (MRV) heuristic chooses the empty cell that has the fewest legal candidates. Cells with one candidate are forced, and a cell with zero candidates exposes a dead end immediately. Ties are broken by reading order.",
+      "top_similarity": 0.7658,
+      "evidence": 1,
+      "chunk_ids": [
+        "sudoku-chunk-14"
+      ],
+      "llm_calls": 1,
+      "seconds": 1.694
+    },
+    "k3": {
+      "abstained": false,
+      "reason_code": "GROUNDED",
+      "answer": "The minimum remaining values (MRV) heuristic chooses the empty cell that has the fewest legal candidates. Cells with one candidate are forced, and a cell with zero candidates exposes a dead end immediately, so the search wastes fewer branches. Ties are broken by reading order.",
+      "top_similarity": 0.7658,
+      "evidence": 3,
+      "chunk_ids": [
+        "sudoku-chunk-14",
+        "sudoku-chunk-8",
+        "sudoku-chunk-13"
+      ],
+      "llm_calls": 1,
+      "seconds": 1.9921
+    },
+    "trace_key": "rag_3"
+  }
+}

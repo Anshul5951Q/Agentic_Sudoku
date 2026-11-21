@@ -1,0 +1,39 @@
+{
+  "kind": "eval_rag_2",
+  "generated_at": "2026-11-21T09:30:05.825732+00:00",
+  "models": {
+    "llm": "qwen2.5:3b",
+    "embeddings": "nomic-embed-text"
+  },
+  "data": {
+    "group": "answerable",
+    "query": "What does backtracking restore?",
+    "k1": {
+      "abstained": false,
+      "reason_code": "GROUNDED",
+      "answer": "Backtracking restores a cell to empty if the branch fails.",
+      "top_similarity": 0.8382,
+      "evidence": 1,
+      "chunk_ids": [
+        "sudoku-chunk-5"
+      ],
+      "llm_calls": 1,
+      "seconds": 0.8965
+    },
+    "k3": {
+      "abstained": false,
+      "reason_code": "GROUNDED",
+      "answer": "The Backtracker restores the board after a contradiction.",
+      "top_similarity": 0.8382,
+      "evidence": 3,
+      "chunk_ids": [
+        "sudoku-chunk-5",
+        "sudoku-chunk-7",
+        "sudoku-chunk-15"
+      ],
+      "llm_calls": 1,
+      "seconds": 0.9882
+    },
+    "trace_key": "rag_2"
+  }
+}

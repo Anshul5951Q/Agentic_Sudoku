@@ -1,0 +1,16 @@
+{
+ "source": "recorded from the real backend by scripts/record_app_fixtures.py (do not edit)",
+ "data": [
+  {
+   "evaluation_id": "eval-ef9909759600",
+   "status": "completed",
+   "created_at": "2026-11-21T09:17:26.760135+00:00",
+   "finished_at": "2026-11-21T09:17:27.969525+00:00",
+   "options": {
+    "with_cot": false,
+    "with_rag": false
+   },
+   "error": null
+  }
+ ]
+}

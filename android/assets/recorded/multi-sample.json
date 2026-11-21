@@ -1,0 +1,4369 @@
+{
+ "source": "recorded from the real backend by tests/recorded (do not edit)",
+ "run": {
+  "run_id": "run-50c77d0cc2c7",
+  "thread_id": "thread-31e89c9ad893",
+  "session_id": "session-f69aad2f77ba",
+  "puzzle_id": "puzzle-39a1600b9a5e",
+  "mode": "multi-agent",
+  "status": "completed",
+  "board": [
+   [
+    0,
+    0,
+    3,
+    4
+   ],
+   [
+    3,
+    4,
+    0,
+    0
+   ],
+   [
+    0,
+    1,
+    4,
+    0
+   ],
+   [
+    4,
+    0,
+    0,
+    1
+   ]
+  ],
+  "config": {
+   "strategy": "first_empty",
+   "order": "asc",
+   "max_nodes": 10000,
+   "timeout_s": 30.0,
+   "max_hops": null,
+   "faults": [],
+   "inject_tool_failure": null
+  },
+  "created_at": "2026-11-20T12:42:00.523674+00:00",
+  "started_at": "2026-11-20T12:42:00.540034+00:00",
+  "finished_at": "2026-11-20T12:42:00.583359+00:00",
+  "result": {
+   "outcome": "solved",
+   "verified": true,
+   "solution": [
+    [
+     1,
+     2,
+     3,
+     4
+    ],
+    [
+     3,
+     4,
+     1,
+     2
+    ],
+    [
+     2,
+     1,
+     4,
+     3
+    ],
+    [
+     4,
+     3,
+     2,
+     1
+    ]
+   ],
+   "failure": null,
+   "counters": {
+    "solver_calls": 3,
+    "hops": 4,
+    "max_hops": 8,
+    "tool_calls": 0,
+    "tool_failures": 0,
+    "nodes": 31,
+    "pruned": 4,
+    "backtracks": 4,
+    "attempts": [
+     {
+      "name": "variant-asc",
+      "kind": "candidate-order variant",
+      "order": "asc",
+      "strategy": "first_empty",
+      "solution": [
+       [
+        1,
+        2,
+        3,
+        4
+       ],
+       [
+        3,
+        4,
+        1,
+        2
+       ],
+       [
+        2,
+        1,
+        4,
+        3
+       ],
+       [
+        4,
+        3,
+        2,
+        1
+       ]
+      ],
+      "status": "solved",
+      "nodes": 9,
+      "counters": {
+       "steps": 18,
+       "nodes": 9,
+       "expansions": 9,
+       "candidates_proposed": 8,
+       "rule_violations": 0,
+       "dead_ends": 0,
+       "pruned": 0,
+       "backtracks": 0,
+       "memory_confirmed": 0,
+       "memory_rejected": 0,
+       "max_depth": 8
+      },
+      "error": null,
+      "seconds": 0.001022,
+      "valid": true
+     },
+     {
+      "name": "variant-desc",
+      "kind": "candidate-order variant",
+      "order": "desc",
+      "strategy": "first_empty",
+      "solution": [
+       [
+        1,
+        2,
+        3,
+        4
+       ],
+       [
+        3,
+        4,
+        1,
+        2
+       ],
+       [
+        2,
+        1,
+        4,
+        3
+       ],
+       [
+        4,
+        3,
+        2,
+        1
+       ]
+      ],
+      "status": "solved",
+      "nodes": 11,
+      "counters": {
+       "steps": 24,
+       "nodes": 11,
+       "expansions": 11,
+       "candidates_proposed": 10,
+       "rule_violations": 0,
+       "dead_ends": 2,
+       "pruned": 2,
+       "backtracks": 2,
+       "memory_confirmed": 0,
+       "memory_rejected": 0,
+       "max_depth": 8
+      },
+      "error": null,
+      "seconds": 0.001085,
+      "valid": true
+     },
+     {
+      "name": "variant-middle",
+      "kind": "candidate-order variant",
+      "order": "middle",
+      "strategy": "first_empty",
+      "solution": [
+       [
+        1,
+        2,
+        3,
+        4
+       ],
+       [
+        3,
+        4,
+        1,
+        2
+       ],
+       [
+        2,
+        1,
+        4,
+        3
+       ],
+       [
+        4,
+        3,
+        2,
+        1
+       ]
+      ],
+      "status": "solved",
+      "nodes": 11,
+      "counters": {
+       "steps": 24,
+       "nodes": 11,
+       "expansions": 11,
+       "candidates_proposed": 10,
+       "rule_violations": 0,
+       "dead_ends": 2,
+       "pruned": 2,
+       "backtracks": 2,
+       "memory_confirmed": 0,
+       "memory_rejected": 0,
+       "max_depth": 8
+      },
+      "error": null,
+      "seconds": 0.000814,
+      "valid": true
+     }
+    ]
+   },
+   "vote": {
+    "vote_type": "candidate_order_variants",
+    "votes": {
+     "1234/3412/2143/4321": 3
+    },
+    "winner": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      4,
+      3
+     ],
+     [
+      4,
+      3,
+      2,
+      1
+     ]
+    ],
+    "winner_key": "1234/3412/2143/4321",
+    "eligible": [
+     "variant-asc",
+     "variant-desc",
+     "variant-middle"
+    ],
+    "excluded": [],
+    "disagreement": false,
+    "solution_count": 1,
+    "note": "vote counts only deterministically verified complete boards from candidate-order variants; invalid, partial, errored or timed-out attempts are excluded"
+   },
+   "llm_calls": 0,
+   "tool_calls": 0,
+   "elapsed_seconds": 0.040337,
+   "note": "Variants differ only in candidate ordering; they are not independent LLM agents."
+  },
+  "progress": {
+   "solver_calls": 3,
+   "hops": 4,
+   "max_hops": 8,
+   "tool_calls": 0,
+   "tool_failures": 0,
+   "nodes": 31,
+   "pruned": 4,
+   "backtracks": 4,
+   "attempts": [
+    {
+     "name": "variant-asc",
+     "kind": "candidate-order variant",
+     "order": "asc",
+     "strategy": "first_empty",
+     "solution": [
+      [
+       1,
+       2,
+       3,
+       4
+      ],
+      [
+       3,
+       4,
+       1,
+       2
+      ],
+      [
+       2,
+       1,
+       4,
+       3
+      ],
+      [
+       4,
+       3,
+       2,
+       1
+      ]
+     ],
+     "status": "solved",
+     "nodes": 9,
+     "counters": {
+      "steps": 18,
+      "nodes": 9,
+      "expansions": 9,
+      "candidates_proposed": 8,
+      "rule_violations": 0,
+      "dead_ends": 0,
+      "pruned": 0,
+      "backtracks": 0,
+      "memory_confirmed": 0,
+      "memory_rejected": 0,
+      "max_depth": 8
+     },
+     "error": null,
+     "seconds": 0.001022,
+     "valid": true
+    },
+    {
+     "name": "variant-desc",
+     "kind": "candidate-order variant",
+     "order": "desc",
+     "strategy": "first_empty",
+     "solution": [
+      [
+       1,
+       2,
+       3,
+       4
+      ],
+      [
+       3,
+       4,
+       1,
+       2
+      ],
+      [
+       2,
+       1,
+       4,
+       3
+      ],
+      [
+       4,
+       3,
+       2,
+       1
+      ]
+     ],
+     "status": "solved",
+     "nodes": 11,
+     "counters": {
+      "steps": 24,
+      "nodes": 11,
+      "expansions": 11,
+      "candidates_proposed": 10,
+      "rule_violations": 0,
+      "dead_ends": 2,
+      "pruned": 2,
+      "backtracks": 2,
+      "memory_confirmed": 0,
+      "memory_rejected": 0,
+      "max_depth": 8
+     },
+     "error": null,
+     "seconds": 0.001085,
+     "valid": true
+    },
+    {
+     "name": "variant-middle",
+     "kind": "candidate-order variant",
+     "order": "middle",
+     "strategy": "first_empty",
+     "solution": [
+      [
+       1,
+       2,
+       3,
+       4
+      ],
+      [
+       3,
+       4,
+       1,
+       2
+      ],
+      [
+       2,
+       1,
+       4,
+       3
+      ],
+      [
+       4,
+       3,
+       2,
+       1
+      ]
+     ],
+     "status": "solved",
+     "nodes": 11,
+     "counters": {
+      "steps": 24,
+      "nodes": 11,
+      "expansions": 11,
+      "candidates_proposed": 10,
+      "rule_violations": 0,
+      "dead_ends": 2,
+      "pruned": 2,
+      "backtracks": 2,
+      "memory_confirmed": 0,
+      "memory_rejected": 0,
+      "max_depth": 8
+     },
+     "error": null,
+     "seconds": 0.000814,
+     "valid": true
+    }
+   ]
+  },
+  "last_sequence": 142,
+  "live": false,
+  "resumable": false,
+  "duplicate": false,
+  "deterministic_components": [
+   "cell selection",
+   "candidate generation",
+   "rule checking",
+   "pruning and backtracking",
+   "supervisor routing and MAX_HOPS",
+   "vote counting (verified solutions only)",
+   "final solution verification"
+  ],
+  "llm_components": []
+ },
+ "trace": {
+  "run_id": "run-50c77d0cc2c7",
+  "status": "completed",
+  "live": false,
+  "recorded": true,
+  "last_sequence": 142,
+  "terminal": true,
+  "events": [
+   {
+    "event_id": "run-50c77d0cc2c7-event-00000",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 0,
+    "event": "search_started",
+    "agent": "Supervisor",
+    "depth": 0,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "SUPERVISED_RUN",
+    "reason": "supervised run of candidate-order variants",
+    "board_snapshot": null,
+    "node_id": null,
+    "timestamp": "2026-11-20T12:42:00.548235+00:00",
+    "data": {
+     "max_hops": 8,
+     "demo_faults": [],
+     "variants_are": "candidate-order variants, not independent agents"
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00001",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 1,
+    "event": "route",
+    "agent": "Supervisor",
+    "depth": 0,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "ROUTE",
+    "reason": "Supervisor -> Verifier: validate the input puzzle",
+    "board_snapshot": null,
+    "node_id": null,
+    "timestamp": "2026-11-20T12:42:00.543115+00:00",
+    "data": {
+     "hop": 1,
+     "to": "Verifier"
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00002",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 2,
+    "event": "route",
+    "agent": "Supervisor",
+    "depth": 0,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "ROUTE",
+    "reason": "Verifier -> SolverVariants: run 3 candidate-order variants",
+    "board_snapshot": null,
+    "node_id": null,
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "hop": 2,
+     "to": "SolverVariants"
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00003",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 3,
+    "event": "search_started",
+    "agent": "Supervisor",
+    "depth": 0,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": [
+     [
+      0,
+      0,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "node_id": null,
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "strategy": "first_empty",
+     "order": "asc",
+     "max_nodes": 10000,
+     "variant": "variant-asc",
+     "variant_sequence": 0
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00004",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 4,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 0,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0000",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 1
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00005",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 5,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 0,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": null,
+    "candidates": [
+     1,
+     2
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0000",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 2
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00006",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 6,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 1,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": 1,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0001",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 3
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00007",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 7,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 1,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": 1,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0001",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 4
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00008",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 8,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 1,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0001",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 5
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00009",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 9,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 1,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": null,
+    "candidates": [
+     2
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0001",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 6
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00010",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 10,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 2,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0002",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 7
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00011",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 11,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 2,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0002",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 8
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00012",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 12,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 2,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0002",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 9
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00013",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 13,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 2,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": null,
+    "candidates": [
+     1,
+     2
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0002",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 10
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00014",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 14,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 3,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": 1,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0003",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 11
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00015",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 15,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 3,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": 1,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0003",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 12
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00016",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 16,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 3,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0003",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 13
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00017",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 17,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 3,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": null,
+    "candidates": [
+     2
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0003",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 14
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00018",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 18,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 4,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0004",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 15
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00019",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 19,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 4,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0004",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 16
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00020",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 20,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 4,
+    "cell": [
+     2,
+     0
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0004",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 17
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00021",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 21,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 4,
+    "cell": [
+     2,
+     0
+    ],
+    "candidate": null,
+    "candidates": [
+     2
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0004",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 18
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00022",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 22,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 5,
+    "cell": [
+     2,
+     0
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0005",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 19
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00023",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 23,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 5,
+    "cell": [
+     2,
+     0
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0005",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 20
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00024",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 24,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 5,
+    "cell": [
+     2,
+     3
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0005",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 21
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00025",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 25,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 5,
+    "cell": [
+     2,
+     3
+    ],
+    "candidate": null,
+    "candidates": [
+     3
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0005",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 22
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00026",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 26,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 6,
+    "cell": [
+     2,
+     3
+    ],
+    "candidate": 3,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0006",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 23
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00027",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 27,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 6,
+    "cell": [
+     2,
+     3
+    ],
+    "candidate": 3,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0006",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 24
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00028",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 28,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 6,
+    "cell": [
+     3,
+     1
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0006",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 25
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00029",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 29,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 6,
+    "cell": [
+     3,
+     1
+    ],
+    "candidate": null,
+    "candidates": [
+     3
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0006",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 26
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00030",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 30,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 7,
+    "cell": [
+     3,
+     1
+    ],
+    "candidate": 3,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0007",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 27
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00031",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 31,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 7,
+    "cell": [
+     3,
+     1
+    ],
+    "candidate": 3,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0007",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 28
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00032",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 32,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 7,
+    "cell": [
+     3,
+     2
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0007",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 29
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00033",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 33,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 7,
+    "cell": [
+     3,
+     2
+    ],
+    "candidate": null,
+    "candidates": [
+     2
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0007",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 30
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00034",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 34,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 8,
+    "cell": [
+     3,
+     2
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0008",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 31
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00035",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 35,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 8,
+    "cell": [
+     3,
+     2
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0008",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 32
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00036",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 36,
+    "event": "solution_found",
+    "agent": "Backtracker",
+    "depth": 8,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      4,
+      3
+     ],
+     [
+      4,
+      3,
+      2,
+      1
+     ]
+    ],
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0008",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 33
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00037",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 37,
+    "event": "solution_verified",
+    "agent": "Verifier",
+    "depth": 8,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "VERIFIED",
+    "reason": "complete board satisfies all rules and clues",
+    "board_snapshot": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      4,
+      3
+     ],
+     [
+      4,
+      3,
+      2,
+      1
+     ]
+    ],
+    "node_id": "run-50c77d0cc2c7-variant-asc-node-0008",
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "variant": "variant-asc",
+     "variant_sequence": 34
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00038",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 38,
+    "event": "search_completed",
+    "agent": "Supervisor",
+    "depth": 0,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "SOLVED",
+    "reason": "verified solution found",
+    "board_snapshot": null,
+    "node_id": null,
+    "timestamp": "2026-11-20T12:42:00.544640+00:00",
+    "data": {
+     "counters": {
+      "steps": 18,
+      "nodes": 9,
+      "expansions": 9,
+      "candidates_proposed": 8,
+      "rule_violations": 0,
+      "dead_ends": 0,
+      "pruned": 0,
+      "backtracks": 0,
+      "memory_confirmed": 0,
+      "memory_rejected": 0,
+      "max_depth": 8
+     },
+     "variant": "variant-asc",
+     "variant_sequence": 35
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00039",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 39,
+    "event": "search_started",
+    "agent": "Supervisor",
+    "depth": 0,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": [
+     [
+      0,
+      0,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "node_id": null,
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "strategy": "first_empty",
+     "order": "desc",
+     "max_nodes": 10000,
+     "variant": "variant-desc",
+     "variant_sequence": 0
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00040",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 40,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 0,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0000",
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 1
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00041",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 41,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 0,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": null,
+    "candidates": [
+     2,
+     1
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0000",
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 2
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00042",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 42,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 1,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0001",
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 3
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00043",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 43,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 1,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0001",
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 4
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00044",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 44,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 1,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0001",
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 5
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00045",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 45,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 1,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": null,
+    "candidates": [],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0001",
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 6
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00046",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 46,
+    "event": "dead_end",
+    "agent": "Verifier",
+    "depth": 1,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "ZERO_CANDIDATES",
+    "reason": "cell [0, 1] has no legal candidates",
+    "board_snapshot": [
+     [
+      2,
+      0,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0001",
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 7
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00047",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 47,
+    "event": "branch_pruned",
+    "agent": "Backtracker",
+    "depth": 1,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "ZERO_CANDIDATES",
+    "reason": "cell [0, 1] has no legal candidates",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0001",
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 8
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00048",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 48,
+    "event": "backtrack_started",
+    "agent": "Backtracker",
+    "depth": 1,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "RESTORE_PARENT",
+    "reason": "restoring the board to its state before this decision",
+    "board_snapshot": [
+     [
+      0,
+      0,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0000",
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 9
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00049",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 49,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 1,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": 1,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0002",
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 10
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00050",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 50,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 1,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": 1,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0002",
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 11
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00051",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 51,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 1,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0002",
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 12
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00052",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 52,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 1,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": null,
+    "candidates": [
+     2
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0002",
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 13
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00053",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 53,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 2,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0003",
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 14
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00054",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 54,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 2,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0003",
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 15
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00055",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 55,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 2,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0003",
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 16
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00056",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 56,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 2,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": null,
+    "candidates": [
+     2,
+     1
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0003",
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 17
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00057",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 57,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 3,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0004",
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 18
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00058",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 58,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 3,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0004",
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 19
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00059",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 59,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 3,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0004",
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 20
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00060",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 60,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 3,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": null,
+    "candidates": [],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0004",
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 21
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00061",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 61,
+    "event": "dead_end",
+    "agent": "Verifier",
+    "depth": 3,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "ZERO_CANDIDATES",
+    "reason": "cell [1, 3] has no legal candidates",
+    "board_snapshot": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      2,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0004",
+    "timestamp": "2026-11-20T12:42:00.546168+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 22
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00062",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 62,
+    "event": "branch_pruned",
+    "agent": "Backtracker",
+    "depth": 3,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "ZERO_CANDIDATES",
+    "reason": "cell [1, 3] has no legal candidates",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0004",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 23
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00063",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 63,
+    "event": "backtrack_started",
+    "agent": "Backtracker",
+    "depth": 3,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "RESTORE_PARENT",
+    "reason": "restoring the board to its state before this decision",
+    "board_snapshot": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0003",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 24
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00064",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 64,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 3,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": 1,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0005",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 25
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00065",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 65,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 3,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": 1,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0005",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 26
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00066",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 66,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 3,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0005",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 27
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00067",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 67,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 3,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": null,
+    "candidates": [
+     2
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0005",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 28
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00068",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 68,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 4,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0006",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 29
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00069",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 69,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 4,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0006",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 30
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00070",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 70,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 4,
+    "cell": [
+     2,
+     0
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0006",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 31
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00071",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 71,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 4,
+    "cell": [
+     2,
+     0
+    ],
+    "candidate": null,
+    "candidates": [
+     2
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0006",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 32
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00072",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 72,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 5,
+    "cell": [
+     2,
+     0
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0007",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 33
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00073",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 73,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 5,
+    "cell": [
+     2,
+     0
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0007",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 34
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00074",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 74,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 5,
+    "cell": [
+     2,
+     3
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0007",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 35
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00075",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 75,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 5,
+    "cell": [
+     2,
+     3
+    ],
+    "candidate": null,
+    "candidates": [
+     3
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0007",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 36
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00076",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 76,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 6,
+    "cell": [
+     2,
+     3
+    ],
+    "candidate": 3,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0008",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 37
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00077",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 77,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 6,
+    "cell": [
+     2,
+     3
+    ],
+    "candidate": 3,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0008",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 38
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00078",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 78,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 6,
+    "cell": [
+     3,
+     1
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0008",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 39
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00079",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 79,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 6,
+    "cell": [
+     3,
+     1
+    ],
+    "candidate": null,
+    "candidates": [
+     3
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0008",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 40
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00080",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 80,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 7,
+    "cell": [
+     3,
+     1
+    ],
+    "candidate": 3,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0009",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 41
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00081",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 81,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 7,
+    "cell": [
+     3,
+     1
+    ],
+    "candidate": 3,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0009",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 42
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00082",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 82,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 7,
+    "cell": [
+     3,
+     2
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0009",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 43
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00083",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 83,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 7,
+    "cell": [
+     3,
+     2
+    ],
+    "candidate": null,
+    "candidates": [
+     2
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0009",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 44
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00084",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 84,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 8,
+    "cell": [
+     3,
+     2
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0010",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 45
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00085",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 85,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 8,
+    "cell": [
+     3,
+     2
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0010",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 46
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00086",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 86,
+    "event": "solution_found",
+    "agent": "Backtracker",
+    "depth": 8,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      4,
+      3
+     ],
+     [
+      4,
+      3,
+      2,
+      1
+     ]
+    ],
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0010",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 47
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00087",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 87,
+    "event": "solution_verified",
+    "agent": "Verifier",
+    "depth": 8,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "VERIFIED",
+    "reason": "complete board satisfies all rules and clues",
+    "board_snapshot": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      4,
+      3
+     ],
+     [
+      4,
+      3,
+      2,
+      1
+     ]
+    ],
+    "node_id": "run-50c77d0cc2c7-variant-desc-node-0010",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-desc",
+     "variant_sequence": 48
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00088",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 88,
+    "event": "search_completed",
+    "agent": "Supervisor",
+    "depth": 0,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "SOLVED",
+    "reason": "verified solution found",
+    "board_snapshot": null,
+    "node_id": null,
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "counters": {
+      "steps": 24,
+      "nodes": 11,
+      "expansions": 11,
+      "candidates_proposed": 10,
+      "rule_violations": 0,
+      "dead_ends": 2,
+      "pruned": 2,
+      "backtracks": 2,
+      "memory_confirmed": 0,
+      "memory_rejected": 0,
+      "max_depth": 8
+     },
+     "variant": "variant-desc",
+     "variant_sequence": 49
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00089",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 89,
+    "event": "search_started",
+    "agent": "Supervisor",
+    "depth": 0,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": [
+     [
+      0,
+      0,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "node_id": null,
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "strategy": "first_empty",
+     "order": "middle",
+     "max_nodes": 10000,
+     "variant": "variant-middle",
+     "variant_sequence": 0
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00090",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 90,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 0,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0000",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 1
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00091",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 91,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 0,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": null,
+    "candidates": [
+     2,
+     1
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0000",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 2
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00092",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 92,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 1,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0001",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 3
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00093",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 93,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 1,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0001",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 4
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00094",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 94,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 1,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0001",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 5
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00095",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 95,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 1,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": null,
+    "candidates": [],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0001",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 6
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00096",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 96,
+    "event": "dead_end",
+    "agent": "Verifier",
+    "depth": 1,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "ZERO_CANDIDATES",
+    "reason": "cell [0, 1] has no legal candidates",
+    "board_snapshot": [
+     [
+      2,
+      0,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0001",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 7
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00097",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 97,
+    "event": "branch_pruned",
+    "agent": "Backtracker",
+    "depth": 1,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "ZERO_CANDIDATES",
+    "reason": "cell [0, 1] has no legal candidates",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0001",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 8
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00098",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 98,
+    "event": "backtrack_started",
+    "agent": "Backtracker",
+    "depth": 1,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "RESTORE_PARENT",
+    "reason": "restoring the board to its state before this decision",
+    "board_snapshot": [
+     [
+      0,
+      0,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0000",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 9
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00099",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 99,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 1,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": 1,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0002",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 10
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00100",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 100,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 1,
+    "cell": [
+     0,
+     0
+    ],
+    "candidate": 1,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0002",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 11
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00101",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 101,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 1,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0002",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 12
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00102",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 102,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 1,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": null,
+    "candidates": [
+     2
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0002",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 13
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00103",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 103,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 2,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0003",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 14
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00104",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 104,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 2,
+    "cell": [
+     0,
+     1
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0003",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 15
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00105",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 105,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 2,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0003",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 16
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00106",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 106,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 2,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": null,
+    "candidates": [
+     2,
+     1
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0003",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 17
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00107",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 107,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 3,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0004",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 18
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00108",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 108,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 3,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0004",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 19
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00109",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 109,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 3,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0004",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 20
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00110",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 110,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 3,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": null,
+    "candidates": [],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0004",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 21
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00111",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 111,
+    "event": "dead_end",
+    "agent": "Verifier",
+    "depth": 3,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "ZERO_CANDIDATES",
+    "reason": "cell [1, 3] has no legal candidates",
+    "board_snapshot": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      2,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0004",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 22
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00112",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 112,
+    "event": "branch_pruned",
+    "agent": "Backtracker",
+    "depth": 3,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "ZERO_CANDIDATES",
+    "reason": "cell [1, 3] has no legal candidates",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0004",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 23
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00113",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 113,
+    "event": "backtrack_started",
+    "agent": "Backtracker",
+    "depth": 3,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "RESTORE_PARENT",
+    "reason": "restoring the board to its state before this decision",
+    "board_snapshot": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      4,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      1
+     ]
+    ],
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0003",
+    "timestamp": "2026-11-20T12:42:00.546723+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 24
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00114",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 114,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 3,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": 1,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0005",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 25
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00115",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 115,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 3,
+    "cell": [
+     1,
+     2
+    ],
+    "candidate": 1,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0005",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 26
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00116",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 116,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 3,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0005",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 27
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00117",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 117,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 3,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": null,
+    "candidates": [
+     2
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0005",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 28
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00118",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 118,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 4,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0006",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 29
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00119",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 119,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 4,
+    "cell": [
+     1,
+     3
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0006",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 30
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00120",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 120,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 4,
+    "cell": [
+     2,
+     0
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0006",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 31
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00121",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 121,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 4,
+    "cell": [
+     2,
+     0
+    ],
+    "candidate": null,
+    "candidates": [
+     2
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0006",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 32
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00122",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 122,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 5,
+    "cell": [
+     2,
+     0
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0007",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 33
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00123",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 123,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 5,
+    "cell": [
+     2,
+     0
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0007",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 34
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00124",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 124,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 5,
+    "cell": [
+     2,
+     3
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0007",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 35
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00125",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 125,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 5,
+    "cell": [
+     2,
+     3
+    ],
+    "candidate": null,
+    "candidates": [
+     3
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0007",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 36
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00126",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 126,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 6,
+    "cell": [
+     2,
+     3
+    ],
+    "candidate": 3,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0008",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 37
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00127",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 127,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 6,
+    "cell": [
+     2,
+     3
+    ],
+    "candidate": 3,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0008",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 38
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00128",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 128,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 6,
+    "cell": [
+     3,
+     1
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0008",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 39
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00129",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 129,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 6,
+    "cell": [
+     3,
+     1
+    ],
+    "candidate": null,
+    "candidates": [
+     3
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0008",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 40
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00130",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 130,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 7,
+    "cell": [
+     3,
+     1
+    ],
+    "candidate": 3,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0009",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 41
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00131",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 131,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 7,
+    "cell": [
+     3,
+     1
+    ],
+    "candidate": 3,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0009",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 42
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00132",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 132,
+    "event": "cell_selected",
+    "agent": "Proposer",
+    "depth": 7,
+    "cell": [
+     3,
+     2
+    ],
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "FIRST_EMPTY",
+    "reason": "selected by first_empty strategy",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0009",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 43
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00133",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 133,
+    "event": "candidates_generated",
+    "agent": "Proposer",
+    "depth": 7,
+    "cell": [
+     3,
+     2
+    ],
+    "candidate": null,
+    "candidates": [
+     2
+    ],
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0009",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 44
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00134",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 134,
+    "event": "candidate_proposed",
+    "agent": "Proposer",
+    "depth": 8,
+    "cell": [
+     3,
+     2
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0010",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 45
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00135",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 135,
+    "event": "candidate_accepted",
+    "agent": "RuleChecker",
+    "depth": 8,
+    "cell": [
+     3,
+     2
+    ],
+    "candidate": 2,
+    "candidates": null,
+    "reason_code": "OK",
+    "reason": "valid placement",
+    "board_snapshot": null,
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0010",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 46
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00136",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 136,
+    "event": "solution_found",
+    "agent": "Backtracker",
+    "depth": 8,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": null,
+    "reason": null,
+    "board_snapshot": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      4,
+      3
+     ],
+     [
+      4,
+      3,
+      2,
+      1
+     ]
+    ],
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0010",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 47
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00137",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 137,
+    "event": "solution_verified",
+    "agent": "Verifier",
+    "depth": 8,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "VERIFIED",
+    "reason": "complete board satisfies all rules and clues",
+    "board_snapshot": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      3,
+      4,
+      1,
+      2
+     ],
+     [
+      2,
+      1,
+      4,
+      3
+     ],
+     [
+      4,
+      3,
+      2,
+      1
+     ]
+    ],
+    "node_id": "run-50c77d0cc2c7-variant-middle-node-0010",
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "variant": "variant-middle",
+     "variant_sequence": 48
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00138",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 138,
+    "event": "search_completed",
+    "agent": "Supervisor",
+    "depth": 0,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "SOLVED",
+    "reason": "verified solution found",
+    "board_snapshot": null,
+    "node_id": null,
+    "timestamp": "2026-11-20T12:42:00.547732+00:00",
+    "data": {
+     "counters": {
+      "steps": 24,
+      "nodes": 11,
+      "expansions": 11,
+      "candidates_proposed": 10,
+      "rule_violations": 0,
+      "dead_ends": 2,
+      "pruned": 2,
+      "backtracks": 2,
+      "memory_confirmed": 0,
+      "memory_rejected": 0,
+      "max_depth": 8
+     },
+     "variant": "variant-middle",
+     "variant_sequence": 49
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00139",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 139,
+    "event": "route",
+    "agent": "Supervisor",
+    "depth": 0,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "ROUTE",
+    "reason": "SolverVariants -> Verifier: verify every attempt's board deterministically",
+    "board_snapshot": null,
+    "node_id": null,
+    "timestamp": "2026-11-20T12:42:00.548235+00:00",
+    "data": {
+     "hop": 3,
+     "to": "Verifier"
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00140",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 140,
+    "event": "route",
+    "agent": "Supervisor",
+    "depth": 0,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "ROUTE",
+    "reason": "Verifier -> Supervisor: tally votes from verified solutions only",
+    "board_snapshot": null,
+    "node_id": null,
+    "timestamp": "2026-11-20T12:42:00.548235+00:00",
+    "data": {
+     "hop": 4,
+     "to": "Supervisor"
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00141",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 141,
+    "event": "vote_tallied",
+    "agent": "Supervisor",
+    "depth": 0,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "VOTE",
+    "reason": "vote counts only deterministically verified complete boards from candidate-order variants; invalid, partial, errored or timed-out attempts are excluded",
+    "board_snapshot": null,
+    "node_id": null,
+    "timestamp": "2026-11-20T12:42:00.548235+00:00",
+    "data": {
+     "votes": {
+      "1234/3412/2143/4321": 3
+     },
+     "eligible": [
+      "variant-asc",
+      "variant-desc",
+      "variant-middle"
+     ]
+    }
+   },
+   {
+    "event_id": "run-50c77d0cc2c7-event-00142",
+    "run_id": "run-50c77d0cc2c7",
+    "thread_id": "thread-31e89c9ad893",
+    "sequence": 142,
+    "event": "search_completed",
+    "agent": "Supervisor",
+    "depth": 0,
+    "cell": null,
+    "candidate": null,
+    "candidates": null,
+    "reason_code": "SOLVED",
+    "reason": "verified winner selected",
+    "board_snapshot": null,
+    "node_id": null,
+    "timestamp": "2026-11-20T12:42:00.548235+00:00",
+    "data": {}
+   }
+  ],
+  "nodes": []
+ }
+}

@@ -74,9 +74,13 @@ for Expo web/dev tooling only (default: `localhost`/`127.0.0.1` on any port, plu
 | DELETE | `/api/memory?user_id=…&confirm=true` | Demo reset; refuses without `confirm=true` |
 | POST | `/api/rag/query` | `{query ≤500, k ∈ {1,3}}` → grounded answer or `"I don't know."`, with evidence + chunk IDs |
 | GET | `/api/history` / `/api/history/{session_id}` | Sessions (newest activity first, paginated) / one session with its runs |
+| GET | `/api/history/compare?a=&b=` | Two stored runs of the **same puzzle**, metric by metric (`422 RUNS_NOT_COMPARABLE` / `SAME_RUN` otherwise) |
 | GET | `/api/analytics/summary` | Aggregates **computed from stored runs** |
+| GET | `/api/analytics/comparisons` | CoT vs ToT vs multi-agent, memory off/on, same-puzzle groups, stored votes, approval outcomes; every aggregate lists its `run_ids` |
 | POST | `/api/evaluation/run` | Start the five-case TA1-vs-TA2 evaluation as a background job → `202` |
-| GET | `/api/evaluation/{id}` · `/latest` | Poll / fetch the persisted result |
+| GET | `/api/evaluation` | Evaluation jobs, newest first (running / completed / failed) |
+| GET | `/api/evaluation/{id}` · `/latest` | Poll / fetch the persisted result: cases (incl. `ta2_multi_agent_sequential`), memory comparison, `challenge` (fault propagation, tool failure, injection guard), `rag_comparison` (k=1 vs k=3), `trace_keys` |
+| GET | `/api/evaluation/{id}/traces/{trace_key}` | The recorded data behind one metric (every system cell carries its `trace_key`); `?download=true` to export |
 | POST | `/api/approvals` | *(extension)* Ask for an AI move; guarded, then held for human approval |
 | GET | `/api/approvals` · `/{id}` | *(extension)* Approval records |
 | POST | `/api/approvals/{id}/decision` | *(extension)* `{approved: bool}` |
@@ -168,9 +172,14 @@ Run **failure codes** (inside `result.failure`, not HTTP errors): `MAX_NODES`, `
 `NO_UNIQUE_WINNER`, `OLLAMA_UNAVAILABLE`, `COT_INCORRECT`, `COT_UNPARSEABLE`, `CHECKPOINT_INVALID`, `NO_CHECKPOINT`,
 `CONTRADICTORY_BOARD`, `ZERO_CANDIDATES`, `INTERNAL_ERROR`.
 
+### Database errors
+A locked, unreadable or corrupted API database gives `503 DATABASE_UNAVAILABLE` (`retryable: true`), never a 500 with
+details and never a fake success. A corrupted search checkpoint fails the resumed run with `CHECKPOINT_INVALID`; an
+unreadable checkpoint file makes the run non-resumable (`409 CHECKPOINT_UNAVAILABLE`). Tests: `backend/tests/test_recovery.py`.
+
 ## 7. Persistence (SQLite, `SUDOKU_API_DB`)
 
-`sessions`, `puzzles`, `runs`, `events` (PK `(run_id, sequence)` — replays cannot duplicate), `nodes`, `approvals`, `evaluations`.
+`sessions`, `puzzles`, `runs`, `events` (PK `(run_id, sequence)` — replays cannot duplicate), `nodes`, `approvals`, `evaluations`, `evaluation_traces` (PK `(evaluation_id, trace_key)`).
 Search checkpoints live in the LangGraph SQLite checkpointer (`checkpoints.sqlite3`); long-term memory in `sudoku_memory.sqlite3`;
 RAG vectors in Chroma. All of these are git-ignored.
 

@@ -28,7 +28,7 @@ describe('navigation', () => {
     expect(screen.getByTestId('home-screen')).toBeTruthy();
     const expected: Record<string, [string, string]> = {
       play: ['/play', 'play-screen'], 'ai-lab': ['/ai-lab', 'ai-lab-screen'], memory: ['/memory', 'memory-screen'],
-      analytics: ['/analytics', 'placeholder-analytics'], index: ['/', 'home-screen'],
+      analytics: ['/analytics', 'analytics-screen'], index: ['/', 'home-screen'],
     };
     for (const tab of ['play', 'ai-lab', 'memory', 'analytics', 'index']) {
       await fireEvent.press(screen.getByTestId(`tab-${tab}`));
@@ -59,10 +59,21 @@ describe('navigation', () => {
     expect(screen.getByTestId('offline-notice')).toBeTruthy();
   });
 
-  it('placeholder screens are honest: they say they are not built and show no data', async () => {
+  it('reaches History from Home, then a saved session', async () => {
+    installBackend(false);
+    await renderRouter('./app', { initialUrl: '/' });
+    await fireEvent.press(screen.getByTestId('open-history'));
+    await waitFor(() => expect(screen).toHavePathname('/history'));
+    await waitFor(() => expect(screen.getByTestId(`hist-${SESSION.session_id}`)).toBeTruthy());
+    await fireEvent.press(screen.getByTestId(`hist-${SESSION.session_id}`));
+    await waitFor(() => expect(screen).toHavePathname(`/history/${SESSION.session_id}`));
+  });
+
+  it('Analytics shows no invented numbers when the backend has no evaluation or comparison data', async () => {
     installBackend(false);
     await renderRouter('./app', { initialUrl: '/analytics' });
-    expect(screen.getByText(/Analytics is coming in/)).toBeTruthy();
-    expect(screen.getByText(/nothing is shown here/)).toBeTruthy();
+    await waitFor(() => expect(screen.getByTestId('analytics-error')).toBeTruthy());
+    expect(screen.queryByTestId('five-case-table')).toBeNull();
+    expect(screen.queryByTestId('mode-table')).toBeNull();
   });
 });

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import logging
 import re
+import sqlite3
 
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
@@ -60,6 +61,13 @@ def install(app: FastAPI) -> None:
         code = {404: "NOT_FOUND", 405: "METHOD_NOT_ALLOWED"}.get(exc.status_code, "HTTP_ERROR")
         return JSONResponse(APIError(exc.status_code, code, "The requested resource or method is not available.").body(),
                             status_code=exc.status_code)
+
+    @app.exception_handler(sqlite3.Error)
+    async def _sqlite(request: Request, exc: sqlite3.Error):
+        # locked / unreadable / corrupted local database: a clear, retryable 503, never a fake success
+        log.error("database error on %s %s: %s", request.method, request.url.path, type(exc).__name__)
+        return JSONResponse(APIError(503, "DATABASE_UNAVAILABLE", "The local database is busy or unavailable; try again.",
+                                     recoverable=True, retryable=True).body(), status_code=503)
 
     @app.exception_handler(Exception)
     async def _unhandled(request: Request, exc: Exception):

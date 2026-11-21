@@ -4,7 +4,7 @@ import { Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-na
 import { Chip, errText, KV, MiniBoard, StatusPill } from '@/components/lab';
 import { SudokuBoard } from '@/components/SudokuBoard';
 import { Button, Card, EmptyState, Loading, Notice, Screen, SectionTitle } from '@/components/ui';
-import { useTraceRun } from '@/hooks/useTraceRun';
+import { useTraceRun, type RecordedTrace } from '@/hooks/useTraceRun';
 import { useConnection } from '@/state/ConnectionContext';
 import { buildFrames, outline, solverEvents, variantsOf, type TreeNode } from '@/state/timeline';
 import { colors, fontSize, radius, spacing } from '@/theme';
@@ -25,10 +25,11 @@ const FILTERS: { value: string; label: string; test: (e: TraceEvent) => boolean 
 const NO_CONFLICTS: ReadonlySet<string> = new Set();
 const fmtCell = (c: number[] | null) => (c ? `[${c[0]}, ${c[1]}]` : '—');
 
-export default function SearchTreeScreen({ WebSocketImpl }: { WebSocketImpl?: typeof WebSocket } = {}) {
-  const { runId } = useLocalSearchParams<{ runId: string }>();
+export default function SearchTreeScreen({ WebSocketImpl, recorded }: { WebSocketImpl?: typeof WebSocket; recorded?: RecordedTrace } = {}) {
+  const params = useLocalSearchParams<{ runId: string }>();
+  const runId = recorded ? recorded.run.run_id : params.runId;
   const { api } = useConnection();
-  const { run, events, conn, attempt, error, reload, reattach, live } = useTraceRun(String(runId), { WebSocketImpl });
+  const { run, events, conn, attempt, error, reload, reattach, live } = useTraceRun(String(runId), { WebSocketImpl, recorded });
   const variants = useMemo(() => variantsOf(events), [events]);
   const [variant, setVariant] = useState<string | null>(null);
   useEffect(() => { if (variants.length && (!variant || !variants.includes(variant))) setVariant(variants[0]); }, [variants, variant]);
@@ -81,7 +82,8 @@ export default function SearchTreeScreen({ WebSocketImpl }: { WebSocketImpl?: ty
           <Text style={styles.h2} accessibilityRole="header">{run.mode === 'multi-agent' ? 'Multi-agent search' : run.mode === 'tot' ? 'Tree-of-Thought search' : 'Chain-of-Thought attempt'}</Text>
           <StatusPill testID="tree-status" status={run.status} />
         </View>
-        {live ? <Text style={styles.live} testID="mode-live">LIVE run: events stream from the backend as they happen</Text>
+        {recorded ? <Text style={styles.replay} testID="mode-bundled">RECORDED REPLAY bundled with the app (real backend run {recorded.run.run_id}, recorded {recorded.run.created_at.slice(0, 10)}). Offline fallback: this is NOT a live run.</Text>
+          : live ? <Text style={styles.live} testID="mode-live">LIVE run: events stream from the backend as they happen</Text>
           : ['completed', 'failed', 'cancelled'].includes(run.status) ? <Text style={styles.replay} testID="mode-replay">RECORDED REPLAY of the stored trace (not a live run)</Text>
             : <Text style={styles.live} testID="mode-stopped">Not running ({run.status}){run.resumable ? ': resume to continue from the checkpoint' : ''}</Text>}
         <KV k="Deterministic" testID="tree-det" v={run.deterministic_components.join(', ')} />
@@ -94,13 +96,13 @@ export default function SearchTreeScreen({ WebSocketImpl }: { WebSocketImpl?: ty
         {frame?.resumed && <Notice kind="info" testID="tree-resumed">This run was resumed from a saved checkpoint.</Notice>}
         {frame?.paused && <Notice kind="warning" testID="tree-paused">Paused at a safe checkpoint.</Notice>}
         {msg && <Notice kind="info" testID="tree-msg">{msg}</Notice>}
-        {run.mode === 'tot' && (
+        {run.mode === 'tot' && !recorded && (
           <View style={styles.row}>
             <Button testID="tree-pause" label="Pause run" variant="secondary" disabled={run.status !== 'running'} onPress={() => control(() => api.pause(run.run_id), 'Paused at a safe checkpoint.')} />
             <Button testID="tree-resume" label="Resume run" variant="secondary" disabled={!run.resumable} onPress={() => control(() => api.resume(run.run_id), 'Resumed from the saved checkpoint.')} />
           </View>
         )}
-        <Button testID="open-agents" label="Agents, routing and votes" variant="ghost" onPress={() => router.push({ pathname: '/run/[runId]', params: { runId: run.run_id } })} />
+        {!recorded && <Button testID="open-agents" label="Agents, routing and votes" variant="ghost" onPress={() => router.push({ pathname: '/run/[runId]', params: { runId: run.run_id } })} />}
       </Card>
 
       {variants.length > 0 && (

@@ -1,0 +1,153 @@
+{
+ "source": "recorded from the real backend by scripts/record_app_fixtures.py (do not edit)",
+ "data": {
+  "session": {
+   "session_id": "session-e0a654e288d6",
+   "puzzle_id": "puzzle-3bb99d771088",
+   "title": "assignment sample",
+   "board": [
+    [
+     0,
+     0,
+     3,
+     4
+    ],
+    [
+     3,
+     4,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     4,
+     0
+    ],
+    [
+     4,
+     0,
+     0,
+     1
+    ]
+   ],
+   "created_at": "2026-11-21T09:17:25.601023+00:00",
+   "updated_at": "2026-11-21T09:17:26.628808+00:00",
+   "runs_count": 4,
+   "last_run": {
+    "run_id": "run-f85dc0422621",
+    "mode": "multi-agent",
+    "status": "completed",
+    "created_at": "2026-11-21T09:17:26.619994+00:00",
+    "finished_at": "2026-11-21T09:17:26.674491+00:00",
+    "outcome": "solved",
+    "verified": true,
+    "nodes": 27,
+    "pruned": 0,
+    "backtracks": 0,
+    "elapsed_seconds": 0.034201,
+    "llm_calls": 0,
+    "resumable": false
+   }
+  },
+  "puzzle": {
+   "puzzle_id": "puzzle-3bb99d771088",
+   "session_id": "session-e0a654e288d6",
+   "name": "assignment sample",
+   "board": [
+    [
+     0,
+     0,
+     3,
+     4
+    ],
+    [
+     3,
+     4,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     4,
+     0
+    ],
+    [
+     4,
+     0,
+     0,
+     1
+    ]
+   ],
+   "source": "sample",
+   "created_at": "2026-11-21T09:17:25.601023+00:00",
+   "solution_count": 1,
+   "unique": true,
+   "solvable": true,
+   "generation": null
+  },
+  "runs": [
+   {
+    "run_id": "run-f85dc0422621",
+    "mode": "multi-agent",
+    "status": "completed",
+    "created_at": "2026-11-21T09:17:26.619994+00:00",
+    "finished_at": "2026-11-21T09:17:26.674491+00:00",
+    "outcome": "solved",
+    "verified": true,
+    "nodes": 27,
+    "pruned": 0,
+    "backtracks": 0,
+    "elapsed_seconds": 0.034201,
+    "llm_calls": 0,
+    "resumable": false
+   },
+   {
+    "run_id": "run-b526bd6851a5",
+    "mode": "tot",
+    "status": "completed",
+    "created_at": "2026-11-21T09:17:26.186891+00:00",
+    "finished_at": "2026-11-21T09:17:26.593775+00:00",
+    "outcome": "solved",
+    "verified": true,
+    "nodes": 11,
+    "pruned": 2,
+    "backtracks": 2,
+    "elapsed_seconds": 0.369942,
+    "llm_calls": 0,
+    "resumable": false
+   },
+   {
+    "run_id": "run-15a9a60e35b8",
+    "mode": "multi-agent",
+    "status": "completed",
+    "created_at": "2026-11-21T09:17:26.072767+00:00",
+    "finished_at": "2026-11-21T09:17:26.124997+00:00",
+    "outcome": "solved",
+    "verified": true,
+    "nodes": 27,
+    "pruned": 0,
+    "backtracks": 0,
+    "elapsed_seconds": 0.030447,
+    "llm_calls": 0,
+    "resumable": false
+   },
+   {
+    "run_id": "run-852e87370254",
+    "mode": "tot",
+    "status": "completed",
+    "created_at": "2026-11-21T09:17:25.637499+00:00",
+    "finished_at": "2026-11-21T09:17:26.032697+00:00",
+    "outcome": "solved",
+    "verified": true,
+    "nodes": 11,
+    "pruned": 2,
+    "backtracks": 2,
+    "elapsed_seconds": 0.360269,
+    "llm_calls": 0,
+    "resumable": false
+   }
+  ]
+ }
+}

@@ -353,3 +353,191 @@ export type SolveBody = {
   use_memory?: boolean;
   user_id?: string;
 };
+
+// ---------------------------------------------------------------- history, analytics, evaluation (Phase 6)
+export interface RunSummaryFull extends RunSummary {
+  pruned: number | null;
+  backtracks: number | null;
+  llm_calls: number | null;
+  resumable: boolean;
+}
+
+export interface SessionDetail {
+  session: SessionSummary;
+  puzzle: Puzzle;
+  runs: RunSummaryFull[];
+}
+
+export interface RunMetrics {
+  run_id: string;
+  mode: RunMode;
+  status: RunStatus;
+  created_at: string;
+  outcome: string | null;
+  verified: boolean;
+  seconds: number | null;
+  nodes: number | null;
+  pruned: number | null;
+  backtracks: number | null;
+  dead_ends: number | null;
+  llm_calls: number | null;
+  tool_calls: number | null;
+  solver_calls: number | null;
+  memory_confirmed: number | null;
+  use_memory: boolean;
+}
+
+export interface RunComparison {
+  same_puzzle: boolean;
+  board: Board;
+  a: RunMetrics;
+  b: RunMetrics;
+  differences: { metric: string; a: unknown; b: unknown; equal: boolean }[];
+  note: string;
+}
+
+export interface ModeAggregate {
+  label: string;
+  runs: number;
+  verified: number;
+  verified_rate: number | null;
+  mean_seconds: number | null;
+  median_seconds: number | null;
+  mean_nodes: number | null;
+  mean_dead_ends: number | null;
+  mean_backtracks: number | null;
+  llm_calls: number;
+  tool_calls: number;
+  solver_calls: number;
+  run_ids: string[];
+}
+
+export interface StoredVote {
+  run_id: string;
+  created_at: string;
+  votes: Record<string, number>;
+  eligible: string[];
+  excluded: { attempt: string; reason: string }[];
+  disagreement: boolean | null;
+  verified_winner: boolean;
+  faults: { variant: string; kind: string }[];
+  inject_tool_failure: { tool: string; times: number } | null;
+  max_hops: number | null;
+  outcome: string | null;
+}
+
+export interface AnalyticsComparisons {
+  source: string;
+  finished_runs: number;
+  modes: ModeAggregate[];
+  same_puzzle: { board: Board; modes: string[]; runs: RunMetrics[] }[];
+  memory: ModeAggregate[];
+  votes: StoredVote[];
+  approvals: Record<string, { count: number; approval_ids: string[] }>;
+}
+
+export interface EvaluationMetrics {
+  correct?: boolean | null;
+  nodes?: number | null;
+  pruned?: number | null;
+  backtracks?: number | null;
+  median_seconds?: number | null;
+  seconds?: number | null;
+  solver_calls?: number | null;
+  llm_calls?: number | null;
+  tool_calls?: number | null;
+  hops?: number | null;
+  votes?: Record<string, number> | null;
+  disagreement?: boolean | null;
+  rag_retrievals?: number | null;
+  skipped?: string | null;
+  error?: string | null;
+  trace_key?: string | null;
+}
+
+export interface EvaluationCase {
+  case: number;
+  name: string;
+  puzzle: Board;
+  empties: number;
+  solution_count: number;
+  systems: Record<string, EvaluationMetrics>;
+}
+
+export interface FaultRow {
+  fault: string;
+  faulty_variant: string | null;
+  solved: boolean;
+  verified_votes: number;
+  excluded: { attempt: string; reason: string }[];
+  solver_calls: number;
+  hops: number;
+  seconds: number;
+  propagated_to_answer: boolean;
+  trace_key: string;
+}
+
+export interface ToolFailureRow {
+  case: string;
+  tool: string;
+  injected_failures: number;
+  tool_calls: number;
+  tool_failures: number;
+  tool_ok: boolean;
+  recovered: boolean;
+  solved: boolean;
+  seconds: number;
+  explanation: string | null;
+  trace_key: string;
+}
+
+export interface RagSide {
+  abstained?: boolean;
+  reason_code?: string;
+  answer?: string;
+  top_similarity?: number | null;
+  evidence?: number;
+  chunk_ids?: string[];
+  llm_calls?: number;
+  seconds: number;
+  error?: string;
+}
+
+export interface EvaluationRun {
+  evaluation_id: string;
+  status: 'running' | 'completed' | 'failed';
+  created_at: string;
+  finished_at: string | null;
+  options: Record<string, any>;
+  cases: EvaluationCase[];
+  memory_comparison: { case: number; disabled: any; enabled_first_run: any; enabled_repeat_run: any }[];
+  notes: string[];
+  timing: string | null;
+  challenge: {
+    puzzle: Board;
+    fault_propagation: FaultRow[];
+    tool_failure: ToolFailureRow[];
+    injection_guard: Record<string, { attempts: number; blocked_by_pattern_guard: number; passed_to_legality_check: number }>;
+    notes: string[];
+  } | null;
+  rag_comparison: { group: string; query: string; k1: RagSide; k3: RagSide; trace_key: string }[];
+  rag_available: boolean | null;
+  trace_keys: string[];
+  error: string | null;
+}
+
+export interface EvaluationListItem {
+  evaluation_id: string;
+  status: 'running' | 'completed' | 'failed';
+  created_at: string;
+  finished_at: string | null;
+  options: Record<string, any> | null;
+  error: string | null;
+}
+
+export interface EvaluationTrace {
+  evaluation_id: string;
+  trace_key: string;
+  recorded: true;
+  data: unknown;
+}

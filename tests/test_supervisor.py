@@ -179,3 +179,27 @@ def test_tool_failure_trace_never_contains_raw_exception_text():
     rec = Recorder("leak")
     res = ToolRunner({"t": bad}, max_retries=0, recorder=rec).call("t")
     assert "ConnectionError" in res.errors[0] and "someone" not in str(res.errors) and "someone" not in str(rec.events)
+
+
+def test_sequential_dispatch_gives_the_same_verified_vote_as_parallel():
+    from ta2.supervisor import Supervisor
+    puzzle = [[0, 0, 3, 4], [3, 4, 0, 0], [0, 1, 4, 0], [4, 0, 0, 1]]
+    par = Supervisor().solve_and_vote(puzzle)
+    seq = Supervisor(parallel=False).solve_and_vote(puzzle)
+    assert seq["dispatch"] == "sequential" and par["dispatch"] == "parallel"
+    assert seq["valid"] and seq["solution"] == par["solution"] and seq["votes"] == par["votes"]
+    assert [a["name"] for a in seq["attempts"]] == ["variant-asc", "variant-desc", "variant-middle"]
+
+
+def test_sequential_dispatch_marks_variants_after_the_deadline_as_timed_out():
+    import time
+    from ta2.supervisor import Supervisor, default_solver
+    puzzle = [[0, 0, 3, 4], [3, 4, 0, 0], [0, 1, 4, 0], [4, 0, 0, 1]]
+
+    def slow(p, v, deadline, max_nodes):
+        time.sleep(0.3)
+        return default_solver(p, v, deadline, max_nodes)
+    r = Supervisor(parallel=False, timeout_s=0.2, solver=slow).solve_and_vote(puzzle)
+    statuses = [a["status"] for a in r["attempts"]]
+    assert statuses[1:] == ["timeout", "timeout"]                 # never started: the budget was already spent
+    assert sum(r["votes"].values()) <= 1 and all(not a["valid"] for a in r["attempts"][1:])

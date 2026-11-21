@@ -32,6 +32,8 @@ CREATE TABLE IF NOT EXISTS approvals (approval_id TEXT PRIMARY KEY, thread_id TE
     payload TEXT NOT NULL, created_at TEXT NOT NULL, decided_at TEXT);
 CREATE TABLE IF NOT EXISTS evaluations (evaluation_id TEXT PRIMARY KEY, status TEXT NOT NULL, options TEXT, result TEXT,
     error TEXT, created_at TEXT NOT NULL, finished_at TEXT);
+CREATE TABLE IF NOT EXISTS evaluation_traces (evaluation_id TEXT NOT NULL, trace_key TEXT NOT NULL, payload TEXT NOT NULL,
+    PRIMARY KEY (evaluation_id, trace_key));
 """
 RUN_JSON = ("config", "result", "progress")
 
@@ -235,6 +237,26 @@ class Database:
         d = dict(r)
         d["options"], d["result"] = _l(d["options"]), _l(d["result"])
         return d
+
+    def list_evaluations(self, limit: int = 20) -> list[dict]:
+        with self.conn() as c:
+            rows = c.execute("SELECT evaluation_id, status, options, error, created_at, finished_at FROM evaluations "
+                             "ORDER BY created_at DESC LIMIT ?", (limit,)).fetchall()
+        return [{**dict(r), "options": _l(r["options"])} for r in rows]
+
+    def save_evaluation_traces(self, eid: str, traces: dict[str, Any]) -> None:
+        with self.conn() as c:
+            c.executemany("INSERT OR REPLACE INTO evaluation_traces VALUES(?,?,?)",
+                          [(eid, k, json.dumps(v, default=str)) for k, v in traces.items()])
+
+    def evaluation_trace_keys(self, eid: str) -> list[str]:
+        with self.conn() as c:
+            return [r[0] for r in c.execute("SELECT trace_key FROM evaluation_traces WHERE evaluation_id=? ORDER BY trace_key", (eid,))]
+
+    def get_evaluation_trace(self, eid: str, key: str) -> Any:
+        with self.conn() as c:
+            r = c.execute("SELECT payload FROM evaluation_traces WHERE evaluation_id=? AND trace_key=?", (eid, key)).fetchone()
+        return None if r is None else json.loads(r[0])
 
     def latest_evaluation(self) -> dict | None:
         with self.conn() as c:

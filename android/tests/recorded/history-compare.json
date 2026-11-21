@@ -1,0 +1,137 @@
+{
+ "source": "recorded from the real backend by scripts/record_app_fixtures.py (do not edit)",
+ "data": {
+  "same_puzzle": true,
+  "board": [
+   [
+    0,
+    0,
+    3,
+    4
+   ],
+   [
+    3,
+    4,
+    0,
+    0
+   ],
+   [
+    0,
+    1,
+    4,
+    0
+   ],
+   [
+    4,
+    0,
+    0,
+    1
+   ]
+  ],
+  "a": {
+   "run_id": "run-852e87370254",
+   "mode": "tot",
+   "status": "completed",
+   "created_at": "2026-11-21T09:17:25.637499+00:00",
+   "outcome": "solved",
+   "verified": true,
+   "seconds": 0.360269,
+   "nodes": 11,
+   "pruned": 2,
+   "backtracks": 2,
+   "dead_ends": 2,
+   "llm_calls": 0,
+   "tool_calls": 0,
+   "solver_calls": 1,
+   "memory_confirmed": 0,
+   "use_memory": false
+  },
+  "b": {
+   "run_id": "run-15a9a60e35b8",
+   "mode": "multi-agent",
+   "status": "completed",
+   "created_at": "2026-11-21T09:17:26.072767+00:00",
+   "outcome": "solved",
+   "verified": true,
+   "seconds": 0.030447,
+   "nodes": 27,
+   "pruned": 0,
+   "backtracks": 0,
+   "dead_ends": null,
+   "llm_calls": 0,
+   "tool_calls": 0,
+   "solver_calls": 3,
+   "memory_confirmed": null,
+   "use_memory": false
+  },
+  "differences": [
+   {
+    "metric": "outcome",
+    "a": "solved",
+    "b": "solved",
+    "equal": true
+   },
+   {
+    "metric": "verified",
+    "a": true,
+    "b": true,
+    "equal": true
+   },
+   {
+    "metric": "seconds",
+    "a": 0.360269,
+    "b": 0.030447,
+    "equal": false
+   },
+   {
+    "metric": "nodes",
+    "a": 11,
+    "b": 27,
+    "equal": false
+   },
+   {
+    "metric": "pruned",
+    "a": 2,
+    "b": 0,
+    "equal": false
+   },
+   {
+    "metric": "backtracks",
+    "a": 2,
+    "b": 0,
+    "equal": false
+   },
+   {
+    "metric": "dead_ends",
+    "a": 2,
+    "b": null,
+    "equal": false
+   },
+   {
+    "metric": "llm_calls",
+    "a": 0,
+    "b": 0,
+    "equal": true
+   },
+   {
+    "metric": "tool_calls",
+    "a": 0,
+    "b": 0,
+    "equal": true
+   },
+   {
+    "metric": "solver_calls",
+    "a": 1,
+    "b": 3,
+    "equal": false
+   },
+   {
+    "metric": "memory_confirmed",
+    "a": 0,
+    "b": null,
+    "equal": false
+   }
+  ],
+  "note": "both columns are read from the stored runs; nothing is recomputed or estimated"
+ }
+}

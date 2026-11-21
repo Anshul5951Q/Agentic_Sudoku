@@ -15,6 +15,11 @@ export default function RootLayout() {
           <Stack.Screen name="settings" options={{ title: 'Settings', presentation: 'card' }} />
           <Stack.Screen name="run/[runId]" options={{ title: 'Run' }} />
           <Stack.Screen name="trace/[runId]" options={{ title: 'Search tree' }} />
+          <Stack.Screen name="history/index" options={{ title: 'History' }} />
+          <Stack.Screen name="history/[sessionId]" options={{ title: 'Session' }} />
+          <Stack.Screen name="compare" options={{ title: 'Compare runs' }} />
+          <Stack.Screen name="eval-trace" options={{ title: 'Recorded evaluation data' }} />
+          <Stack.Screen name="replay" options={{ title: 'Recorded replay (offline)' }} />
         </Stack>
       </ConnectionProvider>
     </SafeAreaProvider>

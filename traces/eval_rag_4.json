@@ -1,0 +1,39 @@
+{
+  "kind": "eval_rag_4",
+  "generated_at": "2026-11-21T09:30:05.827287+00:00",
+  "models": {
+    "llm": "qwen2.5:3b",
+    "embeddings": "nomic-embed-text"
+  },
+  "data": {
+    "group": "unanswerable",
+    "query": "Who won the 2018 football world cup?",
+    "k1": {
+      "abstained": true,
+      "reason_code": "LOW_RELEVANCE",
+      "answer": "I don't know.",
+      "top_similarity": 0.4057,
+      "evidence": 1,
+      "chunk_ids": [
+        "sudoku-chunk-8"
+      ],
+      "llm_calls": 0,
+      "seconds": 0.0249
+    },
+    "k3": {
+      "abstained": true,
+      "reason_code": "LOW_RELEVANCE",
+      "answer": "I don't know.",
+      "top_similarity": 0.4057,
+      "evidence": 3,
+      "chunk_ids": [
+        "sudoku-chunk-8",
+        "sudoku-chunk-13",
+        "sudoku-chunk-11"
+      ],
+      "llm_calls": 0,
+      "seconds": 0.0244
+    },
+    "trace_key": "rag_4"
+  }
+}

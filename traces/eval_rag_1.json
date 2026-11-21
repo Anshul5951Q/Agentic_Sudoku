@@ -1,0 +1,39 @@
+{
+  "kind": "eval_rag_1",
+  "generated_at": "2026-11-21T09:30:05.824174+00:00",
+  "models": {
+    "llm": "qwen2.5:3b",
+    "embeddings": "nomic-embed-text"
+  },
+  "data": {
+    "group": "answerable",
+    "query": "What should the solver do when a cell has no candidates?",
+    "k1": {
+      "abstained": false,
+      "reason_code": "GROUNDED",
+      "answer": "When a cell has no candidates, the current branch is a dead end and must be rejected.",
+      "top_similarity": 0.7368,
+      "evidence": 1,
+      "chunk_ids": [
+        "sudoku-chunk-2"
+      ],
+      "llm_calls": 1,
+      "seconds": 1.2997
+    },
+    "k3": {
+      "abstained": false,
+      "reason_code": "GROUNDED",
+      "answer": "When a cell has no candidates, the solver should prune the current branch and restore the previous board state. Then, the solver should try another candidate for that cell.",
+      "top_similarity": 0.7368,
+      "evidence": 3,
+      "chunk_ids": [
+        "sudoku-chunk-2",
+        "sudoku-chunk-14",
+        "sudoku-chunk-3"
+      ],
+      "llm_calls": 1,
+      "seconds": 1.4989
+    },
+    "trace_key": "rag_1"
+  }
+}

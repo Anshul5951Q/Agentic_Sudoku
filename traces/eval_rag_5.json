@@ -1,0 +1,39 @@
+{
+  "kind": "eval_rag_5",
+  "generated_at": "2026-11-21T09:30:05.827801+00:00",
+  "models": {
+    "llm": "qwen2.5:3b",
+    "embeddings": "nomic-embed-text"
+  },
+  "data": {
+    "group": "unanswerable",
+    "query": "What is the capital of France?",
+    "k1": {
+      "abstained": true,
+      "reason_code": "LOW_RELEVANCE",
+      "answer": "I don't know.",
+      "top_similarity": 0.3785,
+      "evidence": 1,
+      "chunk_ids": [
+        "sudoku-chunk-10"
+      ],
+      "llm_calls": 0,
+      "seconds": 0.0234
+    },
+    "k3": {
+      "abstained": true,
+      "reason_code": "LOW_RELEVANCE",
+      "answer": "I don't know.",
+      "top_similarity": 0.3785,
+      "evidence": 3,
+      "chunk_ids": [
+        "sudoku-chunk-10",
+        "sudoku-chunk-6",
+        "sudoku-chunk-1"
+      ],
+      "llm_calls": 0,
+      "seconds": 0.0262
+    },
+    "trace_key": "rag_5"
+  }
+}

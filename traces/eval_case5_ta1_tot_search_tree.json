@@ -1,6 +1,6 @@
 {
   "kind": "eval_case5_ta1_tot_search_tree",
-  "generated_at": "2026-11-20T10:58:19.673049+00:00",
+  "generated_at": "2026-11-21T09:30:05.776316+00:00",
   "models": {
     "llm": "qwen2.5:3b",
     "embeddings": "nomic-embed-text"

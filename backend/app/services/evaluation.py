@@ -11,25 +11,36 @@ from ..schemas import EvaluationMetrics
 
 log = logging.getLogger("sudokumind.evaluation")
 SYSTEM_KEYS = ("ta1_tot", "ta1_cot", "ta2_single_mrv", "ta2_single_first_empty_desc", "ta2_multi_agent_mrv",
-               "ta2_multi_agent_first_empty", "ta2_multi_agent_with_rag")
+               "ta2_multi_agent_sequential", "ta2_multi_agent_first_empty", "ta2_multi_agent_with_rag")
+# Which stored trace backs each (case, system) cell, so every metric in the app links to recorded run data.
+TRACE_FOR = {"ta1_tot": "case{n}_ta1_tot_search_tree", "ta1_cot": "case{n}_ta1_cot_raw_output",
+             "ta2_single_mrv": "case{n}_ta2_single_mrv_trace", "ta2_single_first_empty_desc": "case{n}_ta2_single_first_empty_desc_trace",
+             "ta2_multi_agent_mrv": "case{n}_ta2_multi_agent", "ta2_multi_agent_sequential": "case{n}_ta2_multi_agent_sequential"}
 METRIC_FIELDS = set(EvaluationMetrics.model_fields)
 
 
 def default_runner(options: dict) -> dict:
     from ta2.evaluation import run_evaluation
-    out = run_evaluation(with_cot=options["with_cot"], with_rag=options["with_rag"])
-    out.pop("traces", None)
-    return out
+    return run_evaluation(with_cot=options["with_cot"], with_rag=options["with_rag"])
 
 
 def convert(raw: dict) -> dict:
+    trace_keys = set((raw.get("traces") or {}).keys())
     cases = []
     for row in raw["cases"]:
-        systems = {k: {f: v for f, v in row[k].items() if f in METRIC_FIELDS} for k in SYSTEM_KEYS if k in row}
+        systems = {}
+        for k in SYSTEM_KEYS:
+            if k not in row:
+                continue
+            m = {f: v for f, v in row[k].items() if f in METRIC_FIELDS}
+            key = TRACE_FOR.get(k, "").format(n=row["case"])
+            m["trace_key"] = key if key in trace_keys else None
+            systems[k] = m
         cases.append({"case": row["case"], "name": row["name"], "puzzle": row["puzzle"], "empties": row["empties"],
                       "solution_count": row["solution_count"], "systems": systems})
     return {"cases": cases, "memory_comparison": raw.get("memory_comparison", []), "notes": raw.get("notes", []),
-            "timing": raw.get("timing")}
+            "timing": raw.get("timing"), "challenge": raw.get("challenge"), "rag_comparison": raw.get("rag_comparison", []),
+            "rag_available": raw.get("rag_available")}
 
 
 class EvaluationService:
@@ -51,7 +62,9 @@ class EvaluationService:
 
     def _work(self, eid: str, options: dict) -> None:
         try:
-            self.db.finish_evaluation(eid, "completed", convert(self.runner(options)))
+            raw = self.runner(options)
+            self.db.save_evaluation_traces(eid, raw.get("traces") or {})
+            self.db.finish_evaluation(eid, "completed", convert(raw))
         except Exception as e:
             log.exception("evaluation %s failed", eid)
             self.db.finish_evaluation(eid, "failed", error=f"{type(e).__name__}: evaluation failed (see server log)")
@@ -65,10 +78,19 @@ class EvaluationService:
             raise not_found("evaluation", eid)
         return self.view(row)
 
-    @staticmethod
-    def view(row: dict) -> dict:
+    def view(self, row: dict) -> dict:
         res = row.get("result") or {}
         return {"evaluation_id": row["evaluation_id"], "status": row["status"], "created_at": row["created_at"],
                 "finished_at": row["finished_at"], "options": row.get("options") or {}, "cases": res.get("cases", []),
                 "memory_comparison": res.get("memory_comparison", []), "notes": res.get("notes", []),
-                "timing": res.get("timing"), "error": row.get("error")}
+                "timing": res.get("timing"), "challenge": res.get("challenge"), "rag_comparison": res.get("rag_comparison", []),
+                "rag_available": res.get("rag_available"), "trace_keys": self.db.evaluation_trace_keys(row["evaluation_id"]),
+                "error": row.get("error")}
+
+    def trace(self, eid: str, key: str):
+        if not self.db.get_evaluation(eid):
+            raise not_found("evaluation", eid)
+        t = self.db.get_evaluation_trace(eid, key)
+        if t is None:
+            raise not_found("evaluation_trace", key)
+        return t

@@ -1,5 +1,6 @@
 import type {
-  AgentContract, AgentStatusResponse, AnalyticsSummary, Approval, Board, ChatHistory, ChatResponse, CheckpointSummary, Health,
+  AgentContract, AgentStatusResponse, AnalyticsComparisons, AnalyticsSummary, EvaluationListItem, EvaluationRun, EvaluationTrace,
+  RunComparison, SessionDetail, Approval, Board, ChatHistory, ChatResponse, CheckpointSummary, Health,
   MemoryRecord, Puzzle, PuzzleValidation, RAGResponse, RunListItem, RunMode, RuntimeStatus, SessionList, SolutionCount, SolveBody,
   SolveRun, TraceResponse,
 } from '@/types/api';
@@ -11,7 +12,20 @@ export function createApi(client: ApiClient) {
     health: () => client.get<Health>('/api/health', { timeoutMs: 4000 }),
     runtimeStatus: () => client.get<RuntimeStatus>('/api/runtime/status', { timeoutMs: 6000 }),
     analyticsSummary: () => client.get<AnalyticsSummary>('/api/analytics/summary'),
-    history: (limit = 20) => client.get<SessionList>(`/api/history?limit=${limit}`),
+    history: (limit = 20, offset = 0) => client.get<SessionList>(`/api/history?limit=${limit}&offset=${offset}`),
+    session: (id: string) => client.get<SessionDetail>(`/api/history/${encodeURIComponent(id)}`),
+    compareRuns: (a: string, b: string) =>
+      client.get<RunComparison>(`/api/history/compare?a=${encodeURIComponent(a)}&b=${encodeURIComponent(b)}`),
+    comparisons: () => client.get<AnalyticsComparisons>('/api/analytics/comparisons'),
+    // evaluation
+    startEvaluation: (withCot: boolean, withRag: boolean) =>
+      client.post<EvaluationRun>('/api/evaluation/run', { with_cot: withCot, with_rag: withRag }),
+    evaluations: () => client.get<EvaluationListItem[]>('/api/evaluation?limit=10'),
+    evaluation: (id: string) => client.get<EvaluationRun>(`/api/evaluation/${encodeURIComponent(id)}`),
+    latestEvaluation: () => client.get<EvaluationRun>('/api/evaluation/latest'),
+    evaluationTrace: (id: string, key: string) =>
+      client.get<EvaluationTrace>(`/api/evaluation/${encodeURIComponent(id)}/traces/${encodeURIComponent(key)}`, { timeoutMs: 15000 }),
+    exportTrace: (id: string) => client.get<TraceResponse>(`/api/solve/${encodeURIComponent(id)}/trace?download=true`, { timeoutMs: 15000 }),
     getPuzzle: (id: string) => client.get<Puzzle>(`/api/puzzles/${encodeURIComponent(id)}`),
     createPuzzle: (board: Board, name?: string, source: 'user' | 'sample' | 'generated' = 'user') =>
       client.post<Puzzle>('/api/puzzles', { board, name: name ?? null, source }),
